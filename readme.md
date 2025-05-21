@@ -1,4 +1,4 @@
-# Generator Kode Bertenaga Gemini
+# Generator-Kode
 
 **Generator Kode**, adalah aplikasi Node.js yang memanfaatkan kekuatan AI dari Google Gemini untuk menghasilkan kode secara otomatis berdasarkan perintah pengguna.
 

@@ -29,7 +29,7 @@ npm install
 pastikan NPM dan nodejs sudah terinstal di terminal anda 
 ### 3. menambahkan file konfigurasi atau variabel environment untuk menyimpan kunci api 
 untuk menjalankan aplikasi dan menggunakan model Gemini, Anda harus membuat kunci api: 
-[dapatkan kunci api] (https://ai.google.dev/gemini-api/docs/api-key?hl=id)
+[dapatkan kunci api](https://ai.google.dev/gemini-api/docs/api-key?hl=id)
 silakan ikuti panduan di halaman tersebut setelah kunci api dibuat jalankan perintah 
 ```bash
 echo "API_KEY_GEMINI=???" > .env

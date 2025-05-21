@@ -4,11 +4,14 @@
 
 ## Fitur
 
-- Menghasilkan kode dari prompt pengguna.
+- Menghasilkan project aplikasi yang diinginkan dari prompt pengguna.
+- pembuatan folder dan file secara otomatis dibuatkan 
+- struktur hasil project yang modular
 - Berbasis AI dengan API Gemini.
 - Mudah dijalankan secara lokal.
 
-## Instalasi
+## panduan 
+silakan ikuti panduan di bawah untuk menggunakan alat ini..
 
 ### 1.  Clone repositori ini
 jalankan perintah terminal di bawah 

@@ -1,0 +1,1 @@
+Buatkan saya aplikasi backend sederhana menggunakan Express.js dengan struktur modular. Sertakan fitur untuk CRUD (Create, Read, Update, Delete) data pengguna (users) dengan field nama dan email. Gunakan folder 'src' untuk source code, 'controllers', 'routes', dan 'services'. Buat juga file dokumentasi readme.md.

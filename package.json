@@ -1,0 +1,23 @@
+{
+  "name": "generator-kode",
+  "version": "1.0.0",
+  "description": "generator pembuat kode bertenaga gemini.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [
+    "generator",
+    "kode",
+    "gemini",
+    "ai"
+  ],
+  "author": "waone",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@google/genai": "^0.12.0",
+    "dotenv": "^16.5.0",
+    "prompt-sync": "^4.2.0"
+  }
+}

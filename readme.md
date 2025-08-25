@@ -46,14 +46,17 @@ nano .env
 
 *pastikan `nano` sudah terinstal..*
 
-    -   Buka file `.env` dan masukkan `API_KEY_GEMINI` Anda.
-        ```.env
+isi dengan
 
-        API_KEY_GEMINI="MASUKKAN_API_KEY_ANDA_DI_SINI"
-        MODEL="gemini-2.5-pro
-        TEMPERATURE=0.9
+```.env
+API_KEY_GEMINI=?
+MODEL=gemini-2.5-pro
+TEMPERATUR=0.9
 PEMIKIRAN=23000
-        ```
+
+```
+
+*ganti **?** dengan api key yang telah anda dapatkan..*
 
 ## Cara Penggunaan
 
@@ -83,8 +86,7 @@ Pilih opsi ini untuk memodifikasi atau menambahkan fitur pada proyek yang sudah 
 ## Struktur Proyek (Generator Kode ini)
 
 ```
-GeneratorKode3/
-├── output/             # Direktori default untuk hasil generate project baru
+generator-kode/
 ├── config/             # Folder konfigurasi dan modul service
 │   ├── schema.js       # Skema JSON untuk respons AI
 │   ├── service-api.js  # Koneksi ke API Google GenAI

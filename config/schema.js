@@ -12,16 +12,20 @@ const custom_schema = {
         enum: ["folder", "file", "dokumentasi", "config"],
         description: "Jenis komponen: folder/file/config/dokumentasi",
       },
-      lokasi: {
-        type: Type.STRING,
-        description: "Path relatif dari root project. Gunakan garis miring '/' sebagai pemisah direktori.",
-      },
+lokasi: {
+  type: Type.STRING,
+  description:
+    "Path relatif dari root project. Gunakan '/' sebagai pemisah direktori. Boleh menggunakan '~' di awal untuk home directory.",
+  pattern: "^(~\\/)?[a-zA-Z0-9._\\-/]+$",
+},
+
       konten: {
         type: Type.STRING,
         description:
           "Isi konten (untuk file/config/dokumentasi). Kosongkan jika jenis adalah folder.",
       },
     },
+    propertyOrdering: ["jenis", "lokasi", "konten"],
     required: ["jenis", "lokasi"],
   },
 };

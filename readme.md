@@ -19,11 +19,17 @@ Versi 3 menambahkan kemampuan untuk secara cerdas mengabaikan file yang tidak re
 
 ## Instalasi
 
-1.  **Siapkan Folder Proyek:** Buat sebuah folder dengan nama `GeneratorKode3` dan salin semua file dari respons ini ke dalamnya.
+1.  **unduh Proyek ini:** clone repository ini.
+
+    ```bash
+    git clone https://github.com/waone377/generator-kode.git
+    ```
+
+*pastikan `git` sudah terinstal..*
 
 2.  **Masuk ke direktori proyek:**
     ```bash
-    cd GeneratorKode3
+    cd generator-kode
     ```
 
 3.  **Install dependensi yang diperlukan:**
@@ -32,12 +38,21 @@ Versi 3 menambahkan kemampuan untuk secara cerdas mengabaikan file yang tidak re
     ```
 
 4.  **Konfigurasi Lingkungan:**
-    -   Salin file `.env.example` menjadi `.env`.
+    -   buatlah file  `.env`.
+
+```bash
+nano .env
+```
+
+*pastikan `nano` sudah terinstal..*
+
     -   Buka file `.env` dan masukkan `API_KEY_GEMINI` Anda.
-        ```
+        ```.env
+
         API_KEY_GEMINI="MASUKKAN_API_KEY_ANDA_DI_SINI"
-        MODEL="gemini-1.5-flash-latest"
-        TEMPERATURE=0.3
+        MODEL="gemini-2.5-pro
+        TEMPERATURE=0.9
+PEMIKIRAN=23000
         ```
 
 ## Cara Penggunaan
@@ -77,8 +92,6 @@ GeneratorKode3/
 │   ├── service-model.js # Konfigurasi model AI
 │   ├── service-print.js # Fungsi-fungsi untuk UI konsol
 │   └── service-revisi.js # Fungsi untuk membaca project dengan filter file
-├── .env                # File konfigurasi environment (Dibuat dari .env.example)
-├── .env.example        # Contoh file .env
 ├── app.js              # Titik masuk utama aplikasi
 ├── history.json        # Menyimpan riwayat percakapan dengan AI
 ├── package.json        # Dependensi dan skrip NPM

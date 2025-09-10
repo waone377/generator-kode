@@ -20,7 +20,7 @@ Generator Kode AI adalah sebuah alat baris perintah (CLI) yang kuat berbasis Nod
 
 1.  **Clone Repository:**
     ```bash
-    git clone <URL_REPO_ANDA> gen-kode
+    git clone <https://github.com/waone377/generator-kode.git > gen-kode
     cd gen-kode
     ```
 

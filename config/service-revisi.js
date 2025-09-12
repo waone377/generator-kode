@@ -39,7 +39,7 @@ async function bacaProjectKeMarkdown(
             .replace(/\\/g, "/");
           console.log(`Membaca file: ${relativePath}`);
           const content = await fs.readFile(fullPath, "utf-8");
-          markdownContent += `**lokasi asal**\n${relativePath}\n\n**isi konten asli**\n\`\`\`\n${content}\n\`\`\`\n\n---\n\n`;
+          markdownContent += `**lokasi**\n${relativePath}\n\n**isi konten**\n\`\`\`\n${content}\n\`\`\`\n\n---\n\n`;
         } catch (readError) {
           console.warn(
             `Peringatan: Gagal membaca file ${fullPath}. Mungkin file ini biner atau rusak.`,

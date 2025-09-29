@@ -1,7 +1,8 @@
 import fs from "fs/promises";
 import path from "path";
-const defaultJalurOutput = path.join(path.resolve("."), "output");
-async function generateApp(data, basePath = defaultJalurOutput) {
+async function generateApp(data, target) {
+  const defaultJalurOutput = path.join(path.resolve("."), "output");
+  const basePath = target || defaultJalurOutput;
   console.clear();
   console.log(`Sedang membuat/memperbarui project di: ${basePath}`);
   try {

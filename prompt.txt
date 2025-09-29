@@ -1,6 +1,1 @@
-perbaiki lagi untuk teksnya tidak usah menyertakan Google maps dan sebagainya
-dan saya ingin setiap semua kalimat atau teks itu bisa diaudit dengan mudah dengan mengelompokkannya di dalam file.txt per individu dan disimpan di folder text
-dan juga gambarnya supaya mengambil dari folder images karnaval gambar tersebut tidak tentu jumlahnya Saya ingin websitenya bisa menyesuaikan sesuai jumlahnya secara otomatis dan ketika folder tersebut masih kosong gunakan src default saja
-dan hilangkan saja bagian kalimat ini 
-Visma Bodykit didirikan atas dasar kecintaan pada dunia otomotif dan kesempurnaan. Dengan tim teknisi berpengalaman dan bersertifikat, kami berkomitmen untuk memberikan layanan perbaikan bodi mobil terbaik di kota. Kami hanya menggunakan material premium dan teknologi terkini untuk memastikan setiap kendaraan yang keluar dari bengkel kami terlihat sempurna.
-Saya ingin halaman website semudah mungkin untuk dimainkan atau di audit dan diubah-ubah kalimatnya dan juga gambarnya
+contoh kode c++ yang menampilkan hello world

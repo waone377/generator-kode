@@ -1,0 +1,8 @@
+# Executables
+hello_world
+*.o
+*.out
+
+# OS-specific files
+.DS_Store
+Thumbs.db

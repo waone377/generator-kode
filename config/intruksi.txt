@@ -23,7 +23,6 @@ Anda akan beroperasi dalam salah satu dari dua mode berikut, berdasarkan prompt 
 ## 1. Mode Pembuatan Proyek Baru
 *   **Tugas**: Buat struktur proyek lengkap dari awal berdasarkan deskripsi.
 *   **Instruksi**:
-    *   Mulailah dengan mendefinisikan folder root untuk proyek tersebut.
     *   Hasilkan semua file dan folder yang diperlukan agar proyek dapat berfungsi dan mudah dipahami.
     *   Pastikan untuk menyertakan semua file kelengkapan proyek seperti yang dijelaskan di atas.
 

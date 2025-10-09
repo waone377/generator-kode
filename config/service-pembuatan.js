@@ -31,6 +31,7 @@ async function modeBuatProject() {
   let target;
   while (true) {
     console.clear();
+    console.log("Laporan:\n", parsedResponse.keterangan);
     const nameRepo = masukan("masukkan nama repositori project?> ");
     if (!nameRepo.replace(/\W/g, "").trim()) {
       console.log("silakan masukkan nama project!");

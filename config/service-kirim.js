@@ -7,10 +7,11 @@ async function kirimKeModel(pesan) {
     const historyData = await readHistory();
 
     console.clear();
+    console.log("item history: ", historyData.length);
     const konfirm = masukan("Gunakan history sebelumnya (y/n)? > ");
     let activeHistory = [];
     if (konfirm.toLowerCase() === "y" && historyData.length > 0) {
-      activeHistory = historyData;
+      activeHistory = historyData.slice(-2);
     }
 
     model.history = activeHistory;

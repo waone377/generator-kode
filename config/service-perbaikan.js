@@ -94,8 +94,9 @@ async function modePerbaikiProject() {
     const rawResponse = await kirimKeModel(finalPrompt);
     const parsedResponse = JSON.parse(rawResponse);
     console.clear();
+    console.log("Laporan:\n", parsedResponse.keterangan);
     console.log(
-      "pilih mode penyimpanan:\n1. timpa project asli\n2. membuat project baru\n",
+      "\npilih mode penyimpanan:\n1. timpa project asli\n2. membuat project baru\n",
     );
     const modeSimpan = masukan("silakan pilih satu atau dua?> ");
     let outputPath = finalTargetPath;

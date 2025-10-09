@@ -26,7 +26,6 @@ async function generateApp(data, target, isDelet) {
           break;
       }
     }
-    console.log("laporan:\n", data.keterangan);
   } catch (err) {
     console.error(`Gagal saat membuat project: ${err.message}`);
   }

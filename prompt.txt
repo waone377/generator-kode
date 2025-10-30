@@ -1,0 +1,1 @@
+ maksimalkan kembali pembacaan project pada file service_pembaca_proyek.js supaya hasil markdown mampu dipahami oleh model dengan baik

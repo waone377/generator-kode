@@ -1,5 +1,5 @@
 .env
 node_modules
 history.json
-last_path.json
+history_path.json
 output/

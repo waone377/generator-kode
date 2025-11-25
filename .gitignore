@@ -1,5 +1,6 @@
 .env
 node_modules
-history.json
-history_path.json
-output/
+prompt.txt/*
+history/target.json/*
+history/riwayat.json/*
+output/*/

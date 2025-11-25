@@ -1,5 +1,16 @@
 const eee = {
-  fileExct: [
+  folder: [
+    "node_modules",
+    ".git",
+    ".vscode",
+    ".idea",
+    "__pycache__",
+    "vendor",
+    "dist",
+    "build",
+  ],
+  file: [".env"],
+  extensi: [
     ".csv",
     ".jpg",
     ".jpeg",
@@ -47,16 +58,6 @@ const eee = {
     ".bin",
     ".img",
     ".iso",
-  ],
-  folders: [
-    "node_modules",
-    ".git",
-    ".vscode",
-    ".idea",
-    "__pycache__",
-    "vendor",
-    "dist",
-    "build",
   ],
 };
 export default eee;

@@ -1,6 +1,6 @@
 # Generator-Kode: Generator & Refactor Kode Cerdas Berbasis AI
 
-Generator-Kode adalah sebuah alat baris perintah (CLI) canggih yang ditenagai oleh Google Gemini AI untuk membantu developer mempercepat alur kerja mereka, baik dalam membuat struktur proyek baru dari awal maupun melakukan refactoring pada proyek yang sudah ada berdasarkan instruksi bahasa alami.
+Generator-Kode adalah sebuah alat baris perintah (CLI) untuk membantu developer mempercepat alur kerja mereka, baik dalam membuat struktur proyek baru dari awal maupun melakukan refactoring pada proyek yang sudah ada berdasarkan instruksi, dengan bertenaga mesin model Gemini.
 
 ## Fitur Utama
 
@@ -21,12 +21,14 @@ Generator-Kode adalah sebuah alat baris perintah (CLI) canggih yang ditenagai ol
 Ikuti langkah-langkah berikut untuk menjalankan Gen-Kode di mesin lokal Anda.
 
 **1. Clone Repositori**
+
 ```bash
 git clone https://github.com/waone377/generator-kode.git
 cd generator-kode
 ```
 
 **2. Instal Dependensi**
+
 ```bash
 npm install
 ```
@@ -36,18 +38,18 @@ npm install
 Buat file baru bernama `.env` di root direktori proyek. Salin konten di bawah ini dan isi nilainya sesuai dengan konfigurasi Anda.
 
 ```env
-API_KEY_GEMINI=?
+GEMINI_API=?
 MODEL=gemini-2.5-pro
 TEMPERATURE=0.9
 PEMIKIRAN=23000
-MAX_OUTPUT_TOKENS=15000
+MAX_OUTPUT=15000
 ```
 
-- `API_KEY_GEMINI`: Kunci API Anda dari Google AI Studio. **Wajib diisi.**
+- `GEMINI_API`: Kunci API Anda dari Google AI Studio. **Wajib diisi.**
 - `MODEL`: Model Gemini yang ingin Anda gunakan. `gemini-2.5-flash` atau `gemini-2.5-pro` adalah pilihan yang solid dan direkomendasikan.
 - `TEMPERATURE`: Mengontrol kreativitas output (0.0 - 2.0). Nilai yang lebih tinggi (misalnya, 0.9) menghasilkan output yang lebih beragam, sementara nilai yang lebih rendah (misalnya, 0.2) lebih fokus dan deterministik.
 - `PEMIKIRAN`: Alokasi token untuk proses "berpikir" internal model sebelum menghasilkan respons.
-- `MAX_OUTPUT_TOKENS`: Jumlah maksimum token yang dapat dihasilkan oleh model dalam satu respons.
+- `MAX_OUTPUT`: Jumlah maksimum token yang dapat dihasilkan oleh model dalam satu respons.
 
 ## Cara Penggunaan
 
@@ -75,44 +77,49 @@ Digunakan untuk memodifikasi, menambah fitur, atau memperbaiki kode pada proyek 
 1.  Pilih menu `2`.
 2.  Masukkan path ke direktori proyek yang akan diperbaiki. Aplikasi akan mengingat path terakhir yang Anda gunakan.
 3.  **Pilih Mode Pembacaan Source**:
-    -   **Inklusi (Sertakan)**: Mode ini hanya akan menganalisis file/folder yang Anda tentukan secara spesifik. Berguna untuk perbaikan yang sangat terfokus.
-    -   **Eksklusi (Kecualikan)**: Mode ini akan membaca seluruh proyek dan mengabaikan file/folder yang Anda tentukan. Direkomendasikan untuk pemahaman konteks yang lebih luas.
+    - **Inklusi (Sertakan)**: Mode ini hanya akan menganalisis file/folder yang Anda tentukan secara spesifik. Berguna untuk perbaikan yang sangat terfokus.
+    - **Eksklusi (Kecualikan)**: Mode ini akan membaca seluruh proyek dan mengabaikan file/folder yang Anda tentukan. Direkomendasikan untuk pemahaman konteks yang lebih luas.
 4.  Berikan instruksi perbaikan, baik melalui `prompt.txt` atau input langsung.
 5.  Setelah AI memberikan solusi, pilih mode penyimpanan:
-    -   **Timpa project asli**: Menerapkan perubahan langsung ke proyek sumber.
-    -   **Membuat project baru**: Menyimpan versi yang telah diperbaiki sebagai proyek baru di dalam direktori `output/`.
+    - **Timpa project asli**: Menerapkan perubahan langsung ke proyek sumber.
+    - **Membuat project baru**: Menyimpan versi yang telah diperbaiki sebagai proyek baru di dalam direktori `output/`.
 
-### Mode 3: Reset History Percakapan
+### Mode 3: Hapus Riwayat
 
-Opsi ini akan menghapus semua riwayat percakapan yang tersimpan di `history.json` untuk memulai sesi baru yang bersih.
+Opsi ini akan menghapus semua riwayat percakapan yang tersimpan di `history/riwayat.json` untuk memulai sesi baru yang bersih.
 
 ## Struktur Proyek
 
-- `app.js`: Titik masuk utama aplikasi, mengelola alur menu utama.
-- `_config/`: Direktori pusat untuk semua modul dan konfigurasi.
-  - `_instruct/`: Berisi file teks yang digunakan sebagai instruksi sistem untuk AI.
-    - `intruksi.txt`: Instruksi inti peran dan format output AI.
-    - `dokumentasi.txt`: Konteks tambahan atau dokumentasi teknis untuk AI.
-  - `service_antarmuka_pengguna.js`: Mengelola interaksi dengan pengguna di terminal (input/output).
-  - `service_definisi_skema.js`: Mendefinisikan skema JSON yang diharapkan dari respons AI.
-  - `service_inisialisasi_model.js`: Menginisialisasi model Google Gemini dengan konfigurasi dari `.env`.
-  - `service_manajemen_berkas.js`: Menangani operasi file system seperti membuat/menghapus file dan folder.
-  - `service_manajemen_riwayat.js`: Mengelola pembacaan dan penulisan riwayat percakapan (`history.json`).
-  - `service_pembaca_prompt.js`: Membaca konten dari `prompt.txt`.
-  - `service_pembaca_proyek.js`: Membaca struktur dan konten proyek target menjadi format markdown.
-  - `service_pembuatan_proyek.js`: Mengelola logika untuk mode "Membuat Project Baru".
-  - `service_pengiriman_prompt.js`: Mengirim permintaan ke model AI, mengelola riwayat sesi, dan menangani koreksi.
-  - `service_perbaikan_proyek.js`: Mengelola logika untuk mode "Memperbaiki Project".
-  - `service_riwayat_lokasi.js`: Mengelola penyimpanan dan pembacaan path proyek terakhir (`history_path.json`).
-  - `service_target_abaikan.js`: Berisi daftar file, folder, dan ekstensi yang akan diabaikan saat membaca proyek.
+- `src/_app.js`: Titik masuk utama aplikasi, mengelola alur menu utama.
+- `src/config/`: Direktori untuk file konfigurasi statis.
+  - `ignore.js`: Daftar default file, folder, dan ekstensi yang diabaikan saat membaca proyek.
+- `src/dok/`: Berisi file teks yang digunakan sebagai instruksi sistem untuk AI.
+  - `intruksi.txt`: Instruksi inti peran dan format output AI.
+- `src/fitur/`: Modul yang mengelola fitur utama aplikasi.
+  - `pembuatan.js`: Mengelola logika untuk mode "Membuat Project Baru".
+  - `perbaikan.js`: Mengelola logika untuk mode "Memperbaiki Project".
+  - `penghapusan.js`: Mengelola logika untuk mode "Hapus Riwayat".
+- `src/mesin/`: Modul inti untuk interaksi dengan AI Gemini.
+  - `configurasi.js`: Menginisialisasi model Google Gemini dengan konfigurasi dari `.env`.
+  - `gemini.js`: Mengirim permintaan ke model AI, mengelola riwayat sesi, dan menangani koreksi.
+  - `schema.js`: Mendefinisikan skema JSON yang diharapkan dari respons AI.
+- `src/service/`: Modul untuk logika bisnis spesifik.
+  - `generate_repo.js`: Menerapkan output JSON dari AI ke sistem file (membuat/menghapus file/folder).
+  - `read_repo.js`: Membaca struktur dan konten proyek target menjadi format markdown.
+- `src/util/`: Modul utilitas pembantu.
+  - `files.js`: Menangani operasi file system seperti membaca, menulis, dan menghapus.
+  - `input.js`: Mengelola interaksi dengan pengguna di terminal.
+  - `tampilan.js`: Mengelola output ke terminal.
+- `history/`: (Dibuat saat runtime) Direktori untuk menyimpan data sesi.
+  - `riwayat.json`: Menyimpan riwayat percakapan dengan AI.
+  - `target.json`: Menyimpan path direktori terakhir yang digunakan dalam mode perbaikan.
+  - `output.json`: Menyimpan output JSON mentah terakhir dari AI.
+- `output/`: Direktori default tempat proyek baru atau yang diperbaiki disimpan.
 - `package.json`: Mendefinisikan metadata proyek, dependensi, dan skrip.
 - `prompt.txt`: Tempat untuk menulis instruksi/prompt yang panjang atau kompleks untuk AI.
-- `history.json`: (Dibuat saat runtime) Menyimpan riwayat percakapan dengan AI.
-- `history_path.json`: Menyimpan path direktori terakhir yang digunakan dalam mode perbaikan.
-- `output/`: Direktori default tempat proyek baru atau yang diperbaiki disimpan.
 - `.gitignore`: Mengabaikan file dan folder yang tidak perlu dilacak oleh Git.
 - `readme.md`: Dokumentasi proyek ini.
 
 ## Lisensi
 
-Proyek ini dilisensikan di bawah Lisensi ISC.
+Proyek ini dilisensikan di bawah Lisensi MIT. Ini berarti Anda bebas menggunakan, menyalin, memodifikasi, menggabungkan, menerbitkan, mendistribusikan, mensublisensikan, dan/atau menjual salinan perangkat lunak, selama Anda menyertakan pemberitahuan hak cipta dan izin asli dalam semua salinan atau bagian penting dari perangkat lunak.

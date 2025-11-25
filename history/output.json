@@ -1,0 +1,96 @@
+{
+    "repo": [
+        {
+            "jenis": "dok",
+            "lokasi": "readme.md",
+            "konten": "# Ethical Hacking Playground\n\n**PERINGATAN PENTING: Proyek ini dirancang untuk tujuan pendidikan saja. Semua aplikasi dan skrip di dalamnya ditujukan untuk digunakan dalam lingkungan yang terkendali dan terisolasi (seperti pada mesin lokal Anda). Jangan pernah menggunakan alat atau teknik ini pada sistem yang bukan milik Anda tanpa izin eksplisit. Penggunaan yang tidak sah adalah ilegal dan tidak etis.**\n\n## Tentang Proyek\n\nEthical Hacking Playground menyediakan lingkungan yang aman untuk belajar dan berlatih konsep dasar keamanan siber dan peretasan etis. Proyek ini mencakup aplikasi web yang sengaja dibuat rentan dan beberapa skrip dasar untuk demonstrasi serangan.\n\n## Fitur\n\n1.  **Aplikasi Web Rentan**: Server Node.js/Express sederhana dengan kerentanan umum:\n    *   SQL Injection (SQLi)\n    *   Cross-Site Scripting (XSS)\n    *   Unggahan File yang Tidak Aman\n2.  **Skrip Latihan**: Skrip Python dasar untuk:\n    *   Pemindaian Port (Port Scanning)\n    *   Pemecahan Kata Sandi (Password Cracking) dengan serangan kamus sederhana.\n\n## Panduan Memulai Cepat\n\n1.  **Prasyarat**: Pastikan Anda telah menginstal [Node.js](https://nodejs.org/) dan [Python](https://www.python.org/).\n\n2.  **Instalasi Dependensi Server**:\n    ```bash\n    cd src/targets/web_server\n    npm install\n    ```\n\n3.  **Jalankan Server Rentan**:\n    ```bash\n    npm start\n    ```\n    Server akan berjalan di `http://localhost:3000`.\n\n4.  **Jalankan Skrip Latihan**:\n    Buka terminal baru dan jalankan skrip dari direktori `src/scripts`:\n    ```bash\n    python src/scripts/port_scanner.py\n    python src/scripts/password_cracker.py\n    ```\n\nUntuk panduan lebih rinci, lihat `docs/setup_guide.md`."
+        },
+        {
+            "jenis": "config",
+            "lokasi": ".gitignore",
+            "konten": "node_modules\n.env\nnpm-debug.log\n\n# Database & Uploads\nsrc/targets/web_server/database/database.db\nsrc/targets/web_server/uploads/*\n!src/targets/web_server/uploads/.gitkeep"
+        },
+        {
+            "jenis": "folder",
+            "lokasi": "src",
+            "konten": ""
+        },
+        {
+            "jenis": "folder",
+            "lokasi": "src/targets",
+            "konten": ""
+        },
+        {
+            "jenis": "folder",
+            "lokasi": "src/targets/web_server",
+            "konten": ""
+        },
+        {
+            "jenis": "config",
+            "lokasi": "src/targets/web_server/package.json",
+            "konten": "{\n  \"name\": \"vulnerable-web-app\",\n  \"version\": \"1.0.0\",\n  \"description\": \"An intentionally vulnerable web app for ethical hacking practice.\",\n  \"main\": \"server.js\",\n  \"scripts\": {\n    \"start\": \"node server.js\"\n  },\n  \"dependencies\": {\n    \"express\": \"^4.18.2\",\n    \"sqlite3\": \"^5.1.6\",\n    \"multer\": \"^1.4.5-lts.1\"\n  }\n}"
+        },
+        {
+            "jenis": "file",
+            "lokasi": "src/targets/web_server/server.js",
+            "konten": "const express = require('express');\nconst path = require('path');\nconst sqlite3 = require('sqlite3').verbose();\nconst multer = require('multer');\n\nconst app = express();\nconst PORT = 3000;\n\n// Setup database\nconst dbPath = path.resolve(__dirname, 'database/database.db');\nconst db = new sqlite3.Database(dbPath, (err) => {\n    if (err) {\n        console.error(err.message);\n    } else {\n        console.log('Connected to the SQLite database.');\n        db.run('CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, username TEXT, password TEXT)', (err) => {\n            if (err) console.error(err.message);\n            else {\n                db.get('SELECT * FROM users WHERE username = ?', ['admin'], (err, row) => {\n                    if (!row) {\n                        db.run(`INSERT INTO users (username, password) VALUES ('admin', 'password123')`);\n                    }\n                });\n            }\n        });\n    }\n});\n\n// Middleware\napp.use(express.urlencoded({ extended: false }));\napp.use(express.static(path.join(__dirname, 'public')));\n\n// File upload setup\nconst storage = multer.diskStorage({\n    destination: './uploads/',\n    filename: function(req, file, cb){\n        cb(null, file.originalname);\n    }\n});\nconst upload = multer({ storage: storage });\n\n// Routes\napp.get('/', (req, res) => {\n    res.sendFile(path.join(__dirname, 'public/index.html'));\n});\n\n// VULNERABLE LOGIN (SQL Injection)\napp.post('/login', (req, res) => {\n    const { username, password } = req.body;\n    const query = `SELECT * FROM users WHERE username = '${username}' AND password = '${password}'`;\n    console.log(`Executing query: ${query}`);\n\n    db.get(query, (err, row) => {\n        if (err) {\n            return res.status(500).send('Server error');\n        }\n        if (row) {\n            res.send(`<h1>Welcome, ${row.username}!</h1><p>Login successful.</p>`);\n        } else {\n            res.send('<h1>Login Failed</h1><p>Invalid username or password.</p>');\n        }\n    });\n});\n\n// VULNERABLE SEARCH (Reflected XSS)\napp.get('/search', (req, res) => {\n    const { query } = req.query;\n    // The query parameter is rendered directly without sanitization\n    res.send(`<h1>Search Results</h1><p>You searched for: ${query}</p>`);\n});\n\n// VULNERABLE FILE UPLOAD\napp.post('/upload', upload.single('myFile'), (req, res) => {\n    if (req.file) {\n        res.send(`<h2>File uploaded successfully!</h2><p>Uploaded to: ${req.file.path}</p>`);\n    } else {\n        res.status(400).send('Error uploading file.');\n    }\n});\n\napp.listen(PORT, () => {\n    console.log(`Server is running on http://localhost:${PORT}`);\n});"
+        },
+        {
+            "jenis": "folder",
+            "lokasi": "src/targets/web_server/public",
+            "konten": ""
+        },
+        {
+            "jenis": "file",
+            "lokasi": "src/targets/web_server/public/index.html",
+            "konten": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Vulnerable App</title>\n    <style>\n        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }\n        .container { max-width: 600px; margin: auto; border: 1px solid #ccc; padding: 20px; border-radius: 5px; }\n        h2 { border-bottom: 1px solid #eee; padding-bottom: 10px; }\n        form { margin-bottom: 20px; }\n        input { width: calc(100% - 10px); padding: 5px; margin-bottom: 10px; }\n        button { padding: 8px 15px; }\n    </style>\n</head>\n<body>\n    <div class=\"container\">\n        <h1>Ethical Hacking Practice App</h1>\n\n        <!-- SQL Injection Challenge -->\n        <section>\n            <h2>Login Form (SQLi)</h2>\n            <form action=\"/login\" method=\"POST\">\n                <label for=\"username\">Username:</label>\n                <input type=\"text\" id=\"username\" name=\"username\">\n                <label for=\"password\">Password:</label>\n                <input type=\"password\" id=\"password\" name=\"password\">\n                <button type=\"submit\">Login</button>\n            </form>\n            <p><small>Hint: Try to log in as 'admin' without knowing the password. A common SQLi payload is <code>' OR '1'='1</code></small></p>\n        </section>\n\n        <!-- XSS Challenge -->\n        <section>\n            <h2>Search (XSS)</h2>\n            <form action=\"/search\" method=\"GET\">\n                <label for=\"query\">Search:</label>\n                <input type=\"text\" id=\"query\" name=\"query\">\n                <button type=\"submit\">Search</button>\n            </form>\n             <p><small>Hint: Try searching for <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code></small></p>\n        </section>\n\n        <!-- File Upload Challenge -->\n        <section>\n            <h2>File Upload</h2>\n            <form action=\"/upload\" method=\"POST\" enctype=\"multipart/form-data\">\n                <input type=\"file\" name=\"myFile\">\n                <button type=\"submit\">Upload</button>\n            </form>\n            <p><small>Hint: The server does not validate file types. What could happen if you upload a malicious script?</small></p>\n        </section>\n    </div>\n</body>\n</html>"
+        },
+        {
+            "jenis": "folder",
+            "lokasi": "src/targets/web_server/database",
+            "konten": ""
+        },
+        {
+            "jenis": "folder",
+            "lokasi": "src/targets/web_server/uploads",
+            "konten": ""
+        },
+        {
+            "jenis": "file",
+            "lokasi": "src/targets/web_server/uploads/.gitkeep",
+            "konten": ""
+        },
+        {
+            "jenis": "folder",
+            "lokasi": "src/scripts",
+            "konten": ""
+        },
+        {
+            "jenis": "file",
+            "lokasi": "src/scripts/port_scanner.py",
+            "konten": "import socket\n\ndef scan_port(host, port):\n    \"\"\"Tries to connect to a specific port on a host.\"\"\"\n    try:\n        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)\n        socket.setdefaulttimeout(1)\n        result = s.connect_ex((host, port))\n        if result == 0:\n            print(f\"Port {port} is open\")\n        s.close()\n    except socket.error as e:\n        print(f\"Couldn't connect to server: {e}\")\n\ndef main():\n    target_host = '127.0.0.1'\n    common_ports = [21, 22, 23, 25, 80, 110, 443, 3000, 3306, 8080]\n\n    print(f\"Scanning target: {target_host}\")\n    print(\"-\" * 30)\n\n    for port in common_ports:\n        scan_port(target_host, port)\n\n    print(\"-\" * 30)\n    print(\"Scan complete.\")\n\nif __name__ == '__main__':\n    main()"
+        },
+        {
+            "jenis": "file",
+            "lokasi": "src/scripts/password_cracker.py",
+            "konten": "import requests\n\ndef crack_password():\n    target_url = 'http://localhost:3000/login'\n    username = 'admin'\n    wordlist = ['password', '123456', 'guest', 'root', 'admin', 'password123']\n\n    print(f\"Starting dictionary attack on {target_url} for user '{username}'...\")\n\n    for password in wordlist:\n        print(f\"Trying password: {password}\")\n        payload = {'username': username, 'password': password}\n        response = requests.post(target_url, data=payload)\n\n        if \"Welcome\" in response.text:\n            print(\"-\" * 30)\n            print(f\"[+] Password found: {password}\")\n            print(\"-\" * 30)\n            return\n\n    print(\"\\n[-] Password not found in the wordlist.\")\n\nif __name__ == '__main__':\n    crack_password()"
+        },
+        {
+            "jenis": "folder",
+            "lokasi": "docs",
+            "konten": ""
+        },
+        {
+            "jenis": "dok",
+            "lokasi": "docs/setup_guide.md",
+            "konten": "# Panduan Setup Lengkap\n\nPanduan ini akan memandu Anda melalui proses penyiapan dan menjalankan Ethical Hacking Playground.\n\n## 1. Prasyarat\n\nPastikan perangkat lunak berikut terinstal di sistem Anda:\n- **Node.js dan npm**: Anda dapat mengunduhnya dari [situs web resmi Node.js](https://nodejs.org/). Menginstal Node.js secara otomatis juga akan menginstal npm (Node Package Manager).\n- **Python**: Anda dapat mengunduhnya dari [situs web resmi Python](https://www.python.org/). Pastikan Python ditambahkan ke PATH sistem Anda selama instalasi.\n\n## 2. Menjalankan Aplikasi Web Rentan\n\nServer web yang rentan adalah target utama untuk latihan Anda.\n\n1.  **Buka Terminal**: Buka terminal atau command prompt Anda.\n\n2.  **Navigasi ke Direktori Server**:\n    ```bash\n    cd path/to/project/src/targets/web_server\n    ```\n\n3.  **Instal Dependensi**: Jalankan perintah berikut untuk menginstal semua paket yang diperlukan (seperti Express.js dan SQLite3).\n    ```bash\n    npm install\n    ```\n\n4.  **Mulai Server**:\n    ```bash\n    npm start\n    ```\n\n    Jika berhasil, Anda akan melihat pesan seperti `Server is running on http://localhost:3000`. Sekarang Anda dapat mengakses aplikasi dengan membuka browser web dan menavigasi ke `http://localhost:3000`.\n\n## 3. Menjalankan Skrip Latihan\n\nSkrip ini dirancang untuk berinteraksi dengan server yang rentan.\n\n1.  **Buka Terminal Baru**: Biarkan server tetap berjalan di terminal pertama. Buka jendela terminal kedua.\n\n2.  **Jalankan Port Scanner**:\n    Skrip ini akan memeriksa port mana yang terbuka pada mesin lokal Anda.\n    ```bash\n    python path/to/project/src/scripts/port_scanner.py\n    ```\n    Anda akan melihat output yang menunjukkan port mana (misalnya, 3000) yang terbuka.\n\n3.  **Jalankan Password Cracker**:\n    Skrip ini akan mencoba serangan kamus sederhana terhadap formulir login.\n    ```bash\n    python path/to/project/src/scripts/password_cracker.py\n    ```\n    Skrip akan mencoba setiap kata sandi dalam daftar kata internalnya dan melaporkan jika berhasil menemukan kata sandi yang benar untuk pengguna 'admin'."
+        },
+        {
+            "jenis": "dok",
+            "lokasi": "docs/vulnerabilities.md",
+            "konten": "# Penjelasan Kerentanan\n\nDokumen ini menjelaskan kerentanan yang sengaja dimasukkan ke dalam aplikasi web untuk tujuan latihan.\n\n## 1. SQL Injection (SQLi)\n\n- **Lokasi**: Formulir Login (`/login`)\n- **Deskripsi**: Aplikasi secara langsung menyisipkan input pengguna (nama pengguna dan kata sandi) ke dalam query database SQL tanpa validasi atau sanitasi yang tepat. Ini memungkinkan penyerang untuk memanipulasi query database.\n- **Contoh Eksploitasi**: Seorang penyerang dapat memasukkan payload SQL di bidang nama pengguna seperti `' OR '1'='1` dan memasukkan apa saja di bidang kata sandi. Query yang dihasilkan akan menjadi `SELECT * FROM users WHERE username = '' OR '1'='1' AND password = '...'`. Karena `'1'='1'` selalu benar, kondisi WHERE secara keseluruhan menjadi benar, dan database akan mengembalikan pengguna pertama dalam tabel (biasanya admin), memungkinkan login berhasil tanpa mengetahui kata sandi yang benar.\n\n## 2. Cross-Site Scripting (XSS) Reflected\n\n- **Lokasi**: Formulir Pencarian (`/search`)\n- **Deskripsi**: Parameter `query` dari URL diambil dan dirender langsung ke dalam halaman HTML hasil tanpa encoding atau sanitasi. Ini berarti jika parameter berisi kode HTML atau JavaScript, browser akan mengeksekusinya.\n- **Contoh Eksploitasi**: Seorang penyerang dapat membuat URL seperti `http://localhost:3000/search?query=<script>alert('XSS vulnerability!')</script>`. Ketika pengguna (atau korban) mengunjungi URL ini, skrip JavaScript di dalam parameter akan dieksekusi oleh browser mereka, menampilkan kotak peringatan.\n\n## 3. Unggahan File yang Tidak Aman\n\n- **Lokasi**: Formulir Unggah File (`/upload`)\n- **Deskripsi**: Server menerima unggahan file tanpa memvalidasi jenis file, ukuran, atau isinya. Ini memungkinkan penyerang untuk mengunggah file berbahaya, seperti web shell (misalnya, file `.php`, `.jsp`, `.js` jika server dapat mengeksekusinya) atau file HTML yang berisi kode phishing.\n- **Contoh Risiko**: Jika server dikonfigurasi untuk mengeksekusi skrip sisi server dari direktori unggahan, seorang penyerang dapat mengunggah web shell dan mendapatkan eksekusi kode jarak jauh di server. Dalam penyiapan kami saat ini, risiko utamanya adalah mengunggah file HTML/JS berbahaya yang dapat disajikan kepada pengguna lain."
+        }
+    ],
+    "text": "Proyek ini disusun sebagai lingkungan latihan peretasan etis yang modular dan terkendali. Arsitektur utama berpusat di sekitar aplikasi web yang sengaja dibuat rentan (`src/targets/web_server`), dibangun menggunakan Node.js dan Express. Aplikasi ini memiliki kerentanan umum seperti SQL Injection, XSS, dan unggahan file yang tidak aman untuk tujuan demonstrasi. Untuk berinteraksi dengan target, disediakan skrip Python dasar (`src/scripts`) untuk pemindaian port dan serangan kamus sederhana. Struktur proyek dipisahkan dengan jelas antara target, skrip penyerang, dan dokumentasi (`docs`) untuk memastikan pemahaman yang mudah dan penggunaan yang aman. Dokumentasi mencakup panduan penyiapan dan penjelasan rinci tentang setiap kerentanan yang ada.",
+    "delets": []
+}

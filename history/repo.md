@@ -1,8 +1,10 @@
+
+
 ---
 
 *lokasi*
 
-generator-kode/package-lock.json
+.termux/files/home/repo/generator-kode/package-lock.json
 
 *isi konten*
 
@@ -657,11 +659,11 @@ generator-kode/package-lock.json
 
 ---
 
-_lokasi_
+*lokasi*
 
-generator-kode/package.json
+.termux/files/home/repo/generator-kode/package.json
 
-_isi konten_
+*isi konten*
 
 ```
 {
@@ -696,13 +698,13 @@ _isi konten_
 
 ---
 
-_lokasi_
+*lokasi*
 
-generator-kode/readme.md
+.termux/files/home/repo/generator-kode/readme.md
 
-_isi konten_
+*isi konten*
 
-````
+```
 # Generator-Kode: Generator & Refactor Kode Cerdas Berbasis AI
 
 Generator-Kode adalah sebuah alat baris perintah (CLI) untuk membantu developer mempercepat alur kerja mereka, baik dalam membuat struktur proyek baru dari awal maupun melakukan refactoring pada proyek yang sudah ada berdasarkan instruksi, dengan bertenaga mesin model Gemini.
@@ -730,7 +732,7 @@ Ikuti langkah-langkah berikut untuk menjalankan Gen-Kode di mesin lokal Anda.
 ```bash
 git clone https://github.com/waone377/generator-kode.git
 cd generator-kode
-````
+```
 
 **2. Instal Dependensi**
 
@@ -837,24 +839,107 @@ Proyek ini dilisensikan di bawah Lisensi MIT. Ini berarti Anda bebas menggunakan
 
 *lokasi*
 
-generator-kode/history/output.json
+.termux/files/home/repo/generator-kode/history/output.json
 
 *isi konten*
 
 ```
-
 {
-"repo": [
-{
-"jenis": "dok",
-"lokasi": "readme.md",
-"konten": "# Generator-Kode: Generator & Refactor Kode Cerdas Berbasis AI\n\nGenerator-Kode adalah sebuah alat baris perintah (CLI) untuk membantu developer mempercepat alur kerja mereka, baik dalam membuat struktur proyek baru dari awal maupun melakukan refactoring pada proyek yang sudah ada berdasarkan instruksi, dengan bertenaga mesin model Gemini.\n\n## Fitur Utama\n\n- **Pembuatan Proyek Baru**: Hasilkan seluruh struktur folder dan file untuk proyek baru (misalnya, \"buatkan saya API server Express dengan TypeScript\") hanya dengan satu perintah.\n- **Refactoring & Perbaikan Proyek**: Analisis kode proyek yang ada dan terapkan perubahan, tambahkan fitur baru, atau perbaiki bug sesuai instruksi Anda.\n- **Pembacaan Proyek Selektif**: Kontrol penuh atas file mana yang dianalisis oleh AI, dengan mode inklusi (hanya baca yang dipilih) atau eksklusi (abaikan yang dipilih).\n- **Riwayat Percakapan Berkonteks**: Menyimpan dan menggunakan kembali riwayat interaksi dengan AI, memungkinkan Anda untuk melakukan koreksi berulang hingga hasil yang diinginkan tercapai.\n- **Konfigurasi Fleksibel**: Mudah untuk mengkonfigurasi model AI, temperature, dan parameter lainnya melalui file `.env`.\n- **Dukungan Prompt Eksternal**: Gunakan file `prompt.txt` untuk instruksi yang lebih panjang dan kompleks, ideal untuk tugas yang rumit.\n\n## Prasyarat\n\n- [Node.js](https://nodejs.org/) (versi 18.x atau lebih tinggi)\n- API Key dari [Google AI Studio](https://aistudio.google.com/app/apikey)\n\n## Instalasi & Konfigurasi\n\nIkuti langkah-langkah berikut untuk menjalankan Gen-Kode di mesin lokal Anda.\n\n**1. Clone Repositori**\n\n`bash\ngit clone https://github.com/waone377/generator-kode.git\ncd generator-kode\n`\n\n**2. Instal Dependensi**\n\n`bash\nnpm install\n`\n\n**3. Konfigurasi Environment Variable**\n\nBuat file baru bernama `.env` di root direktori proyek. Salin konten di bawah ini dan isi nilainya sesuai dengan konfigurasi Anda.\n\n`env\nGEMINI_API=?\nMODEL=gemini-2.5-pro\nTEMPERATURE=0.9\nPEMIKIRAN=23000\nMAX_OUTPUT=15000\n`\n\n- `GEMINI_API`: Kunci API Anda dari Google AI Studio. **Wajib diisi.**\n- `MODEL`: Model Gemini yang ingin Anda gunakan. `gemini-2.5-flash` atau `gemini-2.5-pro` adalah pilihan yang solid dan direkomendasikan.\n- `TEMPERATURE`: Mengontrol kreativitas output (0.0 - 2.0). Nilai yang lebih tinggi (misalnya, 0.9) menghasilkan output yang lebih beragam, sementara nilai yang lebih rendah (misalnya, 0.2) lebih fokus dan deterministik.\n- `PEMIKIRAN`: Alokasi token untuk proses \"berpikir\" internal model sebelum menghasilkan respons.\n- `MAX_OUTPUT`: Jumlah maksimum token yang dapat dihasilkan oleh model dalam satu respons.\n\n## Cara Penggunaan\n\nJalankan aplikasi dari terminal:\n\n`bash\nnpm start\n`\n\nAnda akan disambut dengan menu utama untuk memilih mode operasi.\n\n### Mode 1: Membuat Project Baru\n\nIdeal untuk memulai proyek dari nol berdasarkan deskripsi konseptual.\n\n1. Pilih menu `1`.\n2. Tentukan apakah akan menggunakan `prompt.txt` untuk deskripsi yang detail atau mengetik langsung di terminal.\n3. Setelah AI memproses permintaan, masukkan nama untuk folder proyek baru.\n4. Proyek akan dibuat di dalam direktori `output/<nama-proyek>`.\n\n### Mode 2: Memperbaiki Project\n\nDigunakan untuk memodifikasi, menambah fitur, atau memperbaiki kode pada proyek yang sudah ada.\n\n1. Pilih menu `2`.\n2. Masukkan path ke direktori proyek yang akan diperbaiki. Aplikasi akan mengingat path terakhir yang Anda gunakan.\n3. **Pilih Mode Pembacaan Source**:\n - **Inklusi (Sertakan)**: Mode ini hanya akan menganalisis file/folder yang Anda tentukan secara spesifik. Berguna untuk perbaikan yang sangat terfokus.\n - **Eksklusi (Kecualikan)**: Mode ini akan membaca seluruh proyek dan mengabaikan file/folder yang Anda tentukan. Direkomendasikan untuk pemahaman konteks yang lebih luas.\n4. Berikan instruksi perbaikan, baik melalui `prompt.txt` atau input langsung.\n5. Setelah AI memberikan solusi, pilih mode penyimpanan:\n - **Timpa project asli**: Menerapkan perubahan langsung ke proyek sumber.\n - **Membuat project baru**: Menyimpan versi yang telah diperbaiki sebagai proyek baru di dalam direktori `output/`.\n\n### Mode 3: Hapus Riwayat\n\nOpsi ini akan menghapus semua riwayat percakapan yang tersimpan di `history/riwayat.json` untuk memulai sesi baru yang bersih.\n\n## Struktur Proyek\n\n- `src/_app.js`: Titik masuk utama aplikasi, mengelola alur menu utama.\n- `src/config/`: Direktori untuk file konfigurasi statis.\n - `ignore.js`: Daftar default file, folder, dan ekstensi yang diabaikan saat membaca proyek.\n- `src/dok/`: Berisi file teks yang digunakan sebagai instruksi sistem untuk AI.\n - `intruksi.txt`: Instruksi inti peran dan format output AI.\n- `src/fitur/`: Modul yang mengelola fitur utama aplikasi.\n - `pembuatan.js`: Mengelola logika untuk mode \"Membuat Project Baru\".\n - `perbaikan.js`: Mengelola logika untuk mode \"Memperbaiki Project\".\n - `penghapusan.js`: Mengelola logika untuk mode \"Hapus Riwayat\".\n- `src/mesin/`: Modul inti untuk interaksi dengan AI Gemini.\n - `configurasi.js`: Menginisialisasi model Google Gemini dengan konfigurasi dari `.env`.\n - `gemini.js`: Mengirim permintaan ke model AI, mengelola riwayat sesi, dan menangani koreksi.\n - `schema.js`: Mendefinisikan skema JSON yang diharapkan dari respons AI.\n- `src/service/`: Modul untuk logika bisnis spesifik.\n - `generate_repo.js`: Menerapkan output JSON dari AI ke sistem file (membuat/menghapus file/folder).\n - `read_repo.js`: Membaca struktur dan konten proyek target menjadi format markdown.\n- `src/util/`: Modul utilitas pembantu.\n - `files.js`: Menangani operasi file system seperti membaca, menulis, dan menghapus.\n - `input.js`: Mengelola interaksi dengan pengguna di terminal.\n - `tampilan.js`: Mengelola output ke terminal.\n- `history/`: (Dibuat saat runtime) Direktori untuk menyimpan data sesi.\n - `riwayat.json`: Menyimpan riwayat percakapan dengan AI.\n - `target.json`: Menyimpan path direktori terakhir yang digunakan dalam mode perbaikan.\n - `output.json`: Menyimpan output JSON mentah terakhir dari AI.\n- `output/`: Direktori default tempat proyek baru atau yang diperbaiki disimpan.\n- `package.json`: Mendefinisikan metadata proyek, dependensi, dan skrip.\n- `prompt.txt`: Tempat untuk menulis instruksi/prompt yang panjang atau kompleks untuk AI.\n- `.gitignore`: Mengabaikan file dan folder yang tidak perlu dilacak oleh Git.\n- `readme.md`: Dokumentasi proyek ini.\n\n## Lisensi\n\nProyek ini dilisensikan di bawah Lisensi MIT. Ini berarti Anda bebas menggunakan, menyalin, memodifikasi, menggabungkan, menerbitkan, mendistribusikan, mensublisensikan, dan/atau menjual salinan perangkat lunak, selama Anda menyertakan pemberitahuan hak cipta dan izin asli dalam semua salinan atau bagian penting dari perangkat lunak.\n"
+    "repo": [
+        {
+            "jenis": "dok",
+            "lokasi": "readme.md",
+            "konten": "# Ethical Hacking Playground\n\n**PERINGATAN PENTING: Proyek ini dirancang untuk tujuan pendidikan saja. Semua aplikasi dan skrip di dalamnya ditujukan untuk digunakan dalam lingkungan yang terkendali dan terisolasi (seperti pada mesin lokal Anda). Jangan pernah menggunakan alat atau teknik ini pada sistem yang bukan milik Anda tanpa izin eksplisit. Penggunaan yang tidak sah adalah ilegal dan tidak etis.**\n\n## Tentang Proyek\n\nEthical Hacking Playground menyediakan lingkungan yang aman untuk belajar dan berlatih konsep dasar keamanan siber dan peretasan etis. Proyek ini mencakup aplikasi web yang sengaja dibuat rentan dan beberapa skrip dasar untuk demonstrasi serangan.\n\n## Fitur\n\n1.  **Aplikasi Web Rentan**: Server Node.js/Express sederhana dengan kerentanan umum:\n    *   SQL Injection (SQLi)\n    *   Cross-Site Scripting (XSS)\n    *   Unggahan File yang Tidak Aman\n2.  **Skrip Latihan**: Skrip Python dasar untuk:\n    *   Pemindaian Port (Port Scanning)\n    *   Pemecahan Kata Sandi (Password Cracking) dengan serangan kamus sederhana.\n\n## Panduan Memulai Cepat\n\n1.  **Prasyarat**: Pastikan Anda telah menginstal [Node.js](https://nodejs.org/) dan [Python](https://www.python.org/).\n\n2.  **Instalasi Dependensi Server**:\n    ```bash\n    cd src/targets/web_server\n    npm install\n    ```\n\n3.  **Jalankan Server Rentan**:\n    ```bash\n    npm start\n    ```\n    Server akan berjalan di `http://localhost:3000`.\n\n4.  **Jalankan Skrip Latihan**:\n    Buka terminal baru dan jalankan skrip dari direktori `src/scripts`:\n    ```bash\n    python src/scripts/port_scanner.py\n    python src/scripts/password_cracker.py\n    ```\n\nUntuk panduan lebih rinci, lihat `docs/setup_guide.md`."
+        },
+        {
+            "jenis": "config",
+            "lokasi": ".gitignore",
+            "konten": "node_modules\n.env\nnpm-debug.log\n\n# Database & Uploads\nsrc/targets/web_server/database/database.db\nsrc/targets/web_server/uploads/*\n!src/targets/web_server/uploads/.gitkeep"
+        },
+        {
+            "jenis": "folder",
+            "lokasi": "src",
+            "konten": ""
+        },
+        {
+            "jenis": "folder",
+            "lokasi": "src/targets",
+            "konten": ""
+        },
+        {
+            "jenis": "folder",
+            "lokasi": "src/targets/web_server",
+            "konten": ""
+        },
+        {
+            "jenis": "config",
+            "lokasi": "src/targets/web_server/package.json",
+            "konten": "{\n  \"name\": \"vulnerable-web-app\",\n  \"version\": \"1.0.0\",\n  \"description\": \"An intentionally vulnerable web app for ethical hacking practice.\",\n  \"main\": \"server.js\",\n  \"scripts\": {\n    \"start\": \"node server.js\"\n  },\n  \"dependencies\": {\n    \"express\": \"^4.18.2\",\n    \"sqlite3\": \"^5.1.6\",\n    \"multer\": \"^1.4.5-lts.1\"\n  }\n}"
+        },
+        {
+            "jenis": "file",
+            "lokasi": "src/targets/web_server/server.js",
+            "konten": "const express = require('express');\nconst path = require('path');\nconst sqlite3 = require('sqlite3').verbose();\nconst multer = require('multer');\n\nconst app = express();\nconst PORT = 3000;\n\n// Setup database\nconst dbPath = path.resolve(__dirname, 'database/database.db');\nconst db = new sqlite3.Database(dbPath, (err) => {\n    if (err) {\n        console.error(err.message);\n    } else {\n        console.log('Connected to the SQLite database.');\n        db.run('CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, username TEXT, password TEXT)', (err) => {\n            if (err) console.error(err.message);\n            else {\n                db.get('SELECT * FROM users WHERE username = ?', ['admin'], (err, row) => {\n                    if (!row) {\n                        db.run(`INSERT INTO users (username, password) VALUES ('admin', 'password123')`);\n                    }\n                });\n            }\n        });\n    }\n});\n\n// Middleware\napp.use(express.urlencoded({ extended: false }));\napp.use(express.static(path.join(__dirname, 'public')));\n\n// File upload setup\nconst storage = multer.diskStorage({\n    destination: './uploads/',\n    filename: function(req, file, cb){\n        cb(null, file.originalname);\n    }\n});\nconst upload = multer({ storage: storage });\n\n// Routes\napp.get('/', (req, res) => {\n    res.sendFile(path.join(__dirname, 'public/index.html'));\n});\n\n// VULNERABLE LOGIN (SQL Injection)\napp.post('/login', (req, res) => {\n    const { username, password } = req.body;\n    const query = `SELECT * FROM users WHERE username = '${username}' AND password = '${password}'`;\n    console.log(`Executing query: ${query}`);\n\n    db.get(query, (err, row) => {\n        if (err) {\n            return res.status(500).send('Server error');\n        }\n        if (row) {\n            res.send(`<h1>Welcome, ${row.username}!</h1><p>Login successful.</p>`);\n        } else {\n            res.send('<h1>Login Failed</h1><p>Invalid username or password.</p>');\n        }\n    });\n});\n\n// VULNERABLE SEARCH (Reflected XSS)\napp.get('/search', (req, res) => {\n    const { query } = req.query;\n    // The query parameter is rendered directly without sanitization\n    res.send(`<h1>Search Results</h1><p>You searched for: ${query}</p>`);\n});\n\n// VULNERABLE FILE UPLOAD\napp.post('/upload', upload.single('myFile'), (req, res) => {\n    if (req.file) {\n        res.send(`<h2>File uploaded successfully!</h2><p>Uploaded to: ${req.file.path}</p>`);\n    } else {\n        res.status(400).send('Error uploading file.');\n    }\n});\n\napp.listen(PORT, () => {\n    console.log(`Server is running on http://localhost:${PORT}`);\n});"
+        },
+        {
+            "jenis": "folder",
+            "lokasi": "src/targets/web_server/public",
+            "konten": ""
+        },
+        {
+            "jenis": "file",
+            "lokasi": "src/targets/web_server/public/index.html",
+            "konten": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Vulnerable App</title>\n    <style>\n        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }\n        .container { max-width: 600px; margin: auto; border: 1px solid #ccc; padding: 20px; border-radius: 5px; }\n        h2 { border-bottom: 1px solid #eee; padding-bottom: 10px; }\n        form { margin-bottom: 20px; }\n        input { width: calc(100% - 10px); padding: 5px; margin-bottom: 10px; }\n        button { padding: 8px 15px; }\n    </style>\n</head>\n<body>\n    <div class=\"container\">\n        <h1>Ethical Hacking Practice App</h1>\n\n        <!-- SQL Injection Challenge -->\n        <section>\n            <h2>Login Form (SQLi)</h2>\n            <form action=\"/login\" method=\"POST\">\n                <label for=\"username\">Username:</label>\n                <input type=\"text\" id=\"username\" name=\"username\">\n                <label for=\"password\">Password:</label>\n                <input type=\"password\" id=\"password\" name=\"password\">\n                <button type=\"submit\">Login</button>\n            </form>\n            <p><small>Hint: Try to log in as 'admin' without knowing the password. A common SQLi payload is <code>' OR '1'='1</code></small></p>\n        </section>\n\n        <!-- XSS Challenge -->\n        <section>\n            <h2>Search (XSS)</h2>\n            <form action=\"/search\" method=\"GET\">\n                <label for=\"query\">Search:</label>\n                <input type=\"text\" id=\"query\" name=\"query\">\n                <button type=\"submit\">Search</button>\n            </form>\n             <p><small>Hint: Try searching for <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code></small></p>\n        </section>\n\n        <!-- File Upload Challenge -->\n        <section>\n            <h2>File Upload</h2>\n            <form action=\"/upload\" method=\"POST\" enctype=\"multipart/form-data\">\n                <input type=\"file\" name=\"myFile\">\n                <button type=\"submit\">Upload</button>\n            </form>\n            <p><small>Hint: The server does not validate file types. What could happen if you upload a malicious script?</small></p>\n        </section>\n    </div>\n</body>\n</html>"
+        },
+        {
+            "jenis": "folder",
+            "lokasi": "src/targets/web_server/database",
+            "konten": ""
+        },
+        {
+            "jenis": "folder",
+            "lokasi": "src/targets/web_server/uploads",
+            "konten": ""
+        },
+        {
+            "jenis": "file",
+            "lokasi": "src/targets/web_server/uploads/.gitkeep",
+            "konten": ""
+        },
+        {
+            "jenis": "folder",
+            "lokasi": "src/scripts",
+            "konten": ""
+        },
+        {
+            "jenis": "file",
+            "lokasi": "src/scripts/port_scanner.py",
+            "konten": "import socket\n\ndef scan_port(host, port):\n    \"\"\"Tries to connect to a specific port on a host.\"\"\"\n    try:\n        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)\n        socket.setdefaulttimeout(1)\n        result = s.connect_ex((host, port))\n        if result == 0:\n            print(f\"Port {port} is open\")\n        s.close()\n    except socket.error as e:\n        print(f\"Couldn't connect to server: {e}\")\n\ndef main():\n    target_host = '127.0.0.1'\n    common_ports = [21, 22, 23, 25, 80, 110, 443, 3000, 3306, 8080]\n\n    print(f\"Scanning target: {target_host}\")\n    print(\"-\" * 30)\n\n    for port in common_ports:\n        scan_port(target_host, port)\n\n    print(\"-\" * 30)\n    print(\"Scan complete.\")\n\nif __name__ == '__main__':\n    main()"
+        },
+        {
+            "jenis": "file",
+            "lokasi": "src/scripts/password_cracker.py",
+            "konten": "import requests\n\ndef crack_password():\n    target_url = 'http://localhost:3000/login'\n    username = 'admin'\n    wordlist = ['password', '123456', 'guest', 'root', 'admin', 'password123']\n\n    print(f\"Starting dictionary attack on {target_url} for user '{username}'...\")\n\n    for password in wordlist:\n        print(f\"Trying password: {password}\")\n        payload = {'username': username, 'password': password}\n        response = requests.post(target_url, data=payload)\n\n        if \"Welcome\" in response.text:\n            print(\"-\" * 30)\n            print(f\"[+] Password found: {password}\")\n            print(\"-\" * 30)\n            return\n\n    print(\"\\n[-] Password not found in the wordlist.\")\n\nif __name__ == '__main__':\n    crack_password()"
+        },
+        {
+            "jenis": "folder",
+            "lokasi": "docs",
+            "konten": ""
+        },
+        {
+            "jenis": "dok",
+            "lokasi": "docs/setup_guide.md",
+            "konten": "# Panduan Setup Lengkap\n\nPanduan ini akan memandu Anda melalui proses penyiapan dan menjalankan Ethical Hacking Playground.\n\n## 1. Prasyarat\n\nPastikan perangkat lunak berikut terinstal di sistem Anda:\n- **Node.js dan npm**: Anda dapat mengunduhnya dari [situs web resmi Node.js](https://nodejs.org/). Menginstal Node.js secara otomatis juga akan menginstal npm (Node Package Manager).\n- **Python**: Anda dapat mengunduhnya dari [situs web resmi Python](https://www.python.org/). Pastikan Python ditambahkan ke PATH sistem Anda selama instalasi.\n\n## 2. Menjalankan Aplikasi Web Rentan\n\nServer web yang rentan adalah target utama untuk latihan Anda.\n\n1.  **Buka Terminal**: Buka terminal atau command prompt Anda.\n\n2.  **Navigasi ke Direktori Server**:\n    ```bash\n    cd path/to/project/src/targets/web_server\n    ```\n\n3.  **Instal Dependensi**: Jalankan perintah berikut untuk menginstal semua paket yang diperlukan (seperti Express.js dan SQLite3).\n    ```bash\n    npm install\n    ```\n\n4.  **Mulai Server**:\n    ```bash\n    npm start\n    ```\n\n    Jika berhasil, Anda akan melihat pesan seperti `Server is running on http://localhost:3000`. Sekarang Anda dapat mengakses aplikasi dengan membuka browser web dan menavigasi ke `http://localhost:3000`.\n\n## 3. Menjalankan Skrip Latihan\n\nSkrip ini dirancang untuk berinteraksi dengan server yang rentan.\n\n1.  **Buka Terminal Baru**: Biarkan server tetap berjalan di terminal pertama. Buka jendela terminal kedua.\n\n2.  **Jalankan Port Scanner**:\n    Skrip ini akan memeriksa port mana yang terbuka pada mesin lokal Anda.\n    ```bash\n    python path/to/project/src/scripts/port_scanner.py\n    ```\n    Anda akan melihat output yang menunjukkan port mana (misalnya, 3000) yang terbuka.\n\n3.  **Jalankan Password Cracker**:\n    Skrip ini akan mencoba serangan kamus sederhana terhadap formulir login.\n    ```bash\n    python path/to/project/src/scripts/password_cracker.py\n    ```\n    Skrip akan mencoba setiap kata sandi dalam daftar kata internalnya dan melaporkan jika berhasil menemukan kata sandi yang benar untuk pengguna 'admin'."
+        },
+        {
+            "jenis": "dok",
+            "lokasi": "docs/vulnerabilities.md",
+            "konten": "# Penjelasan Kerentanan\n\nDokumen ini menjelaskan kerentanan yang sengaja dimasukkan ke dalam aplikasi web untuk tujuan latihan.\n\n## 1. SQL Injection (SQLi)\n\n- **Lokasi**: Formulir Login (`/login`)\n- **Deskripsi**: Aplikasi secara langsung menyisipkan input pengguna (nama pengguna dan kata sandi) ke dalam query database SQL tanpa validasi atau sanitasi yang tepat. Ini memungkinkan penyerang untuk memanipulasi query database.\n- **Contoh Eksploitasi**: Seorang penyerang dapat memasukkan payload SQL di bidang nama pengguna seperti `' OR '1'='1` dan memasukkan apa saja di bidang kata sandi. Query yang dihasilkan akan menjadi `SELECT * FROM users WHERE username = '' OR '1'='1' AND password = '...'`. Karena `'1'='1'` selalu benar, kondisi WHERE secara keseluruhan menjadi benar, dan database akan mengembalikan pengguna pertama dalam tabel (biasanya admin), memungkinkan login berhasil tanpa mengetahui kata sandi yang benar.\n\n## 2. Cross-Site Scripting (XSS) Reflected\n\n- **Lokasi**: Formulir Pencarian (`/search`)\n- **Deskripsi**: Parameter `query` dari URL diambil dan dirender langsung ke dalam halaman HTML hasil tanpa encoding atau sanitasi. Ini berarti jika parameter berisi kode HTML atau JavaScript, browser akan mengeksekusinya.\n- **Contoh Eksploitasi**: Seorang penyerang dapat membuat URL seperti `http://localhost:3000/search?query=<script>alert('XSS vulnerability!')</script>`. Ketika pengguna (atau korban) mengunjungi URL ini, skrip JavaScript di dalam parameter akan dieksekusi oleh browser mereka, menampilkan kotak peringatan.\n\n## 3. Unggahan File yang Tidak Aman\n\n- **Lokasi**: Formulir Unggah File (`/upload`)\n- **Deskripsi**: Server menerima unggahan file tanpa memvalidasi jenis file, ukuran, atau isinya. Ini memungkinkan penyerang untuk mengunggah file berbahaya, seperti web shell (misalnya, file `.php`, `.jsp`, `.js` jika server dapat mengeksekusinya) atau file HTML yang berisi kode phishing.\n- **Contoh Risiko**: Jika server dikonfigurasi untuk mengeksekusi skrip sisi server dari direktori unggahan, seorang penyerang dapat mengunggah web shell dan mendapatkan eksekusi kode jarak jauh di server. Dalam penyiapan kami saat ini, risiko utamanya adalah mengunggah file HTML/JS berbahaya yang dapat disajikan kepada pengguna lain."
+        }
+    ],
+    "text": "Proyek ini disusun sebagai lingkungan latihan peretasan etis yang modular dan terkendali. Arsitektur utama berpusat di sekitar aplikasi web yang sengaja dibuat rentan (`src/targets/web_server`), dibangun menggunakan Node.js dan Express. Aplikasi ini memiliki kerentanan umum seperti SQL Injection, XSS, dan unggahan file yang tidak aman untuk tujuan demonstrasi. Untuk berinteraksi dengan target, disediakan skrip Python dasar (`src/scripts`) untuk pemindaian port dan serangan kamus sederhana. Struktur proyek dipisahkan dengan jelas antara target, skrip penyerang, dan dokumentasi (`docs`) untuk memastikan pemahaman yang mudah dan penggunaan yang aman. Dokumentasi mencakup panduan penyiapan dan penjelasan rinci tentang setiap kerentanan yang ada.",
+    "delets": []
 }
-],
-"text": "Perubahan telah dilakukan pada file dokumentasi `readme.md`. Bagian 'Lisensi' telah diperbarui dari Lisensi ISC menjadi Lisensi MIT, yang merupakan lisensi open-source yang permisif dan umum digunakan. Penjelasan singkat mengenai kebebasan yang diberikan oleh lisensi MIT juga ditambahkan untuk memperjelas status open-source dari proyek ini.",
-"delets": []
-}
-
 ```
 
 ---
@@ -863,31 +948,45 @@ generator-kode/history/output.json
 
 *lokasi*
 
-generator-kode/history/riwayat.json
+.termux/files/home/repo/generator-kode/history/riwayat.json
 
 *isi konten*
 
 ```
-
 [
-{
-"role": "user",
-"parts": [
-{
-"text": "cermatilah repositori project saya ini dengan teliti:\n\n---\n\n*lokasi*\n\ngenerator-kode/package-lock.json\n\n*isi konten*\n\n[object Object]\n\n---\n\n---\n\n*lokasi*\n\ngenerator-kode/package.json\n\n*isi konten*\n\n[object Object]\n\n---\n\n---\n\n*lokasi*\n\ngenerator-kode/readme.md\n\n*isi konten*\n\n# Generator-Kode: Generator & Refactor Kode Cerdas Berbasis AI\n\nGenerator-Kode adalah sebuah alat baris perintah (CLI) untuk membantu developer mempercepat alur kerja mereka, baik dalam membuat struktur proyek baru dari awal maupun melakukan refactoring pada proyek yang sudah ada berdasarkan instruksi, dengan bertenaga mesin model Gemini.\n\n## Fitur Utama\n\n- **Pembuatan Proyek Baru**: Hasilkan seluruh struktur folder dan file untuk proyek baru (misalnya, \"buatkan saya API server Express dengan TypeScript\") hanya dengan satu perintah.\n- **Refactoring & Perbaikan Proyek**: Analisis kode proyek yang ada dan terapkan perubahan, tambahkan fitur baru, atau perbaiki bug sesuai instruksi Anda.\n- **Pembacaan Proyek Selektif**: Kontrol penuh atas file mana yang dianalisis oleh AI, dengan mode inklusi (hanya baca yang dipilih) atau eksklusi (abaikan yang dipilih).\n- **Riwayat Percakapan Berkonteks**: Menyimpan dan menggunakan kembali riwayat interaksi dengan AI, memungkinkan Anda untuk melakukan koreksi berulang hingga hasil yang diinginkan tercapai.\n- **Konfigurasi Fleksibel**: Mudah untuk mengkonfigurasi model AI, temperature, dan parameter lainnya melalui file `.env`.\n- **Dukungan Prompt Eksternal**: Gunakan file `prompt.txt` untuk instruksi yang lebih panjang dan kompleks, ideal untuk tugas yang rumit.\n\n## Prasyarat\n\n- [Node.js](https://nodejs.org/) (versi 18.x atau lebih tinggi)\n- API Key dari [Google AI Studio](https://aistudio.google.com/app/apikey)\n\n## Instalasi & Konfigurasi\n\nIkuti langkah-langkah berikut untuk menjalankan Gen-Kode di mesin lokal Anda.\n\n**1. Clone Repositori**\n\n`bash\ngit clone https://github.com/waone377/generator-kode.git\ncd generator-kode\n`\n\n**2. Instal Dependensi**\n\n`bash\nnpm install\n`\n\n**3. Konfigurasi Environment Variable**\n\nBuat file baru bernama `.env` di root direktori proyek. Salin konten di bawah ini dan isi nilainya sesuai dengan konfigurasi Anda.\n\n`env\nGEMINI_API=?\nMODEL=gemini-2.5-pro\nTEMPERATURE=0.9\nPEMIKIRAN=23000\nMAX_OUTPUT=15000\n`\n\n- `GEMINI_API`: Kunci API Anda dari Google AI Studio. **Wajib diisi.**\n- `MODEL`: Model Gemini yang ingin Anda gunakan. `gemini-2.5-flash` atau `gemini-2.5-pro` adalah pilihan yang solid dan direkomendasikan.\n- `TEMPERATURE`: Mengontrol kreativitas output (0.0 - 2.0). Nilai yang lebih tinggi (misalnya, 0.9) menghasilkan output yang lebih beragam, sementara nilai yang lebih rendah (misalnya, 0.2) lebih fokus dan deterministik.\n- `PEMIKIRAN`: Alokasi token untuk proses \"berpikir\" internal model sebelum menghasilkan respons.\n- `MAX_OUTPUT`: Jumlah maksimum token yang dapat dihasilkan oleh model dalam satu respons.\n\n## Cara Penggunaan\n\nJalankan aplikasi dari terminal:\n\n`bash\nnpm start\n`\n\nAnda akan disambut dengan menu utama untuk memilih mode operasi.\n\n### Mode 1: Membuat Project Baru\n\nIdeal untuk memulai proyek dari nol berdasarkan deskripsi konseptual.\n\n1. Pilih menu `1`.\n2. Tentukan apakah akan menggunakan `prompt.txt` untuk deskripsi yang detail atau mengetik langsung di terminal.\n3. Setelah AI memproses permintaan, masukkan nama untuk folder proyek baru.\n4. Proyek akan dibuat di dalam direktori `output/<nama-proyek>`.\n\n### Mode 2: Memperbaiki Project\n\nDigunakan untuk memodifikasi, menambah fitur, atau memperbaiki kode pada proyek yang sudah ada.\n\n1. Pilih menu `2`.\n2. Masukkan path ke direktori proyek yang akan diperbaiki. Aplikasi akan mengingat path terakhir yang Anda gunakan.\n3. **Pilih Mode Pembacaan Source**:\n - **Inklusi (Sertakan)**: Mode ini hanya akan menganalisis file/folder yang Anda tentukan secara spesifik. Berguna untuk perbaikan yang sangat terfokus.\n - **Eksklusi (Kecualikan)**: Mode ini akan membaca seluruh proyek dan mengabaikan file/folder yang Anda tentukan. Direkomendasikan untuk pemahaman konteks yang lebih luas.\n4. Berikan instruksi perbaikan, baik melalui `prompt.txt` atau input langsung.\n5. Setelah AI memberikan solusi, pilih mode penyimpanan:\n - **Timpa project asli**: Menerapkan perubahan langsung ke proyek sumber.\n - **Membuat project baru**: Menyimpan versi yang telah diperbaiki sebagai proyek baru di dalam direktori `output/`.\n\n### Mode 3: Hapus Riwayat\n\nOpsi ini akan menghapus semua riwayat percakapan yang tersimpan di `history/riwayat.json` untuk memulai sesi baru yang bersih.\n\n## Struktur Proyek\n\n- `src/_app.js`: Titik masuk utama aplikasi, mengelola alur menu utama.\n- `src/config/`: Direktori untuk file konfigurasi statis.\n - `ignore.js`: Daftar default file, folder, dan ekstensi yang diabaikan saat membaca proyek.\n- `src/dok/`: Berisi file teks yang digunakan sebagai instruksi sistem untuk AI.\n - `intruksi.txt`: Instruksi inti peran dan format output AI.\n- `src/fitur/`: Modul yang mengelola fitur utama aplikasi.\n - `pembuatan.js`: Mengelola logika untuk mode \"Membuat Project Baru\".\n - `perbaikan.js`: Mengelola logika untuk mode \"Memperbaiki Project\".\n - `penghapusan.js`: Mengelola logika untuk mode \"Hapus Riwayat\".\n- `src/mesin/`: Modul inti untuk interaksi dengan AI Gemini.\n - `configurasi.js`: Menginisialisasi model Google Gemini dengan konfigurasi dari `.env`.\n - `gemini.js`: Mengirim permintaan ke model AI, mengelola riwayat sesi, dan menangani koreksi.\n - `schema.js`: Mendefinisikan skema JSON yang diharapkan dari respons AI.\n- `src/service/`: Modul untuk logika bisnis spesifik.\n - `generate_repo.js`: Menerapkan output JSON dari AI ke sistem file (membuat/menghapus file/folder).\n - `read_repo.js`: Membaca struktur dan konten proyek target menjadi format markdown.\n- `src/util/`: Modul utilitas pembantu.\n - `files.js`: Menangani operasi file system seperti membaca, menulis, dan menghapus.\n - `input.js`: Mengelola interaksi dengan pengguna di terminal.\n - `tampilan.js`: Mengelola output ke terminal.\n- `history/`: (Dibuat saat runtime) Direktori untuk menyimpan data sesi.\n - `riwayat.json`: Menyimpan riwayat percakapan dengan AI.\n - `target.json`: Menyimpan path direktori terakhir yang digunakan dalam mode perbaikan.\n - `output.json`: Menyimpan output JSON mentah terakhir dari AI.\n- `output/`: Direktori default tempat proyek baru atau yang diperbaiki disimpan.\n- `package.json`: Mendefinisikan metadata proyek, dependensi, dan skrip.\n- `prompt.txt`: Tempat untuk menulis instruksi/prompt yang panjang atau kompleks untuk AI.\n- `.gitignore`: Mengabaikan file dan folder yang tidak perlu dilacak oleh Git.\n- `readme.md`: Dokumentasi proyek ini.\n\n## Lisensi\n\nProyek ini dilisensikan di bawah Lisensi ISC.\n\n\n---\n\n---\n\n*lokasi*\n\ngenerator-kode/src/_app.js\n\n*isi konten*\n\nimport Print from \"./util/tampilan.js\";\nimport Masukan from \"./util/input.js\";\nimport pembuatan from \"./fitur/pembuatan.js\";\nimport perbaikan from \"./fitur/perbaikan.js\";\nimport penghapusan from \"./fitur/penghapusan.js\";\nimport setup from \"./config/setup.js\";\n\nasync function main() {\n try {\n await setup();\n while (true) {\n Print.clear(\n \"SELAMAT DATANG!\\nsilahkan pilih:\\n1. buat projek\\n2. perbaiki projek\\n3. hapus riwayat\\n\",\n );\n Print.log(\"ketik 'exit' untuk stop..\");\n const pilih = Masukan.pilih(\"silakan pilih (1/2/3)?> \", [\"1\", \"2\", \"3\"]);\n switch (pilih) {\n case \"1\":\n await pembuatan();\n break;\n case \"2\":\n await perbaikan();\n break;\n case \"3\":\n await penghapusan();\n break;\n }\n const next = Masukan.pilih(\"lanjutkan program (y/n)?> \", [\"y\", \"n\"]);\n if (next === \"y\") continue;\n Print.log(\"program telah berhenti...\");\n break;\n }\n } catch (err) {\n Print.clear(\"Oops error..\\n terjadi error; \\n\", err.message);\n }\n}\nmain();\n\n\n---\n\n---\n\n*lokasi*\n\ngenerator-kode/src/config/ignore.js\n\n*isi konten*\n\nconst eee = {\n folder: [\n \"node_modules\",\n \".git\",\n \".vscode\",\n \".idea\",\n \"__pycache__\",\n \"vendor\",\n \"dist\",\n \"build\",\n ],\n file: [\".env\"],\n extensi: [\n \".csv\",\n \".jpg\",\n \".jpeg\",\n \".png\",\n \".gif\",\n \".bmp\",\n \".svg\",\n \".webp\",\n \".ico\",\n \".mp3\",\n \".wav\",\n \".ogg\",\n \".flac\",\n \".aac\",\n \".mp4\",\n \".mov\",\n \".avi\",\n \".mkv\",\n \".webm\",\n \".zip\",\n \".rar\",\n \".7z\",\n \".tar\",\n \".gz\",\n \".woff\",\n \".woff2\",\n \".ttf\",\n \".otf\",\n \".eot\",\n \".lock\",\n \".log\",\n \".pdf\",\n \".doc\",\n \".docx\",\n \".xls\",\n \".xlsx\",\n \".ppt\",\n \".pptx\",\n \".exe\",\n \".dll\",\n \".so\",\n \".class\",\n \".pyc\",\n \".jar\",\n \".bin\",\n \".img\",\n \".iso\",\n ],\n};\nexport default eee;\n\n\n---\n\n---\n\n*lokasi*\n\ngenerator-kode/src/config/setup.js\n\n*isi konten*\n\nimport path from \"path\";\nimport { cekAda, tulisFile, buatFolder } from \"../util/files.js\";\nconst folder = \"history\";\nconst dataSetup = {\n \"target.json\": \"{}\",\n \"riwayat.json\": \"[]\",\n \"output.json\": \"{}\",\n};\nasync function setup() {\n try {\n try {\n await cekAda(folder);\n } catch {\n await buatFolder(folder);\n }\n for (const [name, value] of Object.entries(dataSetup)) {\n const p = path.join(folder, name);\n try {\n await cekAda(p);\n } catch {\n await tulisFile(p, value);\n }\n }\n } catch (err) {\n throw new Error(err.message);\n }\n}\nexport default setup;\n\n\n---\n\n---\n\n*lokasi*\n\ngenerator-kode/src/fitur/pembuatan.js\n\n*isi konten*\n\nimport genAi from \"../mesin/gemini.js\";\nimport Print from \"../util/tampilan.js\";\nimport generateRepo from \"../service/generate_repo.js\";\nimport Prompt from \"../service/opsi_prompt.js\";\n\nasync function pembuatan() {\n try {\n const prompt = await Prompt.pembuatan();\n const res = await genAi(prompt);\n await generateRepo(res, \"pembuatan\");\n } catch (err) {\n throw new Error(err.message);\n }\n}\n\nexport default pembuatan;\n\n\n---\n\n---\n\n*lokasi*\n\ngenerator-kode/src/fitur/penghapusan.js\n\n*isi konten*\n\nimport { data, tulisFile } from \"../util/files.js\";\nimport Masukan from \"../util/input.js\";\nimport Print from \"../util/tampilan.js\";\n\nasync function penghapusan() {\n try {\n const { dataHistory } = await data();\n if (dataHistory.length > 0) {\n Print.clear(\"total riwayat -\", dataHistory.length / 2);\n const konfirmasi = Masukan.pilih(\"hapus riwayat sebelumnya (y/n)?> \", [\n \"y\",\n \"n\",\n ]);\n if (konfirmasi === \"y\") {\n await tulisFile(\"history/riwayat.json\", \"[]\");\n Print.clear(\"sukses semua riwayat telah dihapus!\");\n }\n } else {\n Print.clear(\"daftar riwayat masih kosong!\");\n }\n } catch (err) {\n throw new Error(err.message);\n }\n}\n\nexport default penghapusan;\n\n\n---\n\n---\n\n*lokasi*\n\ngenerator-kode/src/fitur/perbaikan.js\n\n*isi konten*\n\nimport genAi from \"../mesin/gemini.js\";\nimport os from \"os\";\nimport path from \"path\";\nimport { data, tulisFile } from \"../util/files.js\";\nimport Masukan from \"../util/input.js\";\nimport Print from \"../util/tampilan.js\";\nimport readRepo from \"../service/read_repo.js\";\nimport generateRepo from \"../service/generate_repo.js\";\nimport Prompt from \"../service/opsi_prompt.js\";\nasync function perbaikan() {\n try {\n let target = \"\";\n const { dataTarget } = await data();\n\n if (dataTarget) {\n Print.clear(\"target history:\\n\", dataTarget);\n const pake = Masukan.pilih(\n \"gunakan lokasi repository terakhir tersebut (y/n)?> \",\n [\"y\", \"n\"],\n );\n target =\n pake === \"y\"\n ? dataTarget\n : Masukan.wajib(\"masukkan lokasi repository target?> \");\n } else {\n target = Masukan.wajib(\"masukkan lokasi repository target?> \");\n }\n\n let p = target;\n if (target.startsWith(\"~/\")) {\n p = path.join(os.homedir(), target.substr(2));\n }\n await tulisFile(\n \"history/target.json\",\n JSON.stringify({ target: path.resolve(p) }, null, 4),\n );\n const markdown = await readRepo(p);\n const prompt = await Prompt.perbaikan();\n const pesan = `cermatilah repositori project saya ini dengan teliti:${markdown}\\n\\n**tugasnya anda itu:**\\n\\n${prompt}`;\n const res = await genAi(pesan);\n await generateRepo(res, \"perbaikan\");\n } catch (err) {\n throw new Error(err.message);\n }\n}\nexport default perbaikan;\n\n\n---\n\n---\n\n*lokasi*\n\ngenerator-kode/src/mesin/configurasi.js\n\n*isi konten*\n\nimport { GoogleGenAI } from \"@google/genai\";\nimport \"dotenv/config\";\nimport schema from \"./schema.js\";\nimport { data } from \"../util/files.js\";\n\nasync function configGenAi(isHistory = false) {\n try {\n const AI = new GoogleGenAI({ apiKey: process.env.GEMINI_API });\n let history = [];\n const { dataHistory, dataIntruksi } = await data();\n if (isHistory) {\n history = dataHistory;\n }\n const chat = AI.chats.create({\n model: process.env.MODEL,\n config: {\n temperature: process.env.TEMPERATURE,\n systemInstruction: dataIntruksi,\n thinkingConfig: {\n includeThoughts: true,\n thinkingBudget: process.env.PEMIKIRAN,\n },\n tools: [],\n responseMimeType: \"application/json\",\n responseSchema: schema,\n generationConfig: {\n maxOutputTokens: process.env.MAX_OUTPUT,\n presencePenalty: 8,\n frequencyPenalty: 16,\n enableEnhancedCivicAnswers: false,\n },\n },\n history: history,\n });\n return {\n model: chat,\n AI: AI,\n };\n } catch (err) {\n throw new Error(err.message);\n }\n}\n\nexport default configGenAi;\n\n\n---\n\n---\n\n*lokasi*\n\ngenerator-kode/src/mesin/gemini.js\n\n*isi konten*\n\nimport configGenAi from \"./configurasi.js\";\nimport { tulisFile, data } from \"../util/files.js\";\nimport Masukan from \"../util/input.js\";\nimport Print from \"../util/tampilan.js\";\n\nasync function genAi(prompt) {\n let pakeHistory = \"y\";\n let isHistory = false;\n let pakePanduan = \"n\";\n let msg = [{ text: \"\" }];\n let history = [];\n let tambahan = true;\n let result = null;\n\n try {\n const { AI, model } = await configGenAi(isHistory);\n\n const { dataHistory } = await data();\n while (true) {\n if (tambahan) {\n msg[0].text = prompt;\n if (dataHistory.length > 0) {\n Print.clear(\"item history -\", dataHistory.length / 2);\n pakeHistory = Masukan.pilih(\"gunakan history sebelumnya (y/n)?> \", [\n \"y\",\n \"n\",\n ]);\n if (pakeHistory === \"y\") isHistory = true;\n }\n pakePanduan = Masukan.pilih(\"gunakan file panduan (y/n)?> \", [\n \"y\",\n \"n\",\n ]);\n if (pakePanduan === \"y\") {\n Print.clear(\"mencerna panduan...\");\n const eee = await AI.files.upload({\n file: \"src/dok/dokumentasi.txt\",\n displayName: \"sumber panduan\",\n });\n msg.push({\n fileData: {\n mimeType: eee.mimeType,\n fileUri: eee.uri,\n },\n });\n }\n }\n\n Print.clear(\"memproses permintaan silakan tunggu...\");\n const respons = await model.sendMessage({ message: msg });\n result = JSON.parse(respons.text);\n const resData = JSON.stringify(result, null, 2);\n Print.clear(\"Laporan:\\n***\\n\", result.text, \"\\n***\");\n history.push({\n role: \"user\",\n parts: msg,\n });\n history.push({\n role: \"model\",\n parts: [{ text: resData }],\n });\n const isKoreksi = Masukan.pilih(\"koreksi kembali hasil (y/n)?> \", [\n \"y\",\n \"n\",\n ]);\n if (isKoreksi === \"n\") {\n break;\n } else {\n const q = Masukan.wajib(\"apa yang ingin di betulkan?> \");\n msg[0].text = `outputnya masih kurang ${q} silakan revisi kembali`;\n isHistory = true;\n tambahan = false;\n }\n }\n\n const out = [...dataHistory, ...history];\n await tulisFile(\"history/riwayat.json\", JSON.stringify(out, null, 4));\n return result || null;\n } catch (err) {\n throw new Error(err.message);\n }\n}\n\nexport default genAi;\n\n\n---\n\n---\n\n*lokasi*\n\ngenerator-kode/src/mesin/schema.js\n\n*isi konten*\n\nimport { Type } from \"@google/genai\";\n\nconst repoItemSchema = {\n type: Type.OBJECT,\n properties: {\n jenis: {\n type: Type.STRING,\n enum: [\"folder\", \"file\", \"dok\", \"config\"],\n description:\n \"Jenis komponen. 'folder' untuk direktori, 'file' untuk kode sumber, 'config' untuk file konfigurasi, 'dok' untuk dokumentasi.\",\n },\n lokasi: {\n type: Type.STRING,\n description:\n \"Path relatif dari root proyek, contoh: 'src/components/Button.js'. Gunakan garis miring '/' sebagai pemisah.\",\n pattern: \"^[a-zA-Z0-9._\\\\-/]+$\",\n    },\n    konten: {\n      type: Type.STRING,\n      description:\n        \"Isi konten lengkap untuk file. Untuk 'jenis: folder', nilai ini harus string kosong ''.\",\n    },\n  },\n  required: [\"jenis\", \"lokasi\", \"konten\"],\n};\n\nconst deleteItemSchema = {\n  type: Type.OBJECT,\n  properties: {\n    jenis: {\n      type: Type.STRING,\n      enum: [\"file\", \"folder\"],\n      description: \"Tipe entitas yang akan dihapus: 'file' atau 'folder'.\",\n    },\n    lokasi: {\n      type: Type.STRING,\n      description:\n        \"Path relatif dari root proyek untuk file/folder yang akan dihapus.\",\n      pattern: \"^[a-zA-Z0-9._\\\\-/]+$\",\n },\n },\n required: [\"jenis\", \"lokasi\"],\n};\n\nconst mainSchema = {\n type: Type.OBJECT,\n properties: {\n repo: {\n type: Type.ARRAY,\n description:\n \"Daftar semua file dan folder yang dibuat atau dimodifikasi. Jangan sertakan file yang tidak berubah.\",\n items: repoItemSchema,\n },\n delets: {\n type: Type.ARRAY,\n description:\n \"Daftar file atau folder yang perlu dihapus dari proyek. Jika tidak ada, gunakan array kosong [].\",\n items: deleteItemSchema,\n },\n text: {\n type: Type.STRING,\n description:\n \"Ringkasan teknis yang jelas dan profesional tentang perubahan yang dibuat, arsitektur yang diterapkan, dan keputusan teknis penting. seperti mana saja yang dirubah atau diperbaiki dan di mana saja yang dibuat).\",\n },\n },\n required: [\"repo\", \"text\"],\n};\n\nexport default mainSchema;\n\n\n---\n\n---\n\n*lokasi*\n\ngenerator-kode/src/service/generate_repo.js\n\n*isi konten*\n\nimport path from \"path\";\nimport {\n cekAda,\n buatFolder,\n hapusFolder,\n hapusFile,\n tulisFile,\n data,\n} from \"../util/files.js\";\nimport Print from \"../util/tampilan.js\";\nimport Masukan from \"../util/input.js\";\nasync function generateRepo(source, mode) {\n try {\n const { dataTarget } = await data();\n const letak = dataTarget;\n const lokasi = path.join(path.resolve(\".\"), \"output\");\n let base = lokasi;\n if (mode === \"pembuatan\") {\n const nameRepo = Masukan.wajib(\"masukkan nama repository?> \");\n base = path.join(lokasi, nameRepo);\n await buatFolder(base);\n }\n if (mode === \"perbaikan\") {\n const opsi = Masukan.pilih(\n \"pilih penyimpanan:\\n1. timpa repository\\n2. buat repository\\nsilahkan pilih (1/2)?> \",\n [\"1\", \"2\"],\n );\n if (opsi === \"2\") {\n const nameRepo = Masukan.wajib(\"masukkan nama repository?> \");\n base = path.join(lokasi, nameRepo);\n await buatFolder(base);\n }\n base = letak;\n }\n const dir = base.split(\"/\").pop();\n Print.clear(mode, \"\\nvolder:\", dir, \"\\npath:\", base, \"\\n===\");\n try {\n await cekAda(lokasi);\n } catch {\n Print.log(\"folder output tidak ditemukan!, jadi membuat folder output\");\n await buatFolder(lokasi);\n Print.log(\"folder output telah dibuat..\");\n }\n if (source.delets.length > 0 && mode === \"perbaikan\") {\n for (const e of source.delets) {\n const p = path.join(path.resolve(base), e.lokasi);\n switch (e.jenis) {\n case \"folder\":\n await hapusFolder(p);\n Print.log(\"menghapus folder\", e.lokasi);\n break;\n case \"file\":\n await hapusFile(p);\n Print.log(\"menghapus file\", e.lokasi);\n break;\n default:\n Print.log(\"ada satu source yang tidak valid untuk dihapus!\");\n break;\n }\n }\n }\n // di luar kondisi delets\n if (source.repo) {\n for (const e of source.repo) {\n const p = path.join(path.resolve(base), e.lokasi);\n switch (e.jenis) {\n case \"folder\":\n await buatFolder(p);\n Print.log(\"membuat folder\", e.lokasi);\n break;\n case \"file\":\n await tulisFile(p, e.konten);\n Print.log(\"membuat file\", e.lokasi);\n break;\n case \"config\":\n await tulisFile(p, e.konten);\n Print.log(\"membuat file\", e.lokasi);\n break;\n case \"dok\":\n await tulisFile(p, e.konten);\n Print.log(\"membuat file\", e.lokasi);\n break;\n default:\n Print.log(\n \"ada satu source yang tidak valid untuk dibuat!\",\n e.lokasi,\n );\n break;\n }\n }\n }\n Print.log(\"sukses\", mode, \"telah dilakukan..\");\n await tulisFile(\"history/output.json\", JSON.stringify(source, null, 4));\n } catch (err) {\n throw new Error(err.message);\n }\n}\nexport default generateRepo;\n\n\n---\n\n---\n\n*lokasi*\n\ngenerator-kode/src/service/opsi_prompt.js\n\n*isi konten*\n\nimport Print from \"../util/tampilan.js\";\nimport Masukan from \"../util/input.js\";\nimport { data } from \"../util/files.js\";\nclass Prompt {\n static async pembuatan() {\n const { dataPrompt } = await data();\n const pakePrompt = Masukan.pilih(\"gunakan prompt.txt (y/n)?> \", [\"y\", \"n\"]);\n let prompt = \"\";\n if (pakePrompt === \"y\") {\n prompt = dataPrompt;\n Print.clear(\"isi prompt:\\n**_\", prompt || \"kosong\", \"\\n_**\");\n const next = Masukan.pilih(\"lanjutkan (y/n)?> \", [\"y\", \"n\"]);\n if (next === \"n\") {\n prompt = Masukan.wajib(\"project seperti apa yang ingin dibuat?> \");\n }\n } else {\n prompt = Masukan.wajib(\"project seperti apa yang ingin dibuat?> \");\n }\n return prompt;\n }\n static async perbaikan() {\n const { dataPrompt } = await data();\n const pakePrompt = Masukan.pilih(\"gunakan prompt.txt (y/n)?> \", [\"y\", \"n\"]);\n let prompt = \"\";\n if (pakePrompt === \"y\") {\n prompt = dataPrompt;\n Print.clear(\"isi prompt:\\n**_\", prompt || \"kosong\", \"\\n_**\");\n const next = Masukan.pilih(\"lanjutkan (y/n)?> \", [\"y\", \"n\"]);\n if (next === \"n\") {\n prompt = Masukan.wajib(\"apa yang ingin diperbaiki?> \");\n }\n } else {\n prompt = Masukan.wajib(\"apa yang ingin diperbaiki?> \");\n }\n return prompt;\n }\n}\nexport default Prompt;\n\n\n---\n\n---\n\n*lokasi*\n\ngenerator-kode/src/service/read_repo.js\n\n*isi konten*\n\nimport path from \"path\";\nimport { bacaFolder, bacaFile, tulisFile, cekAda } from \"../util/files.js\";\nimport Print from \"../util/tampilan.js\";\nimport Masukan from \"../util/input.js\";\nasync function readRepo(target) {\n try {\n const data = {\n folder: [],\n file: [],\n extensi: [],\n };\n const mode = Masukan.pilih(\n \"pilih pembacaan file & folder:\\n1. pilih beberapa\\n2. kecualikan beberapa\\nsilahkan pilih (1/2)?> \",\n [\"1\", \"2\"],\n );\n const text = mode === \"1\" ? \"dipilih\" : \"dikecualikan\";\n Masukan.pilih(\n \"jika folder/file/extensi/ lebih dari satu pisahkan dengan (,)\\ncontoh:\\nfolder: dist, node_modules\\nfile: example.js, config.json\\nextensi: .txt, .py\\n mengerti lanjut (y/n): \",\n [\"y\", \"n\"],\n );\n const foldernya = Masukan.biasa(\n `masukkan nama volder yang ingin ${text}?: `,\n );\n data.folder.push(foldernya.replaceAll(\" \", \"\").split(\",\"));\n const filenya = Masukan.biasa(\n `masukkan nama file yang ingin ${text} beserta extensinya?: `,\n );\n data.file.push(filenya.replaceAll(\" \", \"\").split(\",\"));\n const extensinya = Masukan.biasa(\n `masukkan format extensi yang ingin ${text}?: `,\n );\n data.extensi.push(extensinya.replaceAll(\" \", \"\").split(\",\"));\n const daftar = {\n foldernya: data.folder\n .flat()\n .filter((e) => e)\n .map((e) => `!${e}/**`),\n filenya: data.file\n .flat()\n .filter((e) => e)\n .map((e) => `!**/${e}`),\n extensinya: data.extensi\n .flat()\n .filter((e) => e)\n .map((e) => `!**/*.${e.replace(\".\", \"\")}`),\n };\n const repo = await bacaFolder(target, daftar, mode);\n const dir = target.split(\"/\").pop();\n Print.clear(\"membaca...\\nvolder:\", dir, \"\\npath:\", target, \"\\n===\");\n let markdown = \"\";\n for (const e of repo) {\n const letak = e.substring(e.indexOf(dir), e.length);\n Print.log(\"sedang membaca\", letak);\n const kode = await bacaFile(e);\n markdown += `\\n\\n---\\n\\n*lokasi*\\n\\n${letak}\\n\\n*isi konten*\\n\\n${kode}\\n\\n---`;\n }\n await tulisFile(\"history/repo.md\", markdown);\n Print.log(\"selesai terbaca\");\n return markdown;\n } catch (err) {\n throw new Error(err.message);\n }\n}\nexport default readRepo;\n\n\n---\n\n---\n\n*lokasi*\n\ngenerator-kode/src/util/files.js\n\n*isi konten*\n\nimport fg from \"fast-glob\";\nimport fs from \"fs/promises\";\nimport path from \"path\";\nimport eee from \"../config/ignore.js\";\nasync function bacaFile(p) {\n try {\n const cek = path.extname(p);\n const data = await fs.readFile(p, \"utf-8\");\n return cek === \".json\" ? JSON.parse(data) : data;\n } catch (err) {\n throw new Error(`gagal  membaca file ${p}`);\n }\n}\nasync function tulisFile(p, data) {\n try {\n await fs.writeFile(p, data);\n } catch (err) {\n throw new Error(`gagal menulis ke file ${p}`);\n }\n}\nasync function buatFolder(p) {\n try {\n await fs.mkdir(p, { recursive: true });\n } catch (err) {\n throw new Error(`gagal membuat folder ${p}`);\n }\n}\nasync function hapusFile(p) {\n try {\n await fs.unlink(p);\n } catch (err) {\n throw new Error(`gagal menghapus file ${p}`);\n }\n}\nasync function hapusFolder(p) {\n try {\n await fs.rm(p, { recursive: true });\n } catch (err) {\n throw new Error(`gagal menghapus folder ${p}`);\n }\n}\nasync function bacaFolder(p, { foldernya, filenya, extensinya }, mode) {\n try {\n const folder = [\n ...eee.folder.filter((e) => e).map((e) => `!${e}/**`),\n ...foldernya,\n ];\n const extensi = [\n ...eee.extensi.filter((e) => e).map((e) => `!**/*.${e.replace(\".\", \"\")}`),\n ...extensinya,\n ];\n let config = [];\n if (mode === \"1\") {\n config = [\n ...foldernya.map((e) => e.replace(\"!\", \"\")),\n ...filenya.map((e) => e.replace(\"!\", \"\")),\n ...extensinya.map((e) => e.replace(\"!\", \"\")),\n ];\n } else {\n config = [\"**/*.*\", ...folder, ...filenya, ...extensi];\n }\n\n return await fg(config, { cwd: p, absolute: true, sort: true });\n } catch (err) {\n throw new Error(`gagal membaca folder ${p}`);\n }\n}\nasync function cekAda(p) {\n try {\n await fs.access(p);\n } catch (err) {\n throw new Error(`gagal mengecek ${p}`);\n }\n}\nasync function data() {\n try {\n const dataHistory = await bacaFile(\"history/riwayat.json\");\n const targetData = await bacaFile(\"history/target.json\");\n const dataIntruksi = await bacaFile(\"src/dok/intruksi.txt\");\n const dataPrompt = await bacaFile(\"prompt.txt\");\n return {\n dataHistory,\n dataTarget: targetData.target || \"\",\n dataIntruksi,\n dataPrompt,\n };\n } catch (err) {\n throw new Error(err.message);\n }\n}\nexport {\n bacaFile,\n tulisFile,\n buatFolder,\n hapusFile,\n hapusFolder,\n bacaFolder,\n cekAda,\n data,\n};\n\n\n---\n\n---\n\n*lokasi*\n\ngenerator-kode/src/util/input.js\n\n*isi konten*\n\nimport promptSync from \"prompt-sync\";\nconst prompt = promptSync();\nclass Masukan {\n static wajib(message) {\n let key;\n while (true) {\n const v = prompt(message);\n if (!v.trim()) {\n console.log(\"silakan masukkan terlebih dahulu!\");\n continue;\n } else if (v.trim().toLowerCase() === \"exit\") {\n console.clear();\n console.log(\"program berhenti...\");\n process.exit(1);\n } else {\n key = v;\n break;\n }\n }\n console.clear();\n return key.trim();\n }\n static pilih(message, opsi) {\n let key;\n while (true) {\n const v = prompt(message);\n if (v && opsi.includes(v.trim())) {\n key = v;\n break;\n } else if (v.trim().toLowerCase() === \"exit\") {\n console.clear();\n console.log(\"program berhenti...\");\n process.exit(1);\n } else {\n console.log(`Pilih antara ${opsi.join(\"/\")} silahkan!`);\n }\n }\n console.clear();\n return key.trim().toLowerCase();\n }\n static biasa(message) {\n const key = prompt(message);\n if (key.trim().toLowerCase() === \"exit\") {\n console.clear();\n console.log(\"program berhenti...\");\n process.exit(1);\n }\n console.clear();\n return key.trim();\n }\n}\nexport default Masukan;\n\n\n---\n\n---\n\n*lokasi*\n\ngenerator-kode/src/util/tampilan.js\n\n*isi konten*\n\nclass Print {\n static clear(...message) {\n console.clear();\n let msg;\n if (message.length > 0) {\n msg = message.join(\" \");\n } else {\n msg = message[0];\n }\n console.log(msg);\n }\n static log(...message) {\n let msg;\n if (message.length > 0) {\n msg = message.join(\" \");\n } else {\n msg = message[0];\n }\n console.log(msg);\n }\n}\nexport default Print;\n\n\n---\n\n**tugasnya anda itu:**\n\nperbaiki pada bagian lisensinya di dokumentasi supaya lisensinya open source"
-}
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "cermatilah repositori project saya ini dengan teliti:\n\n---\n\n*lokasi*\n\ngenerator-kode/package-lock.json\n\n*isi konten*\n\n[object Object]\n\n---\n\n---\n\n*lokasi*\n\ngenerator-kode/package.json\n\n*isi konten*\n\n[object Object]\n\n---\n\n---\n\n*lokasi*\n\ngenerator-kode/readme.md\n\n*isi konten*\n\n# Generator-Kode: Generator & Refactor Kode Cerdas Berbasis AI\n\nGenerator-Kode adalah sebuah alat baris perintah (CLI) untuk membantu developer mempercepat alur kerja mereka, baik dalam membuat struktur proyek baru dari awal maupun melakukan refactoring pada proyek yang sudah ada berdasarkan instruksi, dengan bertenaga mesin model Gemini.\n\n## Fitur Utama\n\n- **Pembuatan Proyek Baru**: Hasilkan seluruh struktur folder dan file untuk proyek baru (misalnya, \"buatkan saya API server Express dengan TypeScript\") hanya dengan satu perintah.\n- **Refactoring & Perbaikan Proyek**: Analisis kode proyek yang ada dan terapkan perubahan, tambahkan fitur baru, atau perbaiki bug sesuai instruksi Anda.\n- **Pembacaan Proyek Selektif**: Kontrol penuh atas file mana yang dianalisis oleh AI, dengan mode inklusi (hanya baca yang dipilih) atau eksklusi (abaikan yang dipilih).\n- **Riwayat Percakapan Berkonteks**: Menyimpan dan menggunakan kembali riwayat interaksi dengan AI, memungkinkan Anda untuk melakukan koreksi berulang hingga hasil yang diinginkan tercapai.\n- **Konfigurasi Fleksibel**: Mudah untuk mengkonfigurasi model AI, temperature, dan parameter lainnya melalui file `.env`.\n- **Dukungan Prompt Eksternal**: Gunakan file `prompt.txt` untuk instruksi yang lebih panjang dan kompleks, ideal untuk tugas yang rumit.\n\n## Prasyarat\n\n- [Node.js](https://nodejs.org/) (versi 18.x atau lebih tinggi)\n- API Key dari [Google AI Studio](https://aistudio.google.com/app/apikey)\n\n## Instalasi & Konfigurasi\n\nIkuti langkah-langkah berikut untuk menjalankan Gen-Kode di mesin lokal Anda.\n\n**1. Clone Repositori**\n\n```bash\ngit clone https://github.com/waone377/generator-kode.git\ncd generator-kode\n```\n\n**2. Instal Dependensi**\n\n```bash\nnpm install\n```\n\n**3. Konfigurasi Environment Variable**\n\nBuat file baru bernama `.env` di root direktori proyek. Salin konten di bawah ini dan isi nilainya sesuai dengan konfigurasi Anda.\n\n```env\nGEMINI_API=?\nMODEL=gemini-2.5-pro\nTEMPERATURE=0.9\nPEMIKIRAN=23000\nMAX_OUTPUT=15000\n```\n\n- `GEMINI_API`: Kunci API Anda dari Google AI Studio. **Wajib diisi.**\n- `MODEL`: Model Gemini yang ingin Anda gunakan. `gemini-2.5-flash` atau `gemini-2.5-pro` adalah pilihan yang solid dan direkomendasikan.\n- `TEMPERATURE`: Mengontrol kreativitas output (0.0 - 2.0). Nilai yang lebih tinggi (misalnya, 0.9) menghasilkan output yang lebih beragam, sementara nilai yang lebih rendah (misalnya, 0.2) lebih fokus dan deterministik.\n- `PEMIKIRAN`: Alokasi token untuk proses \"berpikir\" internal model sebelum menghasilkan respons.\n- `MAX_OUTPUT`: Jumlah maksimum token yang dapat dihasilkan oleh model dalam satu respons.\n\n## Cara Penggunaan\n\nJalankan aplikasi dari terminal:\n\n```bash\nnpm start\n```\n\nAnda akan disambut dengan menu utama untuk memilih mode operasi.\n\n### Mode 1: Membuat Project Baru\n\nIdeal untuk memulai proyek dari nol berdasarkan deskripsi konseptual.\n\n1.  Pilih menu `1`.\n2.  Tentukan apakah akan menggunakan `prompt.txt` untuk deskripsi yang detail atau mengetik langsung di terminal.\n3.  Setelah AI memproses permintaan, masukkan nama untuk folder proyek baru.\n4.  Proyek akan dibuat di dalam direktori `output/<nama-proyek>`.\n\n### Mode 2: Memperbaiki Project\n\nDigunakan untuk memodifikasi, menambah fitur, atau memperbaiki kode pada proyek yang sudah ada.\n\n1.  Pilih menu `2`.\n2.  Masukkan path ke direktori proyek yang akan diperbaiki. Aplikasi akan mengingat path terakhir yang Anda gunakan.\n3.  **Pilih Mode Pembacaan Source**:\n    - **Inklusi (Sertakan)**: Mode ini hanya akan menganalisis file/folder yang Anda tentukan secara spesifik. Berguna untuk perbaikan yang sangat terfokus.\n    - **Eksklusi (Kecualikan)**: Mode ini akan membaca seluruh proyek dan mengabaikan file/folder yang Anda tentukan. Direkomendasikan untuk pemahaman konteks yang lebih luas.\n4.  Berikan instruksi perbaikan, baik melalui `prompt.txt` atau input langsung.\n5.  Setelah AI memberikan solusi, pilih mode penyimpanan:\n    - **Timpa project asli**: Menerapkan perubahan langsung ke proyek sumber.\n    - **Membuat project baru**: Menyimpan versi yang telah diperbaiki sebagai proyek baru di dalam direktori `output/`.\n\n### Mode 3: Hapus Riwayat\n\nOpsi ini akan menghapus semua riwayat percakapan yang tersimpan di `history/riwayat.json` untuk memulai sesi baru yang bersih.\n\n## Struktur Proyek\n\n- `src/_app.js`: Titik masuk utama aplikasi, mengelola alur menu utama.\n- `src/config/`: Direktori untuk file konfigurasi statis.\n  - `ignore.js`: Daftar default file, folder, dan ekstensi yang diabaikan saat membaca proyek.\n- `src/dok/`: Berisi file teks yang digunakan sebagai instruksi sistem untuk AI.\n  - `intruksi.txt`: Instruksi inti peran dan format output AI.\n- `src/fitur/`: Modul yang mengelola fitur utama aplikasi.\n  - `pembuatan.js`: Mengelola logika untuk mode \"Membuat Project Baru\".\n  - `perbaikan.js`: Mengelola logika untuk mode \"Memperbaiki Project\".\n  - `penghapusan.js`: Mengelola logika untuk mode \"Hapus Riwayat\".\n- `src/mesin/`: Modul inti untuk interaksi dengan AI Gemini.\n  - `configurasi.js`: Menginisialisasi model Google Gemini dengan konfigurasi dari `.env`.\n  - `gemini.js`: Mengirim permintaan ke model AI, mengelola riwayat sesi, dan menangani koreksi.\n  - `schema.js`: Mendefinisikan skema JSON yang diharapkan dari respons AI.\n- `src/service/`: Modul untuk logika bisnis spesifik.\n  - `generate_repo.js`: Menerapkan output JSON dari AI ke sistem file (membuat/menghapus file/folder).\n  - `read_repo.js`: Membaca struktur dan konten proyek target menjadi format markdown.\n- `src/util/`: Modul utilitas pembantu.\n  - `files.js`: Menangani operasi file system seperti membaca, menulis, dan menghapus.\n  - `input.js`: Mengelola interaksi dengan pengguna di terminal.\n  - `tampilan.js`: Mengelola output ke terminal.\n- `history/`: (Dibuat saat runtime) Direktori untuk menyimpan data sesi.\n  - `riwayat.json`: Menyimpan riwayat percakapan dengan AI.\n  - `target.json`: Menyimpan path direktori terakhir yang digunakan dalam mode perbaikan.\n  - `output.json`: Menyimpan output JSON mentah terakhir dari AI.\n- `output/`: Direktori default tempat proyek baru atau yang diperbaiki disimpan.\n- `package.json`: Mendefinisikan metadata proyek, dependensi, dan skrip.\n- `prompt.txt`: Tempat untuk menulis instruksi/prompt yang panjang atau kompleks untuk AI.\n- `.gitignore`: Mengabaikan file dan folder yang tidak perlu dilacak oleh Git.\n- `readme.md`: Dokumentasi proyek ini.\n\n## Lisensi\n\nProyek ini dilisensikan di bawah Lisensi ISC.\n\n\n---\n\n---\n\n*lokasi*\n\ngenerator-kode/src/_app.js\n\n*isi konten*\n\nimport Print from \"./util/tampilan.js\";\nimport Masukan from \"./util/input.js\";\nimport pembuatan from \"./fitur/pembuatan.js\";\nimport perbaikan from \"./fitur/perbaikan.js\";\nimport penghapusan from \"./fitur/penghapusan.js\";\nimport setup from \"./config/setup.js\";\n\nasync function main() {\n  try {\n    await setup();\n    while (true) {\n      Print.clear(\n        \"SELAMAT DATANG!\\nsilahkan pilih:\\n1. buat projek\\n2. perbaiki projek\\n3. hapus riwayat\\n\",\n      );\n      Print.log(\"ketik 'exit' untuk stop..\");\n      const pilih = Masukan.pilih(\"silakan pilih (1/2/3)?> \", [\"1\", \"2\", \"3\"]);\n      switch (pilih) {\n        case \"1\":\n          await pembuatan();\n          break;\n        case \"2\":\n          await perbaikan();\n          break;\n        case \"3\":\n          await penghapusan();\n          break;\n      }\n      const next = Masukan.pilih(\"lanjutkan program (y/n)?> \", [\"y\", \"n\"]);\n      if (next === \"y\") continue;\n      Print.log(\"program telah berhenti...\");\n      break;\n    }\n  } catch (err) {\n    Print.clear(\"Oops error..\\n terjadi error; \\n\", err.message);\n  }\n}\nmain();\n\n\n---\n\n---\n\n*lokasi*\n\ngenerator-kode/src/config/ignore.js\n\n*isi konten*\n\nconst eee = {\n  folder: [\n    \"node_modules\",\n    \".git\",\n    \".vscode\",\n    \".idea\",\n    \"__pycache__\",\n    \"vendor\",\n    \"dist\",\n    \"build\",\n  ],\n  file: [\".env\"],\n  extensi: [\n    \".csv\",\n    \".jpg\",\n    \".jpeg\",\n    \".png\",\n    \".gif\",\n    \".bmp\",\n    \".svg\",\n    \".webp\",\n    \".ico\",\n    \".mp3\",\n    \".wav\",\n    \".ogg\",\n    \".flac\",\n    \".aac\",\n    \".mp4\",\n    \".mov\",\n    \".avi\",\n    \".mkv\",\n    \".webm\",\n    \".zip\",\n    \".rar\",\n    \".7z\",\n    \".tar\",\n    \".gz\",\n    \".woff\",\n    \".woff2\",\n    \".ttf\",\n    \".otf\",\n    \".eot\",\n    \".lock\",\n    \".log\",\n    \".pdf\",\n    \".doc\",\n    \".docx\",\n    \".xls\",\n    \".xlsx\",\n    \".ppt\",\n    \".pptx\",\n    \".exe\",\n    \".dll\",\n    \".so\",\n    \".class\",\n    \".pyc\",\n    \".jar\",\n    \".bin\",\n    \".img\",\n    \".iso\",\n  ],\n};\nexport default eee;\n\n\n---\n\n---\n\n*lokasi*\n\ngenerator-kode/src/config/setup.js\n\n*isi konten*\n\nimport path from \"path\";\nimport { cekAda, tulisFile, buatFolder } from \"../util/files.js\";\nconst folder = \"history\";\nconst dataSetup = {\n  \"target.json\": \"{}\",\n  \"riwayat.json\": \"[]\",\n  \"output.json\": \"{}\",\n};\nasync function setup() {\n  try {\n    try {\n      await cekAda(folder);\n    } catch {\n      await buatFolder(folder);\n    }\n    for (const [name, value] of Object.entries(dataSetup)) {\n      const p = path.join(folder, name);\n      try {\n        await cekAda(p);\n      } catch {\n        await tulisFile(p, value);\n      }\n    }\n  } catch (err) {\n    throw new Error(err.message);\n  }\n}\nexport default setup;\n\n\n---\n\n---\n\n*lokasi*\n\ngenerator-kode/src/fitur/pembuatan.js\n\n*isi konten*\n\nimport genAi from \"../mesin/gemini.js\";\nimport Print from \"../util/tampilan.js\";\nimport generateRepo from \"../service/generate_repo.js\";\nimport Prompt from \"../service/opsi_prompt.js\";\n\nasync function pembuatan() {\n  try {\n    const prompt = await Prompt.pembuatan();\n    const res = await genAi(prompt);\n    await generateRepo(res, \"pembuatan\");\n  } catch (err) {\n    throw new Error(err.message);\n  }\n}\n\nexport default pembuatan;\n\n\n---\n\n---\n\n*lokasi*\n\ngenerator-kode/src/fitur/penghapusan.js\n\n*isi konten*\n\nimport { data, tulisFile } from \"../util/files.js\";\nimport Masukan from \"../util/input.js\";\nimport Print from \"../util/tampilan.js\";\n\nasync function penghapusan() {\n  try {\n    const { dataHistory } = await data();\n    if (dataHistory.length > 0) {\n      Print.clear(\"total riwayat -\", dataHistory.length / 2);\n      const konfirmasi = Masukan.pilih(\"hapus riwayat sebelumnya (y/n)?> \", [\n        \"y\",\n        \"n\",\n      ]);\n      if (konfirmasi === \"y\") {\n        await tulisFile(\"history/riwayat.json\", \"[]\");\n        Print.clear(\"sukses semua riwayat telah dihapus!\");\n      }\n    } else {\n      Print.clear(\"daftar riwayat masih kosong!\");\n    }\n  } catch (err) {\n    throw new Error(err.message);\n  }\n}\n\nexport default penghapusan;\n\n\n---\n\n---\n\n*lokasi*\n\ngenerator-kode/src/fitur/perbaikan.js\n\n*isi konten*\n\nimport genAi from \"../mesin/gemini.js\";\nimport os from \"os\";\nimport path from \"path\";\nimport { data, tulisFile } from \"../util/files.js\";\nimport Masukan from \"../util/input.js\";\nimport Print from \"../util/tampilan.js\";\nimport readRepo from \"../service/read_repo.js\";\nimport generateRepo from \"../service/generate_repo.js\";\nimport Prompt from \"../service/opsi_prompt.js\";\nasync function perbaikan() {\n  try {\n    let target = \"\";\n    const { dataTarget } = await data();\n\n    if (dataTarget) {\n      Print.clear(\"target history:\\n\", dataTarget);\n      const pake = Masukan.pilih(\n        \"gunakan lokasi repository terakhir tersebut (y/n)?> \",\n        [\"y\", \"n\"],\n      );\n      target =\n        pake === \"y\"\n          ? dataTarget\n          : Masukan.wajib(\"masukkan lokasi repository target?> \");\n    } else {\n      target = Masukan.wajib(\"masukkan lokasi repository target?> \");\n    }\n\n    let p = target;\n    if (target.startsWith(\"~/\")) {\n      p = path.join(os.homedir(), target.substr(2));\n    }\n    await tulisFile(\n      \"history/target.json\",\n      JSON.stringify({ target: path.resolve(p) }, null, 4),\n    );\n    const markdown = await readRepo(p);\n    const prompt = await Prompt.perbaikan();\n    const pesan = `cermatilah repositori project saya ini dengan teliti:${markdown}\\n\\n**tugasnya anda itu:**\\n\\n${prompt}`;\n    const res = await genAi(pesan);\n    await generateRepo(res, \"perbaikan\");\n  } catch (err) {\n    throw new Error(err.message);\n  }\n}\nexport default perbaikan;\n\n\n---\n\n---\n\n*lokasi*\n\ngenerator-kode/src/mesin/configurasi.js\n\n*isi konten*\n\nimport { GoogleGenAI } from \"@google/genai\";\nimport \"dotenv/config\";\nimport schema from \"./schema.js\";\nimport { data } from \"../util/files.js\";\n\nasync function configGenAi(isHistory = false) {\n  try {\n    const AI = new GoogleGenAI({ apiKey: process.env.GEMINI_API });\n    let history = [];\n    const { dataHistory, dataIntruksi } = await data();\n    if (isHistory) {\n      history = dataHistory;\n    }\n    const chat = AI.chats.create({\n      model: process.env.MODEL,\n      config: {\n        temperature: process.env.TEMPERATURE,\n        systemInstruction: dataIntruksi,\n        thinkingConfig: {\n          includeThoughts: true,\n          thinkingBudget: process.env.PEMIKIRAN,\n        },\n        tools: [],\n        responseMimeType: \"application/json\",\n        responseSchema: schema,\n        generationConfig: {\n          maxOutputTokens: process.env.MAX_OUTPUT,\n          presencePenalty: 8,\n          frequencyPenalty: 16,\n          enableEnhancedCivicAnswers: false,\n        },\n      },\n      history: history,\n    });\n    return {\n      model: chat,\n      AI: AI,\n    };\n  } catch (err) {\n    throw new Error(err.message);\n  }\n}\n\nexport default configGenAi;\n\n\n---\n\n---\n\n*lokasi*\n\ngenerator-kode/src/mesin/gemini.js\n\n*isi konten*\n\nimport configGenAi from \"./configurasi.js\";\nimport { tulisFile, data } from \"../util/files.js\";\nimport Masukan from \"../util/input.js\";\nimport Print from \"../util/tampilan.js\";\n\nasync function genAi(prompt) {\n  let pakeHistory = \"y\";\n  let isHistory = false;\n  let pakePanduan = \"n\";\n  let msg = [{ text: \"\" }];\n  let history = [];\n  let tambahan = true;\n  let result = null;\n\n  try {\n    const { AI, model } = await configGenAi(isHistory);\n\n    const { dataHistory } = await data();\n    while (true) {\n      if (tambahan) {\n        msg[0].text = prompt;\n        if (dataHistory.length > 0) {\n          Print.clear(\"item history -\", dataHistory.length / 2);\n          pakeHistory = Masukan.pilih(\"gunakan history sebelumnya (y/n)?> \", [\n            \"y\",\n            \"n\",\n          ]);\n          if (pakeHistory === \"y\") isHistory = true;\n        }\n        pakePanduan = Masukan.pilih(\"gunakan file panduan (y/n)?> \", [\n          \"y\",\n          \"n\",\n        ]);\n        if (pakePanduan === \"y\") {\n          Print.clear(\"mencerna panduan...\");\n          const eee = await AI.files.upload({\n            file: \"src/dok/dokumentasi.txt\",\n            displayName: \"sumber panduan\",\n          });\n          msg.push({\n            fileData: {\n              mimeType: eee.mimeType,\n              fileUri: eee.uri,\n            },\n          });\n        }\n      }\n\n      Print.clear(\"memproses permintaan silakan tunggu...\");\n      const respons = await model.sendMessage({ message: msg });\n      result = JSON.parse(respons.text);\n      const resData = JSON.stringify(result, null, 2);\n      Print.clear(\"Laporan:\\n***\\n\", result.text, \"\\n***\");\n      history.push({\n        role: \"user\",\n        parts: msg,\n      });\n      history.push({\n        role: \"model\",\n        parts: [{ text: resData }],\n      });\n      const isKoreksi = Masukan.pilih(\"koreksi kembali hasil (y/n)?> \", [\n        \"y\",\n        \"n\",\n      ]);\n      if (isKoreksi === \"n\") {\n        break;\n      } else {\n        const q = Masukan.wajib(\"apa yang ingin di betulkan?> \");\n        msg[0].text = `outputnya masih kurang ${q} silakan revisi kembali`;\n        isHistory = true;\n        tambahan = false;\n      }\n    }\n\n    const out = [...dataHistory, ...history];\n    await tulisFile(\"history/riwayat.json\", JSON.stringify(out, null, 4));\n    return result || null;\n  } catch (err) {\n    throw new Error(err.message);\n  }\n}\n\nexport default genAi;\n\n\n---\n\n---\n\n*lokasi*\n\ngenerator-kode/src/mesin/schema.js\n\n*isi konten*\n\nimport { Type } from \"@google/genai\";\n\nconst repoItemSchema = {\n  type: Type.OBJECT,\n  properties: {\n    jenis: {\n      type: Type.STRING,\n      enum: [\"folder\", \"file\", \"dok\", \"config\"],\n      description:\n        \"Jenis komponen. 'folder' untuk direktori, 'file' untuk kode sumber, 'config' untuk file konfigurasi, 'dok' untuk dokumentasi.\",\n    },\n    lokasi: {\n      type: Type.STRING,\n      description:\n        \"Path relatif dari root proyek, contoh: 'src/components/Button.js'. Gunakan garis miring '/' sebagai pemisah.\",\n      pattern: \"^[a-zA-Z0-9._\\\\-/]+$\",\n    },\n    konten: {\n      type: Type.STRING,\n      description:\n        \"Isi konten lengkap untuk file. Untuk 'jenis: folder', nilai ini harus string kosong ''.\",\n    },\n  },\n  required: [\"jenis\", \"lokasi\", \"konten\"],\n};\n\nconst deleteItemSchema = {\n  type: Type.OBJECT,\n  properties: {\n    jenis: {\n      type: Type.STRING,\n      enum: [\"file\", \"folder\"],\n      description: \"Tipe entitas yang akan dihapus: 'file' atau 'folder'.\",\n    },\n    lokasi: {\n      type: Type.STRING,\n      description:\n        \"Path relatif dari root proyek untuk file/folder yang akan dihapus.\",\n      pattern: \"^[a-zA-Z0-9._\\\\-/]+$\",\n    },\n  },\n  required: [\"jenis\", \"lokasi\"],\n};\n\nconst mainSchema = {\n  type: Type.OBJECT,\n  properties: {\n    repo: {\n      type: Type.ARRAY,\n      description:\n        \"Daftar semua file dan folder yang dibuat atau dimodifikasi. Jangan sertakan file yang tidak berubah.\",\n      items: repoItemSchema,\n    },\n    delets: {\n      type: Type.ARRAY,\n      description:\n        \"Daftar file atau folder yang perlu dihapus dari proyek. Jika tidak ada, gunakan array kosong [].\",\n      items: deleteItemSchema,\n    },\n    text: {\n      type: Type.STRING,\n      description:\n        \"Ringkasan teknis yang jelas dan profesional tentang perubahan yang dibuat, arsitektur yang diterapkan, dan keputusan teknis penting. seperti mana saja yang dirubah atau diperbaiki dan di mana saja yang dibuat).\",\n    },\n  },\n  required: [\"repo\", \"text\"],\n};\n\nexport default mainSchema;\n\n\n---\n\n---\n\n*lokasi*\n\ngenerator-kode/src/service/generate_repo.js\n\n*isi konten*\n\nimport path from \"path\";\nimport {\n  cekAda,\n  buatFolder,\n  hapusFolder,\n  hapusFile,\n  tulisFile,\n  data,\n} from \"../util/files.js\";\nimport Print from \"../util/tampilan.js\";\nimport Masukan from \"../util/input.js\";\nasync function generateRepo(source, mode) {\n  try {\n    const { dataTarget } = await data();\n    const letak = dataTarget;\n    const lokasi = path.join(path.resolve(\".\"), \"output\");\n    let base = lokasi;\n    if (mode === \"pembuatan\") {\n      const nameRepo = Masukan.wajib(\"masukkan nama repository?> \");\n      base = path.join(lokasi, nameRepo);\n      await buatFolder(base);\n    }\n    if (mode === \"perbaikan\") {\n      const opsi = Masukan.pilih(\n        \"pilih penyimpanan:\\n1. timpa repository\\n2. buat repository\\nsilahkan pilih (1/2)?> \",\n        [\"1\", \"2\"],\n      );\n      if (opsi === \"2\") {\n        const nameRepo = Masukan.wajib(\"masukkan nama repository?> \");\n        base = path.join(lokasi, nameRepo);\n        await buatFolder(base);\n      }\n      base = letak;\n    }\n    const dir = base.split(\"/\").pop();\n    Print.clear(mode, \"\\nvolder:\", dir, \"\\npath:\", base, \"\\n===\");\n    try {\n      await cekAda(lokasi);\n    } catch {\n      Print.log(\"folder output tidak ditemukan!, jadi membuat folder output\");\n      await buatFolder(lokasi);\n      Print.log(\"folder output telah dibuat..\");\n    }\n    if (source.delets.length > 0 && mode === \"perbaikan\") {\n      for (const e of source.delets) {\n        const p = path.join(path.resolve(base), e.lokasi);\n        switch (e.jenis) {\n          case \"folder\":\n            await hapusFolder(p);\n            Print.log(\"menghapus folder\", e.lokasi);\n            break;\n          case \"file\":\n            await hapusFile(p);\n            Print.log(\"menghapus file\", e.lokasi);\n            break;\n          default:\n            Print.log(\"ada satu source yang tidak valid untuk dihapus!\");\n            break;\n        }\n      }\n    }\n    // di luar kondisi delets\n    if (source.repo) {\n      for (const e of source.repo) {\n        const p = path.join(path.resolve(base), e.lokasi);\n        switch (e.jenis) {\n          case \"folder\":\n            await buatFolder(p);\n            Print.log(\"membuat folder\", e.lokasi);\n            break;\n          case \"file\":\n            await tulisFile(p, e.konten);\n            Print.log(\"membuat file\", e.lokasi);\n            break;\n          case \"config\":\n            await tulisFile(p, e.konten);\n            Print.log(\"membuat file\", e.lokasi);\n            break;\n          case \"dok\":\n            await tulisFile(p, e.konten);\n            Print.log(\"membuat file\", e.lokasi);\n            break;\n          default:\n            Print.log(\n              \"ada satu source yang tidak valid untuk dibuat!\",\n              e.lokasi,\n            );\n            break;\n        }\n      }\n    }\n    Print.log(\"sukses\", mode, \"telah dilakukan..\");\n    await tulisFile(\"history/output.json\", JSON.stringify(source, null, 4));\n  } catch (err) {\n    throw new Error(err.message);\n  }\n}\nexport default generateRepo;\n\n\n---\n\n---\n\n*lokasi*\n\ngenerator-kode/src/service/opsi_prompt.js\n\n*isi konten*\n\nimport Print from \"../util/tampilan.js\";\nimport Masukan from \"../util/input.js\";\nimport { data } from \"../util/files.js\";\nclass Prompt {\n  static async pembuatan() {\n    const { dataPrompt } = await data();\n    const pakePrompt = Masukan.pilih(\"gunakan prompt.txt (y/n)?> \", [\"y\", \"n\"]);\n    let prompt = \"\";\n    if (pakePrompt === \"y\") {\n      prompt = dataPrompt;\n      Print.clear(\"isi prompt:\\n***\", prompt || \"kosong\", \"\\n***\");\n      const next = Masukan.pilih(\"lanjutkan (y/n)?> \", [\"y\", \"n\"]);\n      if (next === \"n\") {\n        prompt = Masukan.wajib(\"project seperti apa yang ingin dibuat?> \");\n      }\n    } else {\n      prompt = Masukan.wajib(\"project seperti apa yang ingin dibuat?> \");\n    }\n    return prompt;\n  }\n  static async perbaikan() {\n    const { dataPrompt } = await data();\n    const pakePrompt = Masukan.pilih(\"gunakan prompt.txt (y/n)?> \", [\"y\", \"n\"]);\n    let prompt = \"\";\n    if (pakePrompt === \"y\") {\n      prompt = dataPrompt;\n      Print.clear(\"isi prompt:\\n***\", prompt || \"kosong\", \"\\n***\");\n      const next = Masukan.pilih(\"lanjutkan (y/n)?> \", [\"y\", \"n\"]);\n      if (next === \"n\") {\n        prompt = Masukan.wajib(\"apa yang ingin diperbaiki?> \");\n      }\n    } else {\n      prompt = Masukan.wajib(\"apa yang ingin diperbaiki?> \");\n    }\n    return prompt;\n  }\n}\nexport default Prompt;\n\n\n---\n\n---\n\n*lokasi*\n\ngenerator-kode/src/service/read_repo.js\n\n*isi konten*\n\nimport path from \"path\";\nimport { bacaFolder, bacaFile, tulisFile, cekAda } from \"../util/files.js\";\nimport Print from \"../util/tampilan.js\";\nimport Masukan from \"../util/input.js\";\nasync function readRepo(target) {\n  try {\n    const data = {\n      folder: [],\n      file: [],\n      extensi: [],\n    };\n    const mode = Masukan.pilih(\n      \"pilih pembacaan file & folder:\\n1. pilih beberapa\\n2. kecualikan beberapa\\nsilahkan pilih (1/2)?> \",\n      [\"1\", \"2\"],\n    );\n    const text = mode === \"1\" ? \"dipilih\" : \"dikecualikan\";\n    Masukan.pilih(\n      \"jika folder/file/extensi/ lebih dari satu pisahkan dengan (,)\\ncontoh:\\nfolder: dist, node_modules\\nfile: example.js, config.json\\nextensi: .txt, .py\\n mengerti lanjut (y/n): \",\n      [\"y\", \"n\"],\n    );\n    const foldernya = Masukan.biasa(\n      `masukkan nama volder yang ingin ${text}?: `,\n    );\n    data.folder.push(foldernya.replaceAll(\" \", \"\").split(\",\"));\n    const filenya = Masukan.biasa(\n      `masukkan nama file yang ingin ${text} beserta extensinya?: `,\n    );\n    data.file.push(filenya.replaceAll(\" \", \"\").split(\",\"));\n    const extensinya = Masukan.biasa(\n      `masukkan format extensi yang ingin ${text}?: `,\n    );\n    data.extensi.push(extensinya.replaceAll(\" \", \"\").split(\",\"));\n    const daftar = {\n      foldernya: data.folder\n        .flat()\n        .filter((e) => e)\n        .map((e) => `!${e}/**`),\n      filenya: data.file\n        .flat()\n        .filter((e) => e)\n        .map((e) => `!**/${e}`),\n      extensinya: data.extensi\n        .flat()\n        .filter((e) => e)\n        .map((e) => `!**/*.${e.replace(\".\", \"\")}`),\n    };\n    const repo = await bacaFolder(target, daftar, mode);\n    const dir = target.split(\"/\").pop();\n    Print.clear(\"membaca...\\nvolder:\", dir, \"\\npath:\", target, \"\\n===\");\n    let markdown = \"\";\n    for (const e of repo) {\n      const letak = e.substring(e.indexOf(dir), e.length);\n      Print.log(\"sedang membaca\", letak);\n      const kode = await bacaFile(e);\n      markdown += `\\n\\n---\\n\\n*lokasi*\\n\\n${letak}\\n\\n*isi konten*\\n\\n${kode}\\n\\n---`;\n    }\n    await tulisFile(\"history/repo.md\", markdown);\n    Print.log(\"selesai terbaca\");\n    return markdown;\n  } catch (err) {\n    throw new Error(err.message);\n  }\n}\nexport default readRepo;\n\n\n---\n\n---\n\n*lokasi*\n\ngenerator-kode/src/util/files.js\n\n*isi konten*\n\nimport fg from \"fast-glob\";\nimport fs from \"fs/promises\";\nimport path from \"path\";\nimport eee from \"../config/ignore.js\";\nasync function bacaFile(p) {\n  try {\n    const cek = path.extname(p);\n    const data = await fs.readFile(p, \"utf-8\");\n    return cek === \".json\" ? JSON.parse(data) : data;\n  } catch (err) {\n    throw new Error(`gagal  membaca file ${p}`);\n  }\n}\nasync function tulisFile(p, data) {\n  try {\n    await fs.writeFile(p, data);\n  } catch (err) {\n    throw new Error(`gagal menulis ke file ${p}`);\n  }\n}\nasync function buatFolder(p) {\n  try {\n    await fs.mkdir(p, { recursive: true });\n  } catch (err) {\n    throw new Error(`gagal membuat folder ${p}`);\n  }\n}\nasync function hapusFile(p) {\n  try {\n    await fs.unlink(p);\n  } catch (err) {\n    throw new Error(`gagal menghapus file ${p}`);\n  }\n}\nasync function hapusFolder(p) {\n  try {\n    await fs.rm(p, { recursive: true });\n  } catch (err) {\n    throw new Error(`gagal menghapus folder ${p}`);\n  }\n}\nasync function bacaFolder(p, { foldernya, filenya, extensinya }, mode) {\n  try {\n    const folder = [\n      ...eee.folder.filter((e) => e).map((e) => `!${e}/**`),\n      ...foldernya,\n    ];\n    const extensi = [\n      ...eee.extensi.filter((e) => e).map((e) => `!**/*.${e.replace(\".\", \"\")}`),\n      ...extensinya,\n    ];\n    let config = [];\n    if (mode === \"1\") {\n      config = [\n        ...foldernya.map((e) => e.replace(\"!\", \"\")),\n        ...filenya.map((e) => e.replace(\"!\", \"\")),\n        ...extensinya.map((e) => e.replace(\"!\", \"\")),\n      ];\n    } else {\n      config = [\"**/*.*\", ...folder, ...filenya, ...extensi];\n    }\n\n    return await fg(config, { cwd: p, absolute: true, sort: true });\n  } catch (err) {\n    throw new Error(`gagal membaca folder ${p}`);\n  }\n}\nasync function cekAda(p) {\n  try {\n    await fs.access(p);\n  } catch (err) {\n    throw new Error(`gagal mengecek ${p}`);\n  }\n}\nasync function data() {\n  try {\n    const dataHistory = await bacaFile(\"history/riwayat.json\");\n    const targetData = await bacaFile(\"history/target.json\");\n    const dataIntruksi = await bacaFile(\"src/dok/intruksi.txt\");\n    const dataPrompt = await bacaFile(\"prompt.txt\");\n    return {\n      dataHistory,\n      dataTarget: targetData.target || \"\",\n      dataIntruksi,\n      dataPrompt,\n    };\n  } catch (err) {\n    throw new Error(err.message);\n  }\n}\nexport {\n  bacaFile,\n  tulisFile,\n  buatFolder,\n  hapusFile,\n  hapusFolder,\n  bacaFolder,\n  cekAda,\n  data,\n};\n\n\n---\n\n---\n\n*lokasi*\n\ngenerator-kode/src/util/input.js\n\n*isi konten*\n\nimport promptSync from \"prompt-sync\";\nconst prompt = promptSync();\nclass Masukan {\n  static wajib(message) {\n    let key;\n    while (true) {\n      const v = prompt(message);\n      if (!v.trim()) {\n        console.log(\"silakan masukkan terlebih dahulu!\");\n        continue;\n      } else if (v.trim().toLowerCase() === \"exit\") {\n        console.clear();\n        console.log(\"program berhenti...\");\n        process.exit(1);\n      } else {\n        key = v;\n        break;\n      }\n    }\n    console.clear();\n    return key.trim();\n  }\n  static pilih(message, opsi) {\n    let key;\n    while (true) {\n      const v = prompt(message);\n      if (v && opsi.includes(v.trim())) {\n        key = v;\n        break;\n      } else if (v.trim().toLowerCase() === \"exit\") {\n        console.clear();\n        console.log(\"program berhenti...\");\n        process.exit(1);\n      } else {\n        console.log(`Pilih antara ${opsi.join(\"/\")} silahkan!`);\n      }\n    }\n    console.clear();\n    return key.trim().toLowerCase();\n  }\n  static biasa(message) {\n    const key = prompt(message);\n    if (key.trim().toLowerCase() === \"exit\") {\n      console.clear();\n      console.log(\"program berhenti...\");\n      process.exit(1);\n    }\n    console.clear();\n    return key.trim();\n  }\n}\nexport default Masukan;\n\n\n---\n\n---\n\n*lokasi*\n\ngenerator-kode/src/util/tampilan.js\n\n*isi konten*\n\nclass Print {\n  static clear(...message) {\n    console.clear();\n    let msg;\n    if (message.length > 0) {\n      msg = message.join(\" \");\n    } else {\n      msg = message[0];\n    }\n    console.log(msg);\n  }\n  static log(...message) {\n    let msg;\n    if (message.length > 0) {\n      msg = message.join(\" \");\n    } else {\n      msg = message[0];\n    }\n    console.log(msg);\n  }\n}\nexport default Print;\n\n\n---\n\n**tugasnya anda itu:**\n\nperbaiki pada bagian lisensinya di dokumentasi supaya lisensinya open source"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "{\n  \"repo\": [\n    {\n      \"jenis\": \"dok\",\n      \"lokasi\": \"readme.md\",\n      \"konten\": \"# Generator-Kode: Generator & Refactor Kode Cerdas Berbasis AI\\n\\nGenerator-Kode adalah sebuah alat baris perintah (CLI) untuk membantu developer mempercepat alur kerja mereka, baik dalam membuat struktur proyek baru dari awal maupun melakukan refactoring pada proyek yang sudah ada berdasarkan instruksi, dengan bertenaga mesin model Gemini.\\n\\n## Fitur Utama\\n\\n- **Pembuatan Proyek Baru**: Hasilkan seluruh struktur folder dan file untuk proyek baru (misalnya, \\\"buatkan saya API server Express dengan TypeScript\\\") hanya dengan satu perintah.\\n- **Refactoring & Perbaikan Proyek**: Analisis kode proyek yang ada dan terapkan perubahan, tambahkan fitur baru, atau perbaiki bug sesuai instruksi Anda.\\n- **Pembacaan Proyek Selektif**: Kontrol penuh atas file mana yang dianalisis oleh AI, dengan mode inklusi (hanya baca yang dipilih) atau eksklusi (abaikan yang dipilih).\\n- **Riwayat Percakapan Berkonteks**: Menyimpan dan menggunakan kembali riwayat interaksi dengan AI, memungkinkan Anda untuk melakukan koreksi berulang hingga hasil yang diinginkan tercapai.\\n- **Konfigurasi Fleksibel**: Mudah untuk mengkonfigurasi model AI, temperature, dan parameter lainnya melalui file `.env`.\\n- **Dukungan Prompt Eksternal**: Gunakan file `prompt.txt` untuk instruksi yang lebih panjang dan kompleks, ideal untuk tugas yang rumit.\\n\\n## Prasyarat\\n\\n- [Node.js](https://nodejs.org/) (versi 18.x atau lebih tinggi)\\n- API Key dari [Google AI Studio](https://aistudio.google.com/app/apikey)\\n\\n## Instalasi & Konfigurasi\\n\\nIkuti langkah-langkah berikut untuk menjalankan Gen-Kode di mesin lokal Anda.\\n\\n**1. Clone Repositori**\\n\\n```bash\\ngit clone https://github.com/waone377/generator-kode.git\\ncd generator-kode\\n```\\n\\n**2. Instal Dependensi**\\n\\n```bash\\nnpm install\\n```\\n\\n**3. Konfigurasi Environment Variable**\\n\\nBuat file baru bernama `.env` di root direktori proyek. Salin konten di bawah ini dan isi nilainya sesuai dengan konfigurasi Anda.\\n\\n```env\\nGEMINI_API=?\\nMODEL=gemini-2.5-pro\\nTEMPERATURE=0.9\\nPEMIKIRAN=23000\\nMAX_OUTPUT=15000\\n```\\n\\n- `GEMINI_API`: Kunci API Anda dari Google AI Studio. **Wajib diisi.**\\n- `MODEL`: Model Gemini yang ingin Anda gunakan. `gemini-2.5-flash` atau `gemini-2.5-pro` adalah pilihan yang solid dan direkomendasikan.\\n- `TEMPERATURE`: Mengontrol kreativitas output (0.0 - 2.0). Nilai yang lebih tinggi (misalnya, 0.9) menghasilkan output yang lebih beragam, sementara nilai yang lebih rendah (misalnya, 0.2) lebih fokus dan deterministik.\\n- `PEMIKIRAN`: Alokasi token untuk proses \\\"berpikir\\\" internal model sebelum menghasilkan respons.\\n- `MAX_OUTPUT`: Jumlah maksimum token yang dapat dihasilkan oleh model dalam satu respons.\\n\\n## Cara Penggunaan\\n\\nJalankan aplikasi dari terminal:\\n\\n```bash\\nnpm start\\n```\\n\\nAnda akan disambut dengan menu utama untuk memilih mode operasi.\\n\\n### Mode 1: Membuat Project Baru\\n\\nIdeal untuk memulai proyek dari nol berdasarkan deskripsi konseptual.\\n\\n1.  Pilih menu `1`.\\n2.  Tentukan apakah akan menggunakan `prompt.txt` untuk deskripsi yang detail atau mengetik langsung di terminal.\\n3.  Setelah AI memproses permintaan, masukkan nama untuk folder proyek baru.\\n4.  Proyek akan dibuat di dalam direktori `output/<nama-proyek>`.\\n\\n### Mode 2: Memperbaiki Project\\n\\nDigunakan untuk memodifikasi, menambah fitur, atau memperbaiki kode pada proyek yang sudah ada.\\n\\n1.  Pilih menu `2`.\\n2.  Masukkan path ke direktori proyek yang akan diperbaiki. Aplikasi akan mengingat path terakhir yang Anda gunakan.\\n3.  **Pilih Mode Pembacaan Source**:\\n    - **Inklusi (Sertakan)**: Mode ini hanya akan menganalisis file/folder yang Anda tentukan secara spesifik. Berguna untuk perbaikan yang sangat terfokus.\\n    - **Eksklusi (Kecualikan)**: Mode ini akan membaca seluruh proyek dan mengabaikan file/folder yang Anda tentukan. Direkomendasikan untuk pemahaman konteks yang lebih luas.\\n4.  Berikan instruksi perbaikan, baik melalui `prompt.txt` atau input langsung.\\n5.  Setelah AI memberikan solusi, pilih mode penyimpanan:\\n    - **Timpa project asli**: Menerapkan perubahan langsung ke proyek sumber.\\n    - **Membuat project baru**: Menyimpan versi yang telah diperbaiki sebagai proyek baru di dalam direktori `output/`.\\n\\n### Mode 3: Hapus Riwayat\\n\\nOpsi ini akan menghapus semua riwayat percakapan yang tersimpan di `history/riwayat.json` untuk memulai sesi baru yang bersih.\\n\\n## Struktur Proyek\\n\\n- `src/_app.js`: Titik masuk utama aplikasi, mengelola alur menu utama.\\n- `src/config/`: Direktori untuk file konfigurasi statis.\\n  - `ignore.js`: Daftar default file, folder, dan ekstensi yang diabaikan saat membaca proyek.\\n- `src/dok/`: Berisi file teks yang digunakan sebagai instruksi sistem untuk AI.\\n  - `intruksi.txt`: Instruksi inti peran dan format output AI.\\n- `src/fitur/`: Modul yang mengelola fitur utama aplikasi.\\n  - `pembuatan.js`: Mengelola logika untuk mode \\\"Membuat Project Baru\\\".\\n  - `perbaikan.js`: Mengelola logika untuk mode \\\"Memperbaiki Project\\\".\\n  - `penghapusan.js`: Mengelola logika untuk mode \\\"Hapus Riwayat\\\".\\n- `src/mesin/`: Modul inti untuk interaksi dengan AI Gemini.\\n  - `configurasi.js`: Menginisialisasi model Google Gemini dengan konfigurasi dari `.env`.\\n  - `gemini.js`: Mengirim permintaan ke model AI, mengelola riwayat sesi, dan menangani koreksi.\\n  - `schema.js`: Mendefinisikan skema JSON yang diharapkan dari respons AI.\\n- `src/service/`: Modul untuk logika bisnis spesifik.\\n  - `generate_repo.js`: Menerapkan output JSON dari AI ke sistem file (membuat/menghapus file/folder).\\n  - `read_repo.js`: Membaca struktur dan konten proyek target menjadi format markdown.\\n- `src/util/`: Modul utilitas pembantu.\\n  - `files.js`: Menangani operasi file system seperti membaca, menulis, dan menghapus.\\n  - `input.js`: Mengelola interaksi dengan pengguna di terminal.\\n  - `tampilan.js`: Mengelola output ke terminal.\\n- `history/`: (Dibuat saat runtime) Direktori untuk menyimpan data sesi.\\n  - `riwayat.json`: Menyimpan riwayat percakapan dengan AI.\\n  - `target.json`: Menyimpan path direktori terakhir yang digunakan dalam mode perbaikan.\\n  - `output.json`: Menyimpan output JSON mentah terakhir dari AI.\\n- `output/`: Direktori default tempat proyek baru atau yang diperbaiki disimpan.\\n- `package.json`: Mendefinisikan metadata proyek, dependensi, dan skrip.\\n- `prompt.txt`: Tempat untuk menulis instruksi/prompt yang panjang atau kompleks untuk AI.\\n- `.gitignore`: Mengabaikan file dan folder yang tidak perlu dilacak oleh Git.\\n- `readme.md`: Dokumentasi proyek ini.\\n\\n## Lisensi\\n\\nProyek ini dilisensikan di bawah Lisensi MIT. Ini berarti Anda bebas menggunakan, menyalin, memodifikasi, menggabungkan, menerbitkan, mendistribusikan, mensublisensikan, dan/atau menjual salinan perangkat lunak, selama Anda menyertakan pemberitahuan hak cipta dan izin asli dalam semua salinan atau bagian penting dari perangkat lunak.\\n\"\n    }\n  ],\n  \"text\": \"Perubahan telah dilakukan pada file dokumentasi `readme.md`. Bagian 'Lisensi' telah diperbarui dari Lisensi ISC menjadi Lisensi MIT, yang merupakan lisensi open-source yang permisif dan umum digunakan. Penjelasan singkat mengenai kebebasan yang diberikan oleh lisensi MIT juga ditambahkan untuk memperjelas status open-source dari proyek ini.\",\n  \"delets\": []\n}"
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "buatkan project untuk latihan etikal hacking"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "{\n  \"repo\": [\n    {\n      \"jenis\": \"dok\",\n      \"lokasi\": \"readme.md\",\n      \"konten\": \"# Ethical Hacking Playground\\n\\n**PERINGATAN PENTING: Proyek ini dirancang untuk tujuan pendidikan saja. Semua aplikasi dan skrip di dalamnya ditujukan untuk digunakan dalam lingkungan yang terkendali dan terisolasi (seperti pada mesin lokal Anda). Jangan pernah menggunakan alat atau teknik ini pada sistem yang bukan milik Anda tanpa izin eksplisit. Penggunaan yang tidak sah adalah ilegal dan tidak etis.**\\n\\n## Tentang Proyek\\n\\nEthical Hacking Playground menyediakan lingkungan yang aman untuk belajar dan berlatih konsep dasar keamanan siber dan peretasan etis. Proyek ini mencakup aplikasi web yang sengaja dibuat rentan dan beberapa skrip dasar untuk demonstrasi serangan.\\n\\n## Fitur\\n\\n1.  **Aplikasi Web Rentan**: Server Node.js/Express sederhana dengan kerentanan umum:\\n    *   SQL Injection (SQLi)\\n    *   Cross-Site Scripting (XSS)\\n    *   Unggahan File yang Tidak Aman\\n2.  **Skrip Latihan**: Skrip Python dasar untuk:\\n    *   Pemindaian Port (Port Scanning)\\n    *   Pemecahan Kata Sandi (Password Cracking) dengan serangan kamus sederhana.\\n\\n## Panduan Memulai Cepat\\n\\n1.  **Prasyarat**: Pastikan Anda telah menginstal [Node.js](https://nodejs.org/) dan [Python](https://www.python.org/).\\n\\n2.  **Instalasi Dependensi Server**:\\n    ```bash\\n    cd src/targets/web_server\\n    npm install\\n    ```\\n\\n3.  **Jalankan Server Rentan**:\\n    ```bash\\n    npm start\\n    ```\\n    Server akan berjalan di `http://localhost:3000`.\\n\\n4.  **Jalankan Skrip Latihan**:\\n    Buka terminal baru dan jalankan skrip dari direktori `src/scripts`:\\n    ```bash\\n    python src/scripts/port_scanner.py\\n    python src/scripts/password_cracker.py\\n    ```\\n\\nUntuk panduan lebih rinci, lihat `docs/setup_guide.md`.\"\n    },\n    {\n      \"jenis\": \"config\",\n      \"lokasi\": \".gitignore\",\n      \"konten\": \"node_modules\\n.env\\nnpm-debug.log\\n\\n# Database & Uploads\\nsrc/targets/web_server/database/database.db\\nsrc/targets/web_server/uploads/*\\n!src/targets/web_server/uploads/.gitkeep\"\n    },\n    {\n      \"jenis\": \"folder\",\n      \"lokasi\": \"src\",\n      \"konten\": \"\"\n    },\n    {\n      \"jenis\": \"folder\",\n      \"lokasi\": \"src/targets\",\n      \"konten\": \"\"\n    },\n    {\n      \"jenis\": \"folder\",\n      \"lokasi\": \"src/targets/web_server\",\n      \"konten\": \"\"\n    },\n    {\n      \"jenis\": \"config\",\n      \"lokasi\": \"src/targets/web_server/package.json\",\n      \"konten\": \"{\\n  \\\"name\\\": \\\"vulnerable-web-app\\\",\\n  \\\"version\\\": \\\"1.0.0\\\",\\n  \\\"description\\\": \\\"An intentionally vulnerable web app for ethical hacking practice.\\\",\\n  \\\"main\\\": \\\"server.js\\\",\\n  \\\"scripts\\\": {\\n    \\\"start\\\": \\\"node server.js\\\"\\n  },\\n  \\\"dependencies\\\": {\\n    \\\"express\\\": \\\"^4.18.2\\\",\\n    \\\"sqlite3\\\": \\\"^5.1.6\\\",\\n    \\\"multer\\\": \\\"^1.4.5-lts.1\\\"\\n  }\\n}\"\n    },\n    {\n      \"jenis\": \"file\",\n      \"lokasi\": \"src/targets/web_server/server.js\",\n      \"konten\": \"const express = require('express');\\nconst path = require('path');\\nconst sqlite3 = require('sqlite3').verbose();\\nconst multer = require('multer');\\n\\nconst app = express();\\nconst PORT = 3000;\\n\\n// Setup database\\nconst dbPath = path.resolve(__dirname, 'database/database.db');\\nconst db = new sqlite3.Database(dbPath, (err) => {\\n    if (err) {\\n        console.error(err.message);\\n    } else {\\n        console.log('Connected to the SQLite database.');\\n        db.run('CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, username TEXT, password TEXT)', (err) => {\\n            if (err) console.error(err.message);\\n            else {\\n                db.get('SELECT * FROM users WHERE username = ?', ['admin'], (err, row) => {\\n                    if (!row) {\\n                        db.run(`INSERT INTO users (username, password) VALUES ('admin', 'password123')`);\\n                    }\\n                });\\n            }\\n        });\\n    }\\n});\\n\\n// Middleware\\napp.use(express.urlencoded({ extended: false }));\\napp.use(express.static(path.join(__dirname, 'public')));\\n\\n// File upload setup\\nconst storage = multer.diskStorage({\\n    destination: './uploads/',\\n    filename: function(req, file, cb){\\n        cb(null, file.originalname);\\n    }\\n});\\nconst upload = multer({ storage: storage });\\n\\n// Routes\\napp.get('/', (req, res) => {\\n    res.sendFile(path.join(__dirname, 'public/index.html'));\\n});\\n\\n// VULNERABLE LOGIN (SQL Injection)\\napp.post('/login', (req, res) => {\\n    const { username, password } = req.body;\\n    const query = `SELECT * FROM users WHERE username = '${username}' AND password = '${password}'`;\\n    console.log(`Executing query: ${query}`);\\n\\n    db.get(query, (err, row) => {\\n        if (err) {\\n            return res.status(500).send('Server error');\\n        }\\n        if (row) {\\n            res.send(`<h1>Welcome, ${row.username}!</h1><p>Login successful.</p>`);\\n        } else {\\n            res.send('<h1>Login Failed</h1><p>Invalid username or password.</p>');\\n        }\\n    });\\n});\\n\\n// VULNERABLE SEARCH (Reflected XSS)\\napp.get('/search', (req, res) => {\\n    const { query } = req.query;\\n    // The query parameter is rendered directly without sanitization\\n    res.send(`<h1>Search Results</h1><p>You searched for: ${query}</p>`);\\n});\\n\\n// VULNERABLE FILE UPLOAD\\napp.post('/upload', upload.single('myFile'), (req, res) => {\\n    if (req.file) {\\n        res.send(`<h2>File uploaded successfully!</h2><p>Uploaded to: ${req.file.path}</p>`);\\n    } else {\\n        res.status(400).send('Error uploading file.');\\n    }\\n});\\n\\napp.listen(PORT, () => {\\n    console.log(`Server is running on http://localhost:${PORT}`);\\n});\"\n    },\n    {\n      \"jenis\": \"folder\",\n      \"lokasi\": \"src/targets/web_server/public\",\n      \"konten\": \"\"\n    },\n    {\n      \"jenis\": \"file\",\n      \"lokasi\": \"src/targets/web_server/public/index.html\",\n      \"konten\": \"<!DOCTYPE html>\\n<html lang=\\\"en\\\">\\n<head>\\n    <meta charset=\\\"UTF-8\\\">\\n    <meta name=\\\"viewport\\\" content=\\\"width=device-width, initial-scale=1.0\\\">\\n    <title>Vulnerable App</title>\\n    <style>\\n        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }\\n        .container { max-width: 600px; margin: auto; border: 1px solid #ccc; padding: 20px; border-radius: 5px; }\\n        h2 { border-bottom: 1px solid #eee; padding-bottom: 10px; }\\n        form { margin-bottom: 20px; }\\n        input { width: calc(100% - 10px); padding: 5px; margin-bottom: 10px; }\\n        button { padding: 8px 15px; }\\n    </style>\\n</head>\\n<body>\\n    <div class=\\\"container\\\">\\n        <h1>Ethical Hacking Practice App</h1>\\n\\n        <!-- SQL Injection Challenge -->\\n        <section>\\n            <h2>Login Form (SQLi)</h2>\\n            <form action=\\\"/login\\\" method=\\\"POST\\\">\\n                <label for=\\\"username\\\">Username:</label>\\n                <input type=\\\"text\\\" id=\\\"username\\\" name=\\\"username\\\">\\n                <label for=\\\"password\\\">Password:</label>\\n                <input type=\\\"password\\\" id=\\\"password\\\" name=\\\"password\\\">\\n                <button type=\\\"submit\\\">Login</button>\\n            </form>\\n            <p><small>Hint: Try to log in as 'admin' without knowing the password. A common SQLi payload is <code>' OR '1'='1</code></small></p>\\n        </section>\\n\\n        <!-- XSS Challenge -->\\n        <section>\\n            <h2>Search (XSS)</h2>\\n            <form action=\\\"/search\\\" method=\\\"GET\\\">\\n                <label for=\\\"query\\\">Search:</label>\\n                <input type=\\\"text\\\" id=\\\"query\\\" name=\\\"query\\\">\\n                <button type=\\\"submit\\\">Search</button>\\n            </form>\\n             <p><small>Hint: Try searching for <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code></small></p>\\n        </section>\\n\\n        <!-- File Upload Challenge -->\\n        <section>\\n            <h2>File Upload</h2>\\n            <form action=\\\"/upload\\\" method=\\\"POST\\\" enctype=\\\"multipart/form-data\\\">\\n                <input type=\\\"file\\\" name=\\\"myFile\\\">\\n                <button type=\\\"submit\\\">Upload</button>\\n            </form>\\n            <p><small>Hint: The server does not validate file types. What could happen if you upload a malicious script?</small></p>\\n        </section>\\n    </div>\\n</body>\\n</html>\"\n    },\n    {\n      \"jenis\": \"folder\",\n      \"lokasi\": \"src/targets/web_server/database\",\n      \"konten\": \"\"\n    },\n    {\n      \"jenis\": \"folder\",\n      \"lokasi\": \"src/targets/web_server/uploads\",\n      \"konten\": \"\"\n    },\n    {\n      \"jenis\": \"file\",\n      \"lokasi\": \"src/targets/web_server/uploads/.gitkeep\",\n      \"konten\": \"\"\n    },\n    {\n      \"jenis\": \"folder\",\n      \"lokasi\": \"src/scripts\",\n      \"konten\": \"\"\n    },\n    {\n      \"jenis\": \"file\",\n      \"lokasi\": \"src/scripts/port_scanner.py\",\n      \"konten\": \"import socket\\n\\ndef scan_port(host, port):\\n    \\\"\\\"\\\"Tries to connect to a specific port on a host.\\\"\\\"\\\"\\n    try:\\n        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)\\n        socket.setdefaulttimeout(1)\\n        result = s.connect_ex((host, port))\\n        if result == 0:\\n            print(f\\\"Port {port} is open\\\")\\n        s.close()\\n    except socket.error as e:\\n        print(f\\\"Couldn't connect to server: {e}\\\")\\n\\ndef main():\\n    target_host = '127.0.0.1'\\n    common_ports = [21, 22, 23, 25, 80, 110, 443, 3000, 3306, 8080]\\n\\n    print(f\\\"Scanning target: {target_host}\\\")\\n    print(\\\"-\\\" * 30)\\n\\n    for port in common_ports:\\n        scan_port(target_host, port)\\n\\n    print(\\\"-\\\" * 30)\\n    print(\\\"Scan complete.\\\")\\n\\nif __name__ == '__main__':\\n    main()\"\n    },\n    {\n      \"jenis\": \"file\",\n      \"lokasi\": \"src/scripts/password_cracker.py\",\n      \"konten\": \"import requests\\n\\ndef crack_password():\\n    target_url = 'http://localhost:3000/login'\\n    username = 'admin'\\n    wordlist = ['password', '123456', 'guest', 'root', 'admin', 'password123']\\n\\n    print(f\\\"Starting dictionary attack on {target_url} for user '{username}'...\\\")\\n\\n    for password in wordlist:\\n        print(f\\\"Trying password: {password}\\\")\\n        payload = {'username': username, 'password': password}\\n        response = requests.post(target_url, data=payload)\\n\\n        if \\\"Welcome\\\" in response.text:\\n            print(\\\"-\\\" * 30)\\n            print(f\\\"[+] Password found: {password}\\\")\\n            print(\\\"-\\\" * 30)\\n            return\\n\\n    print(\\\"\\\\n[-] Password not found in the wordlist.\\\")\\n\\nif __name__ == '__main__':\\n    crack_password()\"\n    },\n    {\n      \"jenis\": \"folder\",\n      \"lokasi\": \"docs\",\n      \"konten\": \"\"\n    },\n    {\n      \"jenis\": \"dok\",\n      \"lokasi\": \"docs/setup_guide.md\",\n      \"konten\": \"# Panduan Setup Lengkap\\n\\nPanduan ini akan memandu Anda melalui proses penyiapan dan menjalankan Ethical Hacking Playground.\\n\\n## 1. Prasyarat\\n\\nPastikan perangkat lunak berikut terinstal di sistem Anda:\\n- **Node.js dan npm**: Anda dapat mengunduhnya dari [situs web resmi Node.js](https://nodejs.org/). Menginstal Node.js secara otomatis juga akan menginstal npm (Node Package Manager).\\n- **Python**: Anda dapat mengunduhnya dari [situs web resmi Python](https://www.python.org/). Pastikan Python ditambahkan ke PATH sistem Anda selama instalasi.\\n\\n## 2. Menjalankan Aplikasi Web Rentan\\n\\nServer web yang rentan adalah target utama untuk latihan Anda.\\n\\n1.  **Buka Terminal**: Buka terminal atau command prompt Anda.\\n\\n2.  **Navigasi ke Direktori Server**:\\n    ```bash\\n    cd path/to/project/src/targets/web_server\\n    ```\\n\\n3.  **Instal Dependensi**: Jalankan perintah berikut untuk menginstal semua paket yang diperlukan (seperti Express.js dan SQLite3).\\n    ```bash\\n    npm install\\n    ```\\n\\n4.  **Mulai Server**:\\n    ```bash\\n    npm start\\n    ```\\n\\n    Jika berhasil, Anda akan melihat pesan seperti `Server is running on http://localhost:3000`. Sekarang Anda dapat mengakses aplikasi dengan membuka browser web dan menavigasi ke `http://localhost:3000`.\\n\\n## 3. Menjalankan Skrip Latihan\\n\\nSkrip ini dirancang untuk berinteraksi dengan server yang rentan.\\n\\n1.  **Buka Terminal Baru**: Biarkan server tetap berjalan di terminal pertama. Buka jendela terminal kedua.\\n\\n2.  **Jalankan Port Scanner**:\\n    Skrip ini akan memeriksa port mana yang terbuka pada mesin lokal Anda.\\n    ```bash\\n    python path/to/project/src/scripts/port_scanner.py\\n    ```\\n    Anda akan melihat output yang menunjukkan port mana (misalnya, 3000) yang terbuka.\\n\\n3.  **Jalankan Password Cracker**:\\n    Skrip ini akan mencoba serangan kamus sederhana terhadap formulir login.\\n    ```bash\\n    python path/to/project/src/scripts/password_cracker.py\\n    ```\\n    Skrip akan mencoba setiap kata sandi dalam daftar kata internalnya dan melaporkan jika berhasil menemukan kata sandi yang benar untuk pengguna 'admin'.\"\n    },\n    {\n      \"jenis\": \"dok\",\n      \"lokasi\": \"docs/vulnerabilities.md\",\n      \"konten\": \"# Penjelasan Kerentanan\\n\\nDokumen ini menjelaskan kerentanan yang sengaja dimasukkan ke dalam aplikasi web untuk tujuan latihan.\\n\\n## 1. SQL Injection (SQLi)\\n\\n- **Lokasi**: Formulir Login (`/login`)\\n- **Deskripsi**: Aplikasi secara langsung menyisipkan input pengguna (nama pengguna dan kata sandi) ke dalam query database SQL tanpa validasi atau sanitasi yang tepat. Ini memungkinkan penyerang untuk memanipulasi query database.\\n- **Contoh Eksploitasi**: Seorang penyerang dapat memasukkan payload SQL di bidang nama pengguna seperti `' OR '1'='1` dan memasukkan apa saja di bidang kata sandi. Query yang dihasilkan akan menjadi `SELECT * FROM users WHERE username = '' OR '1'='1' AND password = '...'`. Karena `'1'='1'` selalu benar, kondisi WHERE secara keseluruhan menjadi benar, dan database akan mengembalikan pengguna pertama dalam tabel (biasanya admin), memungkinkan login berhasil tanpa mengetahui kata sandi yang benar.\\n\\n## 2. Cross-Site Scripting (XSS) Reflected\\n\\n- **Lokasi**: Formulir Pencarian (`/search`)\\n- **Deskripsi**: Parameter `query` dari URL diambil dan dirender langsung ke dalam halaman HTML hasil tanpa encoding atau sanitasi. Ini berarti jika parameter berisi kode HTML atau JavaScript, browser akan mengeksekusinya.\\n- **Contoh Eksploitasi**: Seorang penyerang dapat membuat URL seperti `http://localhost:3000/search?query=<script>alert('XSS vulnerability!')</script>`. Ketika pengguna (atau korban) mengunjungi URL ini, skrip JavaScript di dalam parameter akan dieksekusi oleh browser mereka, menampilkan kotak peringatan.\\n\\n## 3. Unggahan File yang Tidak Aman\\n\\n- **Lokasi**: Formulir Unggah File (`/upload`)\\n- **Deskripsi**: Server menerima unggahan file tanpa memvalidasi jenis file, ukuran, atau isinya. Ini memungkinkan penyerang untuk mengunggah file berbahaya, seperti web shell (misalnya, file `.php`, `.jsp`, `.js` jika server dapat mengeksekusinya) atau file HTML yang berisi kode phishing.\\n- **Contoh Risiko**: Jika server dikonfigurasi untuk mengeksekusi skrip sisi server dari direktori unggahan, seorang penyerang dapat mengunggah web shell dan mendapatkan eksekusi kode jarak jauh di server. Dalam penyiapan kami saat ini, risiko utamanya adalah mengunggah file HTML/JS berbahaya yang dapat disajikan kepada pengguna lain.\"\n    }\n  ],\n  \"text\": \"Proyek ini disusun sebagai lingkungan latihan peretasan etis yang modular dan terkendali. Arsitektur utama berpusat di sekitar aplikasi web yang sengaja dibuat rentan (`src/targets/web_server`), dibangun menggunakan Node.js dan Express. Aplikasi ini memiliki kerentanan umum seperti SQL Injection, XSS, dan unggahan file yang tidak aman untuk tujuan demonstrasi. Untuk berinteraksi dengan target, disediakan skrip Python dasar (`src/scripts`) untuk pemindaian port dan serangan kamus sederhana. Struktur proyek dipisahkan dengan jelas antara target, skrip penyerang, dan dokumentasi (`docs`) untuk memastikan pemahaman yang mudah dan penggunaan yang aman. Dokumentasi mencakup panduan penyiapan dan penjelasan rinci tentang setiap kerentanan yang ada.\",\n  \"delets\": []\n}"
+            }
+        ]
+    }
 ]
-},
-{
-"role": "model",
-"parts": [
-{
-"text": "{\n \"repo\": [\n {\n \"jenis\": \"dok\",\n \"lokasi\": \"readme.md\",\n \"konten\": \"# Generator-Kode: Generator & Refactor Kode Cerdas Berbasis AI\\n\\nGenerator-Kode adalah sebuah alat baris perintah (CLI) untuk membantu developer mempercepat alur kerja mereka, baik dalam membuat struktur proyek baru dari awal maupun melakukan refactoring pada proyek yang sudah ada berdasarkan instruksi, dengan bertenaga mesin model Gemini.\\n\\n## Fitur Utama\\n\\n- **Pembuatan Proyek Baru**: Hasilkan seluruh struktur folder dan file untuk proyek baru (misalnya, \\\"buatkan saya API server Express dengan TypeScript\\\") hanya dengan satu perintah.\\n- **Refactoring & Perbaikan Proyek**: Analisis kode proyek yang ada dan terapkan perubahan, tambahkan fitur baru, atau perbaiki bug sesuai instruksi Anda.\\n- **Pembacaan Proyek Selektif**: Kontrol penuh atas file mana yang dianalisis oleh AI, dengan mode inklusi (hanya baca yang dipilih) atau eksklusi (abaikan yang dipilih).\\n- **Riwayat Percakapan Berkonteks**: Menyimpan dan menggunakan kembali riwayat interaksi dengan AI, memungkinkan Anda untuk melakukan koreksi berulang hingga hasil yang diinginkan tercapai.\\n- **Konfigurasi Fleksibel**: Mudah untuk mengkonfigurasi model AI, temperature, dan parameter lainnya melalui file `.env`.\\n- **Dukungan Prompt Eksternal**: Gunakan file `prompt.txt` untuk instruksi yang lebih panjang dan kompleks, ideal untuk tugas yang rumit.\\n\\n## Prasyarat\\n\\n- [Node.js](https://nodejs.org/) (versi 18.x atau lebih tinggi)\\n- API Key dari [Google AI Studio](https://aistudio.google.com/app/apikey)\\n\\n## Instalasi & Konfigurasi\\n\\nIkuti langkah-langkah berikut untuk menjalankan Gen-Kode di mesin lokal Anda.\\n\\n**1. Clone Repositori**\\n\\n`bash\\ngit clone https://github.com/waone377/generator-kode.git\\ncd generator-kode\\n`\\n\\n**2. Instal Dependensi**\\n\\n`bash\\nnpm install\\n`\\n\\n**3. Konfigurasi Environment Variable**\\n\\nBuat file baru bernama `.env` di root direktori proyek. Salin konten di bawah ini dan isi nilainya sesuai dengan konfigurasi Anda.\\n\\n`env\\nGEMINI_API=?\\nMODEL=gemini-2.5-pro\\nTEMPERATURE=0.9\\nPEMIKIRAN=23000\\nMAX_OUTPUT=15000\\n`\\n\\n- `GEMINI_API`: Kunci API Anda dari Google AI Studio. **Wajib diisi.**\\n- `MODEL`: Model Gemini yang ingin Anda gunakan. `gemini-2.5-flash` atau `gemini-2.5-pro` adalah pilihan yang solid dan direkomendasikan.\\n- `TEMPERATURE`: Mengontrol kreativitas output (0.0 - 2.0). Nilai yang lebih tinggi (misalnya, 0.9) menghasilkan output yang lebih beragam, sementara nilai yang lebih rendah (misalnya, 0.2) lebih fokus dan deterministik.\\n- `PEMIKIRAN`: Alokasi token untuk proses \\\"berpikir\\\" internal model sebelum menghasilkan respons.\\n- `MAX_OUTPUT`: Jumlah maksimum token yang dapat dihasilkan oleh model dalam satu respons.\\n\\n## Cara Penggunaan\\n\\nJalankan aplikasi dari terminal:\\n\\n`bash\\nnpm start\\n`\\n\\nAnda akan disambut dengan menu utama untuk memilih mode operasi.\\n\\n### Mode 1: Membuat Project Baru\\n\\nIdeal untuk memulai proyek dari nol berdasarkan deskripsi konseptual.\\n\\n1. Pilih menu `1`.\\n2. Tentukan apakah akan menggunakan `prompt.txt` untuk deskripsi yang detail atau mengetik langsung di terminal.\\n3. Setelah AI memproses permintaan, masukkan nama untuk folder proyek baru.\\n4. Proyek akan dibuat di dalam direktori `output/<nama-proyek>`.\\n\\n### Mode 2: Memperbaiki Project\\n\\nDigunakan untuk memodifikasi, menambah fitur, atau memperbaiki kode pada proyek yang sudah ada.\\n\\n1. Pilih menu `2`.\\n2. Masukkan path ke direktori proyek yang akan diperbaiki. Aplikasi akan mengingat path terakhir yang Anda gunakan.\\n3. **Pilih Mode Pembacaan Source**:\\n - **Inklusi (Sertakan)**: Mode ini hanya akan menganalisis file/folder yang Anda tentukan secara spesifik. Berguna untuk perbaikan yang sangat terfokus.\\n - **Eksklusi (Kecualikan)**: Mode ini akan membaca seluruh proyek dan mengabaikan file/folder yang Anda tentukan. Direkomendasikan untuk pemahaman konteks yang lebih luas.\\n4. Berikan instruksi perbaikan, baik melalui `prompt.txt` atau input langsung.\\n5. Setelah AI memberikan solusi, pilih mode penyimpanan:\\n - **Timpa project asli**: Menerapkan perubahan langsung ke proyek sumber.\\n - **Membuat project baru**: Menyimpan versi yang telah diperbaiki sebagai proyek baru di dalam direktori `output/`.\\n\\n### Mode 3: Hapus Riwayat\\n\\nOpsi ini akan menghapus semua riwayat percakapan yang tersimpan di `history/riwayat.json` untuk memulai sesi baru yang bersih.\\n\\n## Struktur Proyek\\n\\n- `src/_app.js`: Titik masuk utama aplikasi, mengelola alur menu utama.\\n- `src/config/`: Direktori untuk file konfigurasi statis.\\n - `ignore.js`: Daftar default file, folder, dan ekstensi yang diabaikan saat membaca proyek.\\n- `src/dok/`: Berisi file teks yang digunakan sebagai instruksi sistem untuk AI.\\n - `intruksi.txt`: Instruksi inti peran dan format output AI.\\n- `src/fitur/`: Modul yang mengelola fitur utama aplikasi.\\n - `pembuatan.js`: Mengelola logika untuk mode \\\"Membuat Project Baru\\\".\\n - `perbaikan.js`: Mengelola logika untuk mode \\\"Memperbaiki Project\\\".\\n - `penghapusan.js`: Mengelola logika untuk mode \\\"Hapus Riwayat\\\".\\n- `src/mesin/`: Modul inti untuk interaksi dengan AI Gemini.\\n - `configurasi.js`: Menginisialisasi model Google Gemini dengan konfigurasi dari `.env`.\\n - `gemini.js`: Mengirim permintaan ke model AI, mengelola riwayat sesi, dan menangani koreksi.\\n - `schema.js`: Mendefinisikan skema JSON yang diharapkan dari respons AI.\\n- `src/service/`: Modul untuk logika bisnis spesifik.\\n - `generate_repo.js`: Menerapkan output JSON dari AI ke sistem file (membuat/menghapus file/folder).\\n - `read_repo.js`: Membaca struktur dan konten proyek target menjadi format markdown.\\n- `src/util/`: Modul utilitas pembantu.\\n - `files.js`: Menangani operasi file system seperti membaca, menulis, dan menghapus.\\n - `input.js`: Mengelola interaksi dengan pengguna di terminal.\\n - `tampilan.js`: Mengelola output ke terminal.\\n- `history/`: (Dibuat saat runtime) Direktori untuk menyimpan data sesi.\\n - `riwayat.json`: Menyimpan riwayat percakapan dengan AI.\\n - `target.json`: Menyimpan path direktori terakhir yang digunakan dalam mode perbaikan.\\n - `output.json`: Menyimpan output JSON mentah terakhir dari AI.\\n- `output/`: Direktori default tempat proyek baru atau yang diperbaiki disimpan.\\n- `package.json`: Mendefinisikan metadata proyek, dependensi, dan skrip.\\n- `prompt.txt`: Tempat untuk menulis instruksi/prompt yang panjang atau kompleks untuk AI.\\n- `.gitignore`: Mengabaikan file dan folder yang tidak perlu dilacak oleh Git.\\n- `readme.md`: Dokumentasi proyek ini.\\n\\n## Lisensi\\n\\nProyek ini dilisensikan di bawah Lisensi MIT. Ini berarti Anda bebas menggunakan, menyalin, memodifikasi, menggabungkan, menerbitkan, mendistribusikan, mensublisensikan, dan/atau menjual salinan perangkat lunak, selama Anda menyertakan pemberitahuan hak cipta dan izin asli dalam semua salinan atau bagian penting dari perangkat lunak.\\n\"\n }\n ],\n \"text\": \"Perubahan telah dilakukan pada file dokumentasi `readme.md`. Bagian 'Lisensi' telah diperbarui dari Lisensi ISC menjadi Lisensi MIT, yang merupakan lisensi open-source yang permisif dan umum digunakan. Penjelasan singkat mengenai kebebasan yang diberikan oleh lisensi MIT juga ditambahkan untuk memperjelas status open-source dari proyek ini.\",\n \"delets\": []\n}"
-}
-]
-}
-]
-
 ```
 
 ---
@@ -896,16 +995,14 @@ generator-kode/history/riwayat.json
 
 *lokasi*
 
-generator-kode/history/target.json
+.termux/files/home/repo/generator-kode/history/target.json
 
 *isi konten*
 
 ```
-
 {
-"target": "/storage/emulated/0/Music/\_tools/generator-kode"
+    "target": "/data/data/com.termux/files/home/repo/generator-kode"
 }
-
 ```
 
 ---
@@ -914,12 +1011,11 @@ generator-kode/history/target.json
 
 *lokasi*
 
-generator-kode/src/_app.js
+.termux/files/home/repo/generator-kode/src/_app.js
 
 *isi konten*
 
 ```
-
 import Print from "./util/tampilan.js";
 import Masukan from "./util/input.js";
 import pembuatan from "./fitur/pembuatan.js";
@@ -928,33 +1024,33 @@ import penghapusan from "./fitur/penghapusan.js";
 import setup from "./config/setup.js";
 
 async function main() {
-try {
-await setup();
-while (true) {
-Print.clear(
-"SELAMAT DATANG!\nsilahkan pilih:\n1. buat projek\n2. perbaiki projek\n3. hapus riwayat\n",
-);
-Print.log("ketik 'exit' untuk stop..");
-const pilih = Masukan.pilih("silakan pilih (1/2/3)?> ", ["1", "2", "3"]);
-switch (pilih) {
-case "1":
-await pembuatan();
-break;
-case "2":
-await perbaikan();
-break;
-case "3":
-await penghapusan();
-break;
-}
-const next = Masukan.pilih("lanjutkan program (y/n)?> ", ["y", "n"]);
-if (next === "y") continue;
-Print.log("program telah berhenti...");
-break;
-}
-} catch (err) {
-Print.clear("Oops error..\n terjadi error; \n", err.message);
-}
+  try {
+    await setup();
+    while (true) {
+      Print.clear(
+        "SELAMAT DATANG!\nsilahkan pilih:\n1. buat projek\n2. perbaiki projek\n3. hapus riwayat\n",
+      );
+      Print.log("ketik 'exit' untuk stop..");
+      const pilih = Masukan.pilih("silakan pilih (1/2/3)?> ", ["1", "2", "3"]);
+      switch (pilih) {
+        case "1":
+          await pembuatan();
+          break;
+        case "2":
+          await perbaikan();
+          break;
+        case "3":
+          await penghapusan();
+          break;
+      }
+      const next = Masukan.pilih("lanjutkan program (y/n)?> ", ["y", "n"]);
+      if (next === "y") continue;
+      Print.log("program telah berhenti...");
+      break;
+    }
+  } catch (err) {
+    Print.clear("Oops error..\n terjadi error; \n", err.message);
+  }
 }
 main();
 
@@ -966,73 +1062,72 @@ main();
 
 *lokasi*
 
-generator-kode/src/config/ignore.js
+.termux/files/home/repo/generator-kode/src/config/ignore.js
 
 *isi konten*
 
 ```
-
 const eee = {
-folder: [
-"node_modules",
-".git",
-".vscode",
-".idea",
-"__pycache__",
-"vendor",
-"dist",
-"build",
-],
-file: [".env"],
-extensi: [
-".csv",
-".jpg",
-".jpeg",
-".png",
-".gif",
-".bmp",
-".svg",
-".webp",
-".ico",
-".mp3",
-".wav",
-".ogg",
-".flac",
-".aac",
-".mp4",
-".mov",
-".avi",
-".mkv",
-".webm",
-".zip",
-".rar",
-".7z",
-".tar",
-".gz",
-".woff",
-".woff2",
-".ttf",
-".otf",
-".eot",
-".lock",
-".log",
-".pdf",
-".doc",
-".docx",
-".xls",
-".xlsx",
-".ppt",
-".pptx",
-".exe",
-".dll",
-".so",
-".class",
-".pyc",
-".jar",
-".bin",
-".img",
-".iso",
-],
+  folder: [
+    "node_modules",
+    ".git",
+    ".vscode",
+    ".idea",
+    "__pycache__",
+    "vendor",
+    "dist",
+    "build",
+  ],
+  file: [".env"],
+  extensi: [
+    ".csv",
+    ".jpg",
+    ".jpeg",
+    ".png",
+    ".gif",
+    ".bmp",
+    ".svg",
+    ".webp",
+    ".ico",
+    ".mp3",
+    ".wav",
+    ".ogg",
+    ".flac",
+    ".aac",
+    ".mp4",
+    ".mov",
+    ".avi",
+    ".mkv",
+    ".webm",
+    ".zip",
+    ".rar",
+    ".7z",
+    ".tar",
+    ".gz",
+    ".woff",
+    ".woff2",
+    ".ttf",
+    ".otf",
+    ".eot",
+    ".lock",
+    ".log",
+    ".pdf",
+    ".doc",
+    ".docx",
+    ".xls",
+    ".xlsx",
+    ".ppt",
+    ".pptx",
+    ".exe",
+    ".dll",
+    ".so",
+    ".class",
+    ".pyc",
+    ".jar",
+    ".bin",
+    ".img",
+    ".iso",
+  ],
 };
 export default eee;
 
@@ -1044,38 +1139,37 @@ export default eee;
 
 *lokasi*
 
-generator-kode/src/config/setup.js
+.termux/files/home/repo/generator-kode/src/config/setup.js
 
 *isi konten*
 
 ```
-
 import path from "path";
 import { cekAda, tulisFile, buatFolder } from "../util/files.js";
 const folder = "history";
 const dataSetup = {
-"target.json": "{}",
-"riwayat.json": "[]",
-"output.json": "{}",
+  "target.json": "{}",
+  "riwayat.json": "[]",
+  "output.json": "{}",
 };
 async function setup() {
-try {
-try {
-await cekAda(folder);
-} catch {
-await buatFolder(folder);
-}
-for (const [name, value] of Object.entries(dataSetup)) {
-const p = path.join(folder, name);
-try {
-await cekAda(p);
-} catch {
-await tulisFile(p, value);
-}
-}
-} catch (err) {
-throw new Error(err.message);
-}
+  try {
+    try {
+      await cekAda(folder);
+    } catch {
+      await buatFolder(folder);
+    }
+    for (const [name, value] of Object.entries(dataSetup)) {
+      const p = path.join(folder, name);
+      try {
+        await cekAda(p);
+      } catch {
+        await tulisFile(p, value);
+      }
+    }
+  } catch (err) {
+    throw new Error(err.message);
+  }
 }
 export default setup;
 
@@ -1087,187 +1181,52 @@ export default setup;
 
 *lokasi*
 
-generator-kode/src/fitur/pembuatan.js
+.termux/files/home/repo/generator-kode/src/mesin/configurasi.js
 
 *isi konten*
 
 ```
-
-import genAi from "../mesin/gemini.js";
-import Print from "../util/tampilan.js";
-import generateRepo from "../service/generate_repo.js";
-import Prompt from "../service/opsi_prompt.js";
-
-async function pembuatan() {
-try {
-const prompt = await Prompt.pembuatan();
-const res = await genAi(prompt);
-await generateRepo(res, "pembuatan");
-} catch (err) {
-throw new Error(err.message);
-}
-}
-
-export default pembuatan;
-
-```
-
----
-
----
-
-*lokasi*
-
-generator-kode/src/fitur/penghapusan.js
-
-*isi konten*
-
-```
-
-import { data, tulisFile } from "../util/files.js";
-import Masukan from "../util/input.js";
-import Print from "../util/tampilan.js";
-
-async function penghapusan() {
-try {
-const { dataHistory } = await data();
-if (dataHistory.length > 0) {
-Print.clear("total riwayat -", dataHistory.length / 2);
-const konfirmasi = Masukan.pilih("hapus riwayat sebelumnya (y/n)?> ", [
-"y",
-"n",
-]);
-if (konfirmasi === "y") {
-await tulisFile("history/riwayat.json", "[]");
-Print.clear("sukses semua riwayat telah dihapus!");
-}
-} else {
-Print.clear("daftar riwayat masih kosong!");
-}
-} catch (err) {
-throw new Error(err.message);
-}
-}
-
-export default penghapusan;
-
-```
-
----
-
----
-
-*lokasi*
-
-generator-kode/src/fitur/perbaikan.js
-
-*isi konten*
-
-```
-
-import genAi from "../mesin/gemini.js";
-import os from "os";
-import path from "path";
-import { data, tulisFile } from "../util/files.js";
-import Masukan from "../util/input.js";
-import Print from "../util/tampilan.js";
-import readRepo from "../service/read_repo.js";
-import generateRepo from "../service/generate_repo.js";
-import Prompt from "../service/opsi_prompt.js";
-async function perbaikan() {
-try {
-let target = "";
-const { dataTarget } = await data();
-
-    if (dataTarget) {
-      Print.clear("target history:\n", dataTarget);
-      const pake = Masukan.pilih(
-        "gunakan lokasi repository terakhir tersebut (y/n)?> ",
-        ["y", "n"],
-      );
-      target =
-        pake === "y"
-          ? dataTarget
-          : Masukan.wajib("masukkan lokasi repository target?> ");
-    } else {
-      target = Masukan.wajib("masukkan lokasi repository target?> ");
-    }
-
-    let p = target;
-    if (target.startsWith("~/")) {
-      p = path.join(os.homedir(), target.substr(2));
-    }
-    await tulisFile(
-      "history/target.json",
-      JSON.stringify({ target: path.resolve(p) }, null, 4),
-    );
-    const markdown = await readRepo(p);
-    const prompt = await Prompt.perbaikan();
-    const pesan = `cermatilah repositori project saya ini dengan teliti:${markdown}\n\n**tugasnya anda itu:**\n\n${prompt}`;
-    const res = await genAi(pesan);
-    await generateRepo(res, "perbaikan");
-
-} catch (err) {
-throw new Error(err.message);
-}
-}
-export default perbaikan;
-
-```
-
----
-
----
-
-*lokasi*
-
-generator-kode/src/mesin/configurasi.js
-
-*isi konten*
-
-```
-
 import { GoogleGenAI } from "@google/genai";
 import "dotenv/config";
 import schema from "./schema.js";
 import { data } from "../util/files.js";
 
 async function configGenAi(isHistory = false) {
-try {
-const AI = new GoogleGenAI({ apiKey: process.env.GEMINI_API });
-let history = [];
-const { dataHistory, dataIntruksi } = await data();
-if (isHistory) {
-history = dataHistory;
-}
-const chat = AI.chats.create({
-model: process.env.MODEL,
-config: {
-temperature: process.env.TEMPERATURE,
-systemInstruction: dataIntruksi,
-thinkingConfig: {
-includeThoughts: true,
-thinkingBudget: process.env.PEMIKIRAN,
-},
-tools: [],
-responseMimeType: "application/json",
-responseSchema: schema,
-generationConfig: {
-maxOutputTokens: process.env.MAX_OUTPUT,
-presencePenalty: 8,
-frequencyPenalty: 16,
-enableEnhancedCivicAnswers: false,
-},
-},
-history: history,
-});
-return {
-model: chat,
-AI: AI,
-};
-} catch (err) {
-throw new Error(err.message);
-}
+  try {
+    const AI = new GoogleGenAI({ apiKey: process.env.GEMINI_API });
+    let history = [];
+    const { dataHistory, dataIntruksi } = await data();
+    if (isHistory) {
+      history = dataHistory;
+    }
+    const chat = AI.chats.create({
+      model: process.env.MODEL,
+      config: {
+        temperature: process.env.TEMPERATURE,
+        systemInstruction: dataIntruksi,
+        thinkingConfig: {
+          includeThoughts: true,
+          thinkingBudget: process.env.PEMIKIRAN,
+        },
+        tools: [],
+        responseMimeType: "application/json",
+        responseSchema: schema,
+        generationConfig: {
+          maxOutputTokens: process.env.MAX_OUTPUT,
+          presencePenalty: 8,
+          frequencyPenalty: 16,
+          enableEnhancedCivicAnswers: false,
+        },
+      },
+      history: history,
+    });
+    return {
+      model: chat,
+      AI: AI,
+    };
+  } catch (err) {
+    throw new Error(err.message);
+  }
 }
 
 export default configGenAi;
@@ -1280,28 +1239,27 @@ export default configGenAi;
 
 *lokasi*
 
-generator-kode/src/mesin/gemini.js
+.termux/files/home/repo/generator-kode/src/mesin/gemini.js
 
 *isi konten*
 
 ```
-
 import configGenAi from "./configurasi.js";
 import { tulisFile, data } from "../util/files.js";
 import Masukan from "../util/input.js";
 import Print from "../util/tampilan.js";
 
 async function genAi(prompt) {
-let pakeHistory = "y";
-let isHistory = false;
-let pakePanduan = "n";
-let msg = [{ text: "" }];
-let history = [];
-let tambahan = true;
-let result = null;
+  let pakeHistory = "y";
+  let isHistory = false;
+  let pakePanduan = "n";
+  let msg = [{ text: "" }];
+  let history = [];
+  let tambahan = true;
+  let result = null;
 
-try {
-const { AI, model } = await configGenAi(isHistory);
+  try {
+    const { AI, model } = await configGenAi(isHistory);
 
     const { dataHistory } = await data();
     while (true) {
@@ -1364,10 +1322,9 @@ const { AI, model } = await configGenAi(isHistory);
     const out = [...dataHistory, ...history];
     await tulisFile("history/riwayat.json", JSON.stringify(out, null, 4));
     return result || null;
-
-} catch (err) {
-throw new Error(err.message);
-}
+  } catch (err) {
+    throw new Error(err.message);
+  }
 }
 
 export default genAi;
@@ -1380,78 +1337,77 @@ export default genAi;
 
 *lokasi*
 
-generator-kode/src/mesin/schema.js
+.termux/files/home/repo/generator-kode/src/mesin/schema.js
 
 *isi konten*
 
 ```
-
 import { Type } from "@google/genai";
 
 const repoItemSchema = {
-type: Type.OBJECT,
-properties: {
-jenis: {
-type: Type.STRING,
-enum: ["folder", "file", "dok", "config"],
-description:
-"Jenis komponen. 'folder' untuk direktori, 'file' untuk kode sumber, 'config' untuk file konfigurasi, 'dok' untuk dokumentasi.",
-},
-lokasi: {
-type: Type.STRING,
-description:
-"Path relatif dari root proyek, contoh: 'src/components/Button.js'. Gunakan garis miring '/' sebagai pemisah.",
-pattern: "^[a-zA-Z0-9._\\-/]+$",
-},
-konten: {
-type: Type.STRING,
-description:
-"Isi konten lengkap untuk file. Untuk 'jenis: folder', nilai ini harus string kosong ''.",
-},
-},
-required: ["jenis", "lokasi", "konten"],
+  type: Type.OBJECT,
+  properties: {
+    jenis: {
+      type: Type.STRING,
+      enum: ["folder", "file", "dok", "config"],
+      description:
+        "Jenis komponen. 'folder' untuk direktori, 'file' untuk kode sumber, 'config' untuk file konfigurasi, 'dok' untuk dokumentasi.",
+    },
+    lokasi: {
+      type: Type.STRING,
+      description:
+        "Path relatif dari root proyek, contoh: 'src/components/Button.js'. Gunakan garis miring '/' sebagai pemisah.",
+      pattern: "^[a-zA-Z0-9._\\-/]+$",
+    },
+    konten: {
+      type: Type.STRING,
+      description:
+        "Isi konten lengkap untuk file. Untuk 'jenis: folder', nilai ini harus string kosong ''.",
+    },
+  },
+  required: ["jenis", "lokasi", "konten"],
 };
 
 const deleteItemSchema = {
-type: Type.OBJECT,
-properties: {
-jenis: {
-type: Type.STRING,
-enum: ["file", "folder"],
-description: "Tipe entitas yang akan dihapus: 'file' atau 'folder'.",
-},
-lokasi: {
-type: Type.STRING,
-description:
-"Path relatif dari root proyek untuk file/folder yang akan dihapus.",
-pattern: "^[a-zA-Z0-9._\\-/]+$",
-},
-},
-required: ["jenis", "lokasi"],
+  type: Type.OBJECT,
+  properties: {
+    jenis: {
+      type: Type.STRING,
+      enum: ["file", "folder"],
+      description: "Tipe entitas yang akan dihapus: 'file' atau 'folder'.",
+    },
+    lokasi: {
+      type: Type.STRING,
+      description:
+        "Path relatif dari root proyek untuk file/folder yang akan dihapus.",
+      pattern: "^[a-zA-Z0-9._\\-/]+$",
+    },
+  },
+  required: ["jenis", "lokasi"],
 };
 
 const mainSchema = {
-type: Type.OBJECT,
-properties: {
-repo: {
-type: Type.ARRAY,
-description:
-"Daftar semua file dan folder yang dibuat atau dimodifikasi. Jangan sertakan file yang tidak berubah.",
-items: repoItemSchema,
-},
-delets: {
-type: Type.ARRAY,
-description:
-"Daftar file atau folder yang perlu dihapus dari proyek. Jika tidak ada, gunakan array kosong [].",
-items: deleteItemSchema,
-},
-text: {
-type: Type.STRING,
-description:
-"Ringkasan teknis yang jelas dan profesional tentang perubahan yang dibuat, arsitektur yang diterapkan, dan keputusan teknis penting. seperti mana saja yang dirubah atau diperbaiki dan di mana saja yang dibuat).",
-},
-},
-required: ["repo", "text"],
+  type: Type.OBJECT,
+  properties: {
+    repo: {
+      type: Type.ARRAY,
+      description:
+        "Daftar semua file dan folder yang dibuat atau dimodifikasi. Jangan sertakan file yang tidak berubah.",
+      items: repoItemSchema,
+    },
+    delets: {
+      type: Type.ARRAY,
+      description:
+        "Daftar file atau folder yang perlu dihapus dari proyek. Jika tidak ada, gunakan array kosong [].",
+      items: deleteItemSchema,
+    },
+    text: {
+      type: Type.STRING,
+      description:
+        "Ringkasan teknis yang jelas dan profesional tentang perubahan yang dibuat, arsitektur yang diterapkan, dan keputusan teknis penting. seperti mana saja yang dirubah atau diperbaiki dan di mana saja yang dibuat).",
+    },
+  },
+  required: ["repo", "text"],
 };
 
 export default mainSchema;
@@ -1464,101 +1420,230 @@ export default mainSchema;
 
 *lokasi*
 
-generator-kode/src/service/generate_repo.js
+.termux/files/home/repo/generator-kode/src/fitur/pembuatan.js
 
 *isi konten*
 
 ```
+import genAi from "../mesin/gemini.js";
+import Print from "../util/tampilan.js";
+import generateRepo from "../service/generate_repo.js";
+import Prompt from "../service/opsi_prompt.js";
 
+async function pembuatan() {
+  try {
+    const prompt = await Prompt.pembuatan();
+    const res = await genAi(prompt);
+    await generateRepo(res, "pembuatan");
+  } catch (err) {
+    throw new Error(err.message);
+  }
+}
+
+export default pembuatan;
+
+```
+
+---
+
+---
+
+*lokasi*
+
+.termux/files/home/repo/generator-kode/src/fitur/penghapusan.js
+
+*isi konten*
+
+```
+import { data, tulisFile } from "../util/files.js";
+import Masukan from "../util/input.js";
+import Print from "../util/tampilan.js";
+
+async function penghapusan() {
+  try {
+    const { dataHistory } = await data();
+    if (dataHistory.length > 0) {
+      Print.clear("total riwayat -", dataHistory.length / 2);
+      const konfirmasi = Masukan.pilih("hapus riwayat sebelumnya (y/n)?> ", [
+        "y",
+        "n",
+      ]);
+      if (konfirmasi === "y") {
+        await tulisFile("history/riwayat.json", "[]");
+        Print.clear("sukses semua riwayat telah dihapus!");
+      }
+    } else {
+      Print.clear("daftar riwayat masih kosong!");
+    }
+  } catch (err) {
+    throw new Error(err.message);
+  }
+}
+
+export default penghapusan;
+
+```
+
+---
+
+---
+
+*lokasi*
+
+.termux/files/home/repo/generator-kode/src/fitur/perbaikan.js
+
+*isi konten*
+
+```
+import genAi from "../mesin/gemini.js";
+import os from "os";
+import path from "path";
+import { data, tulisFile } from "../util/files.js";
+import Masukan from "../util/input.js";
+import Print from "../util/tampilan.js";
+import readRepo from "../service/read_repo.js";
+import generateRepo from "../service/generate_repo.js";
+import Prompt from "../service/opsi_prompt.js";
+async function perbaikan() {
+  try {
+    let target = "";
+    const { dataTarget } = await data();
+
+    if (dataTarget) {
+      Print.clear("target history:\n", dataTarget);
+      const pake = Masukan.pilih(
+        "gunakan lokasi repository terakhir tersebut (y/n)?> ",
+        ["y", "n"],
+      );
+      target =
+        pake === "y"
+          ? dataTarget
+          : Masukan.wajib("masukkan lokasi repository target?> ");
+    } else {
+      target = Masukan.wajib("masukkan lokasi repository target?> ");
+    }
+
+    let p = target;
+    if (target.startsWith("~/")) {
+      p = path.join(os.homedir(), target.substr(2));
+    }
+    await tulisFile(
+      "history/target.json",
+      JSON.stringify({ target: path.resolve(p) }, null, 4),
+    );
+    const markdown = await readRepo(p);
+    const prompt = await Prompt.perbaikan();
+    const pesan = `cermatilah repositori project saya ini dengan teliti:${markdown}\n\n**tugasnya anda itu:**\n\n${prompt}`;
+    const res = await genAi(pesan);
+    await generateRepo(res, "perbaikan");
+  } catch (err) {
+    throw new Error(err.message);
+  }
+}
+export default perbaikan;
+
+```
+
+---
+
+---
+
+*lokasi*
+
+.termux/files/home/repo/generator-kode/src/service/generate_repo.js
+
+*isi konten*
+
+```
 import path from "path";
 import {
-cekAda,
-buatFolder,
-hapusFolder,
-hapusFile,
-tulisFile,
-data,
+  cekAda,
+  buatFolder,
+  hapusFolder,
+  hapusFile,
+  tulisFile,
+  data,
 } from "../util/files.js";
 import Print from "../util/tampilan.js";
 import Masukan from "../util/input.js";
 async function generateRepo(source, mode) {
-try {
-const { dataTarget } = await data();
-const letak = dataTarget;
-const lokasi = path.join(path.resolve("."), "output");
-let base = lokasi;
-if (mode === "pembuatan") {
-const nameRepo = Masukan.wajib("masukkan nama repository?> ");
-base = path.join(lokasi, nameRepo);
-await buatFolder(base);
-}
-if (mode === "perbaikan") {
-const opsi = Masukan.pilih(
-"pilih penyimpanan:\n1. timpa repository\n2. buat repository\nsilahkan pilih (1/2)?> ",
-["1", "2"],
-);
-if (opsi === "2") {
-const nameRepo = Masukan.wajib("masukkan nama repository?> ");
-base = path.join(lokasi, nameRepo);
-await buatFolder(base);
-}
-base = letak;
-}
-const dir = base.split("/").pop();
-Print.clear(mode, "\nvolder:", dir, "\npath:", base, "\n===");
-if (source.delets.length > 0 && mode === "perbaikan") {
-for (const e of source.delets) {
-const p = path.join(path.resolve(base), e.lokasi);
-switch (e.jenis) {
-case "folder":
-await hapusFolder(p);
-Print.log("menghapus folder", e.lokasi);
-break;
-case "file":
-await hapusFile(p);
-Print.log("menghapus file", e.lokasi);
-break;
-default:
-Print.log("ada satu source yang tidak valid untuk dihapus!");
-break;
-}
-}
-}
-// di luar kondisi delets
-if (source.repo) {
-for (const e of source.repo) {
-const p = path.join(path.resolve(base), e.lokasi);
-switch (e.jenis) {
-case "folder":
-await buatFolder(p);
-Print.log("membuat folder", e.lokasi);
-break;
-case "file":
-await tulisFile(p, e.konten);
-Print.log("membuat file", e.lokasi);
-break;
-case "config":
-await tulisFile(p, e.konten);
-Print.log("membuat file", e.lokasi);
-break;
-case "dok":
-await tulisFile(p, e.konten);
-Print.log("membuat file", e.lokasi);
-break;
-default:
-Print.log(
-"ada satu source yang tidak valid untuk dibuat!",
-e.lokasi,
-);
-break;
-}
-}
-}
-Print.log("sukses", mode, "telah dilakukan..");
-await tulisFile("history/output.json", JSON.stringify(source, null, 4));
-} catch (err) {
-throw new Error(err.message);
-}
+  try {
+    const { dataTarget } = await data();
+    const letak = dataTarget;
+    const lokasi = path.join(path.resolve("."), "output");
+    let base = lokasi;
+    if (mode === "pembuatan") {
+      const nameRepo = Masukan.wajib("masukkan nama repository?> ");
+      base = path.join(lokasi, nameRepo);
+      await buatFolder(base);
+    }
+    if (mode === "perbaikan") {
+      const opsi = Masukan.pilih(
+        "pilih penyimpanan:\n1. timpa repository\n2. buat repository\nsilahkan pilih (1/2)?> ",
+        ["1", "2"],
+      );
+      if (opsi === "2") {
+        const nameRepo = Masukan.wajib("masukkan nama repository?> ");
+        base = path.join(lokasi, nameRepo);
+        await buatFolder(base);
+      }
+      base = letak;
+    }
+    const dir = base.split("/").pop();
+    Print.clear(mode, "\nvolder:", dir, "\npath:", base, "\n===");
+    if (source.delets.length > 0 && mode === "perbaikan") {
+      for (const e of source.delets) {
+        const p = path.join(path.resolve(base), e.lokasi);
+        switch (e.jenis) {
+          case "folder":
+            await hapusFolder(p);
+            Print.log("menghapus folder", e.lokasi);
+            break;
+          case "file":
+            await hapusFile(p);
+            Print.log("menghapus file", e.lokasi);
+            break;
+          default:
+            Print.log("ada satu source yang tidak valid untuk dihapus!");
+            break;
+        }
+      }
+    }
+    // di luar kondisi delets
+    if (source.repo) {
+      for (const e of source.repo) {
+        const p = path.join(path.resolve(base), e.lokasi);
+        switch (e.jenis) {
+          case "folder":
+            await buatFolder(p);
+            Print.log("membuat folder", e.lokasi);
+            break;
+          case "file":
+            await tulisFile(p, e.konten);
+            Print.log("membuat file", e.lokasi);
+            break;
+          case "config":
+            await tulisFile(p, e.konten);
+            Print.log("membuat file", e.lokasi);
+            break;
+          case "dok":
+            await tulisFile(p, e.konten);
+            Print.log("membuat file", e.lokasi);
+            break;
+          default:
+            Print.log(
+              "ada satu source yang tidak valid untuk dibuat!",
+              e.lokasi,
+            );
+            break;
+        }
+      }
+    }
+    Print.log("sukses", mode, "telah dilakukan..");
+    await tulisFile("history/output.json", JSON.stringify(source, null, 4));
+  } catch (err) {
+    throw new Error(err.message);
+  }
 }
 export default generateRepo;
 
@@ -1570,48 +1655,47 @@ export default generateRepo;
 
 *lokasi*
 
-generator-kode/src/service/opsi_prompt.js
+.termux/files/home/repo/generator-kode/src/service/opsi_prompt.js
 
 *isi konten*
 
 ```
-
 import Print from "../util/tampilan.js";
 import Masukan from "../util/input.js";
 import { data } from "../util/files.js";
 class Prompt {
-static async pembuatan() {
-const { dataPrompt } = await data();
-const pakePrompt = Masukan.pilih("gunakan prompt.txt (y/n)?> ", ["y", "n"]);
-let prompt = "";
-if (pakePrompt === "y") {
-prompt = dataPrompt;
-Print.clear("isi prompt:\n**_", prompt || "kosong", "\n_**");
-const next = Masukan.pilih("lanjutkan (y/n)?> ", ["y", "n"]);
-if (next === "n") {
-prompt = Masukan.wajib("project seperti apa yang ingin dibuat?> ");
-}
-} else {
-prompt = Masukan.wajib("project seperti apa yang ingin dibuat?> ");
-}
-return prompt;
-}
-static async perbaikan() {
-const { dataPrompt } = await data();
-const pakePrompt = Masukan.pilih("gunakan prompt.txt (y/n)?> ", ["y", "n"]);
-let prompt = "";
-if (pakePrompt === "y") {
-prompt = dataPrompt;
-Print.clear("isi prompt:\n**_", prompt || "kosong", "\n_**");
-const next = Masukan.pilih("lanjutkan (y/n)?> ", ["y", "n"]);
-if (next === "n") {
-prompt = Masukan.wajib("apa yang ingin diperbaiki?> ");
-}
-} else {
-prompt = Masukan.wajib("apa yang ingin diperbaiki?> ");
-}
-return prompt;
-}
+  static async pembuatan() {
+    const { dataPrompt } = await data();
+    const pakePrompt = Masukan.pilih("gunakan prompt.txt (y/n)?> ", ["y", "n"]);
+    let prompt = "";
+    if (pakePrompt === "y") {
+      prompt = dataPrompt;
+      Print.clear("isi prompt:\n***", prompt || "kosong", "\n***");
+      const next = Masukan.pilih("lanjutkan (y/n)?> ", ["y", "n"]);
+      if (next === "n") {
+        prompt = Masukan.wajib("project seperti apa yang ingin dibuat?> ");
+      }
+    } else {
+      prompt = Masukan.wajib("project seperti apa yang ingin dibuat?> ");
+    }
+    return prompt;
+  }
+  static async perbaikan() {
+    const { dataPrompt } = await data();
+    const pakePrompt = Masukan.pilih("gunakan prompt.txt (y/n)?> ", ["y", "n"]);
+    let prompt = "";
+    if (pakePrompt === "y") {
+      prompt = dataPrompt;
+      Print.clear("isi prompt:\n***", prompt || "kosong", "\n***");
+      const next = Masukan.pilih("lanjutkan (y/n)?> ", ["y", "n"]);
+      if (next === "n") {
+        prompt = Masukan.wajib("apa yang ingin diperbaiki?> ");
+      }
+    } else {
+      prompt = Masukan.wajib("apa yang ingin diperbaiki?> ");
+    }
+    return prompt;
+  }
 }
 export default Prompt;
 
@@ -1623,74 +1707,73 @@ export default Prompt;
 
 *lokasi*
 
-generator-kode/src/service/read_repo.js
+.termux/files/home/repo/generator-kode/src/service/read_repo.js
 
 *isi konten*
 
 ```
-
 import path from "path";
 import { bacaFolder, bacaFile, tulisFile, cekAda } from "../util/files.js";
 import Print from "../util/tampilan.js";
 import Masukan from "../util/input.js";
 async function readRepo(target) {
-try {
-const data = {
-folder: [],
-file: [],
-extensi: [],
-};
-const mode = Masukan.pilih(
-"pilih pembacaan file & folder:\n1. pilih beberapa\n2. kecualikan beberapa\nsilahkan pilih (1/2)?> ",
-["1", "2"],
-);
-const text = mode === "1" ? "dipilih" : "dikecualikan";
-Masukan.pilih(
-"jika folder/file/extensi/ lebih dari satu pisahkan dengan (,)\ncontoh:\nfolder: dist, node_modules\nfile: example.js, config.json\nextensi: .txt, .py\n mengerti lanjut (y/n): ",
-["y", "n"],
-);
-const foldernya = Masukan.biasa(
-`masukkan nama volder yang ingin ${text}?: `,
-);
-data.folder.push(foldernya.replaceAll(" ", "").split(","));
-const filenya = Masukan.biasa(
-`masukkan nama file yang ingin ${text} beserta extensinya?: `,
-);
-data.file.push(filenya.replaceAll(" ", "").split(","));
-const extensinya = Masukan.biasa(
-`masukkan format extensi yang ingin ${text}?: `,
-);
-data.extensi.push(extensinya.replaceAll(" ", "").split(","));
-const daftar = {
-foldernya: data.folder
-.flat()
-.filter((e) => e)
-.map((e) => `!${e}/**`),
-filenya: data.file
-.flat()
-.filter((e) => e)
-.map((e) => `!**/${e}`),
-extensinya: data.extensi
-.flat()
-.filter((e) => e)
-.map((e) => `!**/*.${e.replace(".", "")}`),
-};
-const repo = await bacaFolder(target, daftar, mode);
-const dir = target.split("/").pop();
-Print.clear("membaca...\nvolder:", dir, "\npath:", target, "\n===");
-let markdown = "";
-for (const e of repo) {
-const letak = e.substring(e.indexOf(dir), e.length);
-Print.log("sedang membaca", letak);
-const kode = await bacaFile(e, true);
-markdown += `\n\n---\n\n*lokasi*\n\n${letak}\n\n*isi konten*\n\n\`\`\`\n${kode}\n\`\`\`\n\n---`;
-}
-await tulisFile("history/repo.md", markdown);
-Print.log("selesai terbaca");
-return markdown;
-} catch (err) {
-throw new Error(err.message);
-}
+  try {
+    const data = {
+      folder: [],
+      file: [],
+      extensi: [],
+    };
+    const mode = Masukan.pilih(
+      "pilih pembacaan file & folder:\n1. pilih beberapa\n2. kecualikan beberapa\nsilahkan pilih (1/2)?> ",
+      ["1", "2"],
+    );
+    const text = mode === "1" ? "dipilih" : "dikecualikan";
+    Masukan.pilih(
+      "jika folder/file/extensi/ lebih dari satu pisahkan dengan (,)\ncontoh:\nfolder: dist, node_modules\nfile: example.js, config.json\nextensi: .txt, .py\n mengerti lanjut (y/n): ",
+      ["y", "n"],
+    );
+    const foldernya = Masukan.biasa(
+      `masukkan nama volder yang ingin ${text}?: `,
+    );
+    data.folder.push(foldernya.replaceAll(" ", "").split(","));
+    const filenya = Masukan.biasa(
+      `masukkan nama file yang ingin ${text} beserta extensinya?: `,
+    );
+    data.file.push(filenya.replaceAll(" ", "").split(","));
+    const extensinya = Masukan.biasa(
+      `masukkan format extensi yang ingin ${text}?: `,
+    );
+    data.extensi.push(extensinya.replaceAll(" ", "").split(","));
+    const daftar = {
+      foldernya: data.folder
+        .flat()
+        .filter((e) => e)
+        .map((e) => `!${e}/**`),
+      filenya: data.file
+        .flat()
+        .filter((e) => e)
+        .map((e) => `!**/${e}`),
+      extensinya: data.extensi
+        .flat()
+        .filter((e) => e)
+        .map((e) => `!**/*.${e.replace(".", "")}`),
+    };
+    const repo = await bacaFolder(target, daftar, mode);
+    const dir = target.split("/").pop();
+    Print.clear("membaca...\nvolder:", dir, "\npath:", target, "\n===");
+    let markdown = "";
+    for (const e of repo) {
+      const letak = e.substring(e.indexOf(dir), e.length);
+      Print.log("sedang membaca", letak);
+      const kode = await bacaFile(e, true);
+      markdown += `\n\n---\n\n*lokasi*\n\n${letak}\n\n*isi konten*\n\n\`\`\`\n${kode}\n\`\`\`\n\n---`;
+    }
+    await tulisFile("history/repo.md", markdown);
+    Print.log("selesai terbaca");
+    return markdown;
+  } catch (err) {
+    throw new Error(err.message);
+  }
 }
 export default readRepo;
 
@@ -1702,112 +1785,110 @@ export default readRepo;
 
 *lokasi*
 
-generator-kode/src/util/files.js
+.termux/files/home/repo/generator-kode/src/util/files.js
 
 *isi konten*
 
 ```
-
 import fg from "fast-glob";
 import fs from "fs/promises";
 import path from "path";
 import eee from "../config/ignore.js";
 async function bacaFile(p, isJson = false) {
-try {
-const cek = path.extname(p);
-const data = await fs.readFile(p, "utf-8");
-return cek === ".json" && !isJson ? JSON.parse(data) : data;
-} catch (err) {
-throw new Error(`gagal  membaca file ${p}`);
-}
+  try {
+    const cek = path.extname(p);
+    const data = await fs.readFile(p, "utf-8");
+    return cek === ".json" && !isJson ? JSON.parse(data) : data;
+  } catch (err) {
+    throw new Error(`gagal  membaca file ${p}`);
+  }
 }
 async function tulisFile(p, data) {
-try {
-await fs.writeFile(p, data);
-} catch (err) {
-throw new Error(`gagal menulis ke file ${p}`);
-}
+  try {
+    await fs.writeFile(p, data);
+  } catch (err) {
+    throw new Error(`gagal menulis ke file ${p}`);
+  }
 }
 async function buatFolder(p) {
-try {
-await fs.mkdir(p, { recursive: true });
-} catch (err) {
-throw new Error(`gagal membuat folder ${p}`);
-}
+  try {
+    await fs.mkdir(p, { recursive: true });
+  } catch (err) {
+    throw new Error(`gagal membuat folder ${p}`);
+  }
 }
 async function hapusFile(p) {
-try {
-await fs.unlink(p);
-} catch (err) {
-throw new Error(`gagal menghapus file ${p}`);
-}
+  try {
+    await fs.unlink(p);
+  } catch (err) {
+    throw new Error(`gagal menghapus file ${p}`);
+  }
 }
 async function hapusFolder(p) {
-try {
-await fs.rm(p, { recursive: true });
-} catch (err) {
-throw new Error(`gagal menghapus folder ${p}`);
-}
+  try {
+    await fs.rm(p, { recursive: true });
+  } catch (err) {
+    throw new Error(`gagal menghapus folder ${p}`);
+  }
 }
 async function bacaFolder(p, { foldernya, filenya, extensinya }, mode) {
-try {
-const folder = [
-...eee.folder.filter((e) => e).map((e) => `!${e}/**`),
-...foldernya,
-];
-const extensi = [
-...eee.extensi.filter((e) => e).map((e) => `!**/*.${e.replace(".", "")}`),
-...extensinya,
-];
-let config = [];
-if (mode === "1") {
-config = [
-...foldernya.map((e) => e.replace("!", "")),
-...filenya.map((e) => e.replace("!", "")),
-...extensinya.map((e) => e.replace("!", "")),
-];
-} else {
-config = ["**/*.*", ...folder, ...filenya, ...extensi];
-}
+  try {
+    const folder = [
+      ...eee.folder.filter((e) => e).map((e) => `!${e}/**`),
+      ...foldernya,
+    ];
+    const extensi = [
+      ...eee.extensi.filter((e) => e).map((e) => `!**/*.${e.replace(".", "")}`),
+      ...extensinya,
+    ];
+    let config = [];
+    if (mode === "1") {
+      config = [
+        ...foldernya.map((e) => e.replace("!", "")),
+        ...filenya.map((e) => e.replace("!", "")),
+        ...extensinya.map((e) => e.replace("!", "")),
+      ];
+    } else {
+      config = ["**/*.*", ...folder, ...filenya, ...extensi];
+    }
 
     return await fg(config, { cwd: p, absolute: true, sort: true });
-
-} catch (err) {
-throw new Error(`gagal membaca folder ${p}`);
-}
+  } catch (err) {
+    throw new Error(`gagal membaca folder ${p}`);
+  }
 }
 async function cekAda(p) {
-try {
-await fs.access(p);
-} catch (err) {
-throw new Error(`gagal mengecek ${p}`);
-}
+  try {
+    await fs.access(p);
+  } catch (err) {
+    throw new Error(`gagal mengecek ${p}`);
+  }
 }
 async function data() {
-try {
-const dataHistory = await bacaFile("history/riwayat.json");
-const targetData = await bacaFile("history/target.json");
-const dataIntruksi = await bacaFile("src/dok/intruksi.txt");
-const dataPrompt = await bacaFile("prompt.txt");
-return {
-dataHistory,
-dataTarget: targetData.target || "",
-dataIntruksi,
-dataPrompt,
-};
-} catch (err) {
-throw new Error(err.message);
-}
+  try {
+    const dataHistory = await bacaFile("history/riwayat.json");
+    const targetData = await bacaFile("history/target.json");
+    const dataIntruksi = await bacaFile("src/dok/intruksi.txt");
+    const dataPrompt = await bacaFile("prompt.txt");
+    return {
+      dataHistory,
+      dataTarget: targetData.target || "",
+      dataIntruksi,
+      dataPrompt,
+    };
+  } catch (err) {
+    throw new Error(err.message);
+  }
 }
 export {
-bacaFile,
-tulisFile,
-buatFolder,
-hapusFile,
-hapusFolder,
-bacaFolder,
-cekAda,
-data,
+  bacaFile,
+  tulisFile,
+  buatFolder,
+  hapusFile,
+  hapusFolder,
+  bacaFolder,
+  cekAda,
+  data,
 };
 
 ```
@@ -1818,62 +1899,61 @@ data,
 
 *lokasi*
 
-generator-kode/src/util/input.js
+.termux/files/home/repo/generator-kode/src/util/input.js
 
 *isi konten*
 
 ```
-
 import promptSync from "prompt-sync";
 const prompt = promptSync();
 class Masukan {
-static wajib(message) {
-let key;
-while (true) {
-const v = prompt(message);
-if (!v.trim()) {
-console.log("silakan masukkan terlebih dahulu!");
-continue;
-} else if (v.trim().toLowerCase() === "exit") {
-console.clear();
-console.log("program berhenti...");
-process.exit(1);
-} else {
-key = v;
-break;
-}
-}
-console.clear();
-return key.trim();
-}
-static pilih(message, opsi) {
-let key;
-while (true) {
-const v = prompt(message);
-if (v && opsi.includes(v.trim())) {
-key = v;
-break;
-} else if (v.trim().toLowerCase() === "exit") {
-console.clear();
-console.log("program berhenti...");
-process.exit(1);
-} else {
-console.log(`Pilih antara ${opsi.join("/")} silahkan!`);
-}
-}
-console.clear();
-return key.trim().toLowerCase();
-}
-static biasa(message) {
-const key = prompt(message);
-if (key.trim().toLowerCase() === "exit") {
-console.clear();
-console.log("program berhenti...");
-process.exit(1);
-}
-console.clear();
-return key.trim();
-}
+  static wajib(message) {
+    let key;
+    while (true) {
+      const v = prompt(message);
+      if (!v.trim()) {
+        console.log("silakan masukkan terlebih dahulu!");
+        continue;
+      } else if (v.trim().toLowerCase() === "exit") {
+        console.clear();
+        console.log("program berhenti...");
+        process.exit(1);
+      } else {
+        key = v;
+        break;
+      }
+    }
+    console.clear();
+    return key.trim();
+  }
+  static pilih(message, opsi) {
+    let key;
+    while (true) {
+      const v = prompt(message);
+      if (v && opsi.includes(v.trim())) {
+        key = v;
+        break;
+      } else if (v.trim().toLowerCase() === "exit") {
+        console.clear();
+        console.log("program berhenti...");
+        process.exit(1);
+      } else {
+        console.log(`Pilih antara ${opsi.join("/")} silahkan!`);
+      }
+    }
+    console.clear();
+    return key.trim().toLowerCase();
+  }
+  static biasa(message) {
+    const key = prompt(message);
+    if (key.trim().toLowerCase() === "exit") {
+      console.clear();
+      console.log("program berhenti...");
+      process.exit(1);
+    }
+    console.clear();
+    return key.trim();
+  }
 }
 export default Masukan;
 
@@ -1885,36 +1965,34 @@ export default Masukan;
 
 *lokasi*
 
-generator-kode/src/util/tampilan.js
+.termux/files/home/repo/generator-kode/src/util/tampilan.js
 
 *isi konten*
 
 ```
-
 class Print {
-static clear(...message) {
-console.clear();
-let msg;
-if (message.length > 0) {
-msg = message.join(" ");
-} else {
-msg = message[0];
-}
-console.log(msg);
-}
-static log(...message) {
-let msg;
-if (message.length > 0) {
-msg = message.join(" ");
-} else {
-msg = message[0];
-}
-console.log(msg);
-}
+  static clear(...message) {
+    console.clear();
+    let msg;
+    if (message.length > 0) {
+      msg = message.join(" ");
+    } else {
+      msg = message[0];
+    }
+    console.log(msg);
+  }
+  static log(...message) {
+    let msg;
+    if (message.length > 0) {
+      msg = message.join(" ");
+    } else {
+      msg = message[0];
+    }
+    console.log(msg);
+  }
 }
 export default Print;
 
 ```
 
 ---
-```

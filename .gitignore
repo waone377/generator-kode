@@ -1,16 +1,4 @@
-# Dependencies
-node_modules/
-
-# Environment variables
-.env*
-
-# Logs
-npm-debug.log
-*.log
-
-# Application data
-prompt.txt
-history/*
-output/*
-!history/.gitkeep
-!output/.gitkeep
+node_modules
+.env
+history
+output
